@@ -1,0 +1,44 @@
+name: oracle-sampling
+
+# HIP-3 全生态喂价连续采样：每 30 分钟一次，快照落到 data 分支。
+# 注意：GitHub 会在仓库 60 天无活动后停用 scheduled workflow，期间需保持提交活跃。
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run sampler
+        run: node scripts/sample-oracles.mjs --save .data-run
+
+      - name: Commit snapshot to data branch
+        run: |
+          git config user.name "imokokok"
+          git config user.email "145034722+imokokok@users.noreply.github.com"
+          FILE=$(ls .data-run/snapshot-*.json | head -1)
+          git fetch origin data || true
+          mkdir -p .data-branch
+          if git rev-parse --verify origin/data >/dev/null 2>&1; then
+            git worktree add -B data .data-branch origin/data
+          else
+            git worktree add --orphan -b data .data-branch
+          fi
+          mkdir -p .data-branch/snapshots
+          cp "$FILE" .data-branch/snapshots/
+          cd .data-branch
+          git add snapshots
+          git commit -m "snapshot $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:data

@@ -8,18 +8,27 @@ HIP-3 deployer 喂价守卫——开源参考实现。防止你的 500k HYPE 质
 
 ## 状态
 
-**设计阶段**。验证报告见 [`research/VALIDATION-REPORT.md`](research/VALIDATION-REPORT.md)（含实测数据与竞争格局分析）。
+**开发阶段**。验证报告见 [`research/VALIDATION-REPORT.md`](research/VALIDATION-REPORT.md)（含实测数据与竞争格局分析），SK Hynix 事故复盘见 [`docs/postmortem/2026-07-28-sk-hynix.md`](docs/postmortem/2026-07-28-sk-hynix.md)。
 
-## 模块（规划）
+## 模块
 
 | 模块 | 职责 | 状态 |
 |---|---|---|
-| `staleness` | 喂价滞后检测：上次更新距今、预期更新间隔、停滞告警 | 规划中 |
-| `deviation` | oracle vs mark / 外部参考的偏离度守卫，分级熔断 | 规划中 |
-| `bounds` | Discovery Bounds v2 校验：休市带、re-anchor 触发、硬顶追踪 | 规划中 |
+| `staleness` | 喂价滞后检测：上次更新距今、预期更新间隔、停滞告警 | ✅ 已实现（测试覆盖） |
+| `deviation` | oracle vs mark / 外部参考的偏离度守卫，分级熔断，含验证者 ±50% 自动审查线标记 | ✅ 已实现（测试覆盖） |
+| `bounds` | Discovery Bounds v2 校验：休市带、re-anchor 触发、带外清算豁免判定 | ✅ 已实现（测试覆盖） |
 | `offhours` | 非 7x24 资产休市定价参考实现（对照 Trade.xyz 公开机制） | 规划中 |
 | `halt-guard` | haltTrading 决策辅助：触发条件核对、事后结算价格核算 | 规划中 |
-| `monitor` | 全生态只读监控：info API + WebSocket 采样 | 规划中 |
+| `monitor` | 全生态只读监控：`scripts/sample-oracles.mjs`（零依赖采样器，GitHub Actions 每 30 分钟落快照到 data 分支） | 🟡 最小种子已上线 |
+
+## 快速开始
+
+```bash
+npm install && npm test
+
+# 看一眼整个 HIP-3 生态的喂价健康度（只读，无需任何密钥）
+npm run sample
+```
 
 ## 你会踩的坑（本 README 的正文就是为此存在）
 
