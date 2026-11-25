@@ -1,6 +1,7 @@
 name: oracle-sampling
 
-# HIP-3 全生态喂价连续采样：每 30 分钟一次，快照落到 data 分支。
+# HIP-3 全生态喂价连续采样：每 30 分钟一次，快照落到 data 分支，
+# 同时生成喂价健康度公开状态页并部署到 GitHub Pages。
 # 注意：GitHub 会在仓库 60 天无活动后停用 scheduled workflow，期间需保持提交活跃。
 
 on:
@@ -10,6 +11,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
 
 jobs:
   sample:
@@ -23,6 +30,9 @@ jobs:
 
       - name: Run sampler
         run: node scripts/sample-oracles.mjs --save .data-run
+
+      - name: Generate status page
+        run: node scripts/status-page.mjs "$(ls .data-run/snapshot-*.json | head -1)" .status
 
       - name: Commit snapshot to data branch
         run: |
@@ -42,3 +52,14 @@ jobs:
           git add snapshots
           git commit -m "snapshot $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
           git push origin HEAD:data
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .status
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
