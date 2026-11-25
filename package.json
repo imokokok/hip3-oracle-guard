@@ -11,12 +11,15 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
     "lint": "tsc --noEmit",
-    "sample": "node scripts/sample-oracles.mjs"
+    "sample": "node scripts/sample-oracles.mjs",
+    "guard": "npm run build && node scripts/guard.mjs"
   },
   "keywords": [
     "hyperliquid",

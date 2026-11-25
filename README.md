@@ -28,6 +28,9 @@ npm install && npm test
 
 # 看一眼整个 HIP-3 生态的喂价健康度（只读，无需任何密钥）
 npm run sample
+
+# 守卫库对真实生态的实时体检：对全部资产跑 deviation + bounds 守卫，输出分级告警
+npm run build && node scripts/guard.mjs
 ```
 
 ## 你会踩的坑（本 README 的正文就是为此存在）
