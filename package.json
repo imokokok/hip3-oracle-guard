@@ -1,0 +1,27 @@
+{
+  "name": "hip3-oracle-guard",
+  "version": "0.1.0",
+  "description": "Guard library for HIP-3 deployer oracle operations: staleness, deviation, discovery bounds, off-hours pricing, halt decision support.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "hyperliquid",
+    "hip3",
+    "oracle",
+    "price-feed",
+    "perpetuals",
+    "slashing",
+    "risk"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
