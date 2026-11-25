@@ -5,3 +5,5 @@ export * from './types.js';
 export * from './staleness.js';
 export * from './deviation.js';
 export * from './bounds.js';
+export * from './offhours.js';
+export * from './halt.js';

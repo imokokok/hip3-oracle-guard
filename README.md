@@ -17,9 +17,9 @@ HIP-3 deployer 喂价守卫——开源参考实现。防止你的 500k HYPE 质
 | `staleness` | 喂价滞后检测：上次更新距今、预期更新间隔、停滞告警 | ✅ 已实现（测试覆盖） |
 | `deviation` | oracle vs mark / 外部参考的偏离度守卫，分级熔断，含验证者 ±50% 自动审查线标记 | ✅ 已实现（测试覆盖） |
 | `bounds` | Discovery Bounds v2 校验：休市带、re-anchor 触发、带外清算豁免判定 | ✅ 已实现（测试覆盖） |
-| `offhours` | 非 7x24 资产休市定价参考实现（对照 Trade.xyz 公开机制） | 规划中 |
-| `halt-guard` | haltTrading 决策辅助：触发条件核对、事后结算价格核算 | 规划中 |
-| `monitor` | 全生态只读监控：`scripts/sample-oracles.mjs`（零依赖采样器，GitHub Actions 每 30 分钟落快照到 data 分支） | 🟡 最小种子已上线 |
+| `offhours` | 会话感知休市守卫：美股/CME 期货/外汇会话日历（ET 含夏令时），休市期 band 约束 | ✅ 已实现（测试覆盖） |
+| `halt-guard` | 验证者审查线接近度 + halt 前核对清单（结构化输出，决策权留给部署方） | ✅ 已实现（测试覆盖） |
+| `monitor` | 常驻守护进程 + 采样器：oracle 变化检测实现真实 staleness；GitHub Actions 每 30 分钟落快照 | ✅ 已上线（实跑验证） |
 
 ## 快速开始
 
@@ -31,6 +31,9 @@ npm run sample
 
 # 守卫库对真实生态的实时体检：对全部资产跑 deviation + bounds 守卫，输出分级告警
 npm run build && node scripts/guard.mjs
+
+# 常驻监控（真实 staleness：oracle 值变化检测），告警以 JSONL 输出
+npm run build && MONITOR_OUT=alarms.jsonl node scripts/monitor.mjs
 ```
 
 ## 你会踩的坑（本 README 的正文就是为此存在）
