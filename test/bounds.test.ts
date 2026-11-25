@@ -52,5 +52,26 @@ describe('assessBounds', () => {
   it('未提供清算价 → undefined', () => {
     const r = assessBounds(100, 100, undefined, cfg);
     expect(r.liquidationPriceOutsideBand).toBeUndefined();
+    expect(r.referenceApproximate).toBe(false);
+  });
+
+  it('近似参考价声明后：出带 critical 降级为 warn 并显式标注', () => {
+    const r = assessBounds(111, 100, undefined, { ...cfg, referenceApproximate: true });
+    expect(r.referenceApproximate).toBe(true);
+    expect(r.severity).toBe('warn'); // 不虚报 critical
+    expect(r.reason).toContain('approximate reference');
+    expect(r.reason).toContain('downgraded');
+  });
+
+  it('近似参考价声明后：re-anchor critical 同样降级', () => {
+    const r = assessBounds(109.5, 100, undefined, { ...cfg, referenceApproximate: true });
+    expect(r.reAnchorDue).toBe(true);
+    expect(r.severity).toBe('warn');
+  });
+
+  it('近似声明不改变带内判定', () => {
+    const r = assessBounds(101, 100, undefined, { ...cfg, referenceApproximate: true });
+    expect(r.severity).toBe('ok');
+    expect(r.reason).toContain('approximate reference');
   });
 });

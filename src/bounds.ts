@@ -13,6 +13,12 @@ export interface BoundsConfig {
   maxLeverage: number;
   /** 触达带边缘多大比例时触发 re-anchor 判定，默认 0.9（Bounds v2 参照值）。 */
   reAnchorThreshold?: number;
+  /**
+   * 参考价是否为近似值（如用 markPx / prevDayPx 替代协议真实 band anchor）。
+   * 显式声明近似后，库会保守降级：critical 一律降为 warn 并在 reason 标注，
+   * 因为"出带"判定建立在估计的锚上，虚报 critical 比漏报更伤守卫可信度。
+   */
+  referenceApproximate?: boolean;
 }
 
 export interface BoundsCheck extends GuardResult {
@@ -27,6 +33,8 @@ export interface BoundsCheck extends GuardResult {
   reAnchorDue: boolean;
   /** 清算价是否在带外（带外的仓位不会被清算——该状态下标记价是安全的）。 */
   liquidationPriceOutsideBand: boolean | undefined;
+  /** 参考价是否为近似值（见 BoundsConfig.referenceApproximate）。 */
+  referenceApproximate: boolean;
 }
 
 export function assessBounds(
@@ -36,6 +44,7 @@ export function assessBounds(
   config: BoundsConfig,
 ): BoundsCheck {
   const threshold = config.reAnchorThreshold ?? 0.9;
+  const approximate = config.referenceApproximate ?? false;
   const bandHalfWidth = 1 / config.maxLeverage;
   const lowerEdgePx = referencePx * (1 - bandHalfWidth);
   const upperEdgePx = referencePx * (1 + bandHalfWidth);
@@ -46,18 +55,26 @@ export function assessBounds(
       ? liquidationPricePx < lowerEdgePx || liquidationPricePx > upperEdgePx
       : undefined;
 
+  const approxNote = approximate ? ' (approximate reference — verify with true band anchor)' : '';
+
   let severity: Severity = 'ok';
-  let reason = `oracle within band: edge progress ${(edgeProgress * 100).toFixed(1)}% of ±${(bandHalfWidth * 100).toFixed(1)}% band`;
+  let reason = `oracle within band: edge progress ${(edgeProgress * 100).toFixed(1)}% of ±${(bandHalfWidth * 100).toFixed(1)}% band${approxNote}`;
   if (edgeProgress > 1) {
     severity = 'critical';
-    reason = `oracle ${oraclePx} outside discovery band [${lowerEdgePx.toFixed(4)}, ${upperEdgePx.toFixed(4)}] — mark price bound should be active, investigate immediately`;
+    reason = `oracle ${oraclePx} outside discovery band [${lowerEdgePx.toFixed(4)}, ${upperEdgePx.toFixed(4)}] — mark price bound should be active, investigate immediately${approxNote}`;
   } else if (reAnchorDue) {
     severity = 'critical';
-    reason = `oracle at ${(edgeProgress * 100).toFixed(1)}% of band edge (≥ threshold ${threshold * 100}%) — re-anchor imminent, weekend drift risk (cf. Bounds v2)`;
+    reason = `oracle at ${(edgeProgress * 100).toFixed(1)}% of band edge (≥ threshold ${threshold * 100}%) — re-anchor imminent, weekend drift risk (cf. Bounds v2)${approxNote}`;
   } else if (edgeProgress >= 0.5) {
     severity = 'warn';
-    reason = `oracle at ${(edgeProgress * 100).toFixed(1)}% of band edge — elevated bound risk`;
+    reason = `oracle at ${(edgeProgress * 100).toFixed(1)}% of band edge — elevated bound risk${approxNote}`;
   }
 
-  return { bandHalfWidth, lowerEdgePx, upperEdgePx, edgeProgress, reAnchorDue, liquidationPriceOutsideBand, severity, reason };
+  // 近似参考价下保守降级：出带/re-anchor 判定建立在估计的锚上，不虚报 critical。
+  if (approximate && severity === 'critical') {
+    severity = 'warn';
+    reason = `[downgraded from critical: approximate reference] ${reason}`;
+  }
+
+  return { bandHalfWidth, lowerEdgePx, upperEdgePx, edgeProgress, reAnchorDue, liquidationPriceOutsideBand, referenceApproximate: approximate, severity, reason };
 }

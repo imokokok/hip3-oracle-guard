@@ -29,7 +29,7 @@ npm install && npm test
 # 看一眼整个 HIP-3 生态的喂价健康度（只读，无需任何密钥）
 npm run sample
 
-# 守卫库对真实生态的实时体检：对全部资产跑 deviation + bounds 守卫，输出分级告警
+# 守卫库对真实生态的实时体检：对全部资产跑 deviation 守卫，输出分级告警
 npm run build && node scripts/guard.mjs
 
 # 常驻监控（真实 staleness：oracle 值变化检测），告警以 JSONL 输出
@@ -58,6 +58,13 @@ npm run build && MONITOR_OUT=alarms.jsonl node scripts/monitor.mjs
 - 不做喂价数据本身（那是 RedStone 等数据商的位置）
 - 不托管任何人的生产喂价——本库只读、只告警、只校验
 - 不承诺"用了就不会被罚没"——罚没权在验证者手里
+
+## 已知限制（诚实声明）
+
+- **bounds 需要 band anchor。**协议真实 band anchor 不由快照 API 暴露。用 markPx/prevDayPx 等近似值替代时，必须在 `BoundsConfig.referenceApproximate` 显式声明——声明后 critical 自动降级为 warn 并在 reason 标注，防止近似锚虚报最高级告警。`scripts/guard.mjs` 的实时体检因此只跑 deviation（2026-11-25 起：此前的 markPx 自比实现会让 bounds 恒报 ok，属于虚假覆盖，已移除）。
+- **staleness 冷启动。**差分推断模式（monitor.mjs 的 oracle 变化检测）在进程启动后的窗口内无法区分"feed 停了"和"观测者刚启动"——窗口内告警 severity 封顶 warn 并置 `coldStart: true`（库层：`StalenessConfig.firstObservedAtMs`）。硬时间戳模式（快照含更新时间）不受影响。
+- **节假日日历未内置。**offhours 模块按常规周会话表判定，节假日会被误判为开市。
+- **monitor 无状态。**进程重启即丢失观测历史，重启后重新进入冷启动窗口；持久化留待真实使用需求出现时再加。
 
 ## License
 

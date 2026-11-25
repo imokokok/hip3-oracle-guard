@@ -12,11 +12,21 @@ export interface StalenessConfig {
   warnMultiplier?: number;
   /** 超过该倍数视为 critical，默认 10。 */
   criticalMultiplier?: number;
+  /**
+   * 观测起点（epoch ms，如 monitor 进程启动时刻）。
+   * 差分推断模式下（观测者不知道 feed 在启动前的更新历史），冷启动窗口内
+   * 无法区分"feed 停了"和"我们刚启动还没见过更新"——此窗口内的告警
+   * severity 封顶为 warn 并置 coldStart=true，把"不知道"与"没出事"分开。
+   * 提供硬时间戳（快照含 lastUpdateAtMs）时可不传，判定不受影响。
+   */
+  firstObservedAtMs?: number;
 }
 
 export interface StalenessCheck extends GuardResult {
   stale: boolean;
   ageMs: number;
+  /** true = 判定处于冷启动窗口内，"没见过更新"不等于"feed 已停"。 */
+  coldStart: boolean;
 }
 
 export function assessStaleness(
@@ -28,6 +38,10 @@ export function assessStaleness(
   const crit = config.criticalMultiplier ?? 10;
   const ageMs = Math.max(0, nowMs - lastUpdateAtMs);
   const stale = ageMs > config.expectedIntervalMs * warn;
+  // 冷启动窗口：观测时长还不足以证明"该见到的更新确实没来"。
+  const coldStart =
+    config.firstObservedAtMs !== undefined &&
+    nowMs - config.firstObservedAtMs < config.expectedIntervalMs * warn;
 
   let severity: Severity = 'ok';
   let reason = `feed age ${ageMs}ms within expected interval ${config.expectedIntervalMs}ms`;
@@ -39,5 +53,12 @@ export function assessStaleness(
     reason = `feed lagging: age ${ageMs}ms > ${warn}x expected interval (${config.expectedIntervalMs}ms)`;
   }
 
-  return { stale, ageMs, severity, reason };
+  // 冷启动窗口内保守降级：差分模式下 age 从观测起点起算，critical 可能只是
+  // "观测者刚启动"。封顶 warn，把升级决策留给调用方（等窗口出满再升）。
+  if (coldStart && severity === 'critical') {
+    severity = 'warn';
+    reason = `[cold-start window: cannot distinguish stalled feed from observer startup] ${reason}`;
+  }
+
+  return { stale, ageMs, coldStart, severity, reason };
 }

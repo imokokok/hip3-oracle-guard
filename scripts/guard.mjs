@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 // guard.mjs — 守卫库对真实生态的实时体检（零运行时依赖；TS 产物从 dist 导入）。
 //
-// 对全部 HIP-3 DEX 的每个活跃资产跑 deviation + bounds 守卫，输出分级告警。
+// 对全部 HIP-3 DEX 的每个活跃资产跑 deviation 守卫，输出分级告警。
 // 用法：npm run build && node scripts/guard.mjs
 //
-// 注：bounds 的参考价以 markPx 近似（协议的真实 band anchor 不可从快照 API 取得）；
-//     staleness 需要喂价更新时间戳，快照 API 不提供，留待 WS 差分实现。
+// 注（诚实声明，2026-11-25 修订）：不再运行 bounds 检查——快照 API 不暴露协议
+//     真实 band anchor，此前用 markPx 自比导致 edgeProgress 恒为 0（检查空转、
+//     恒报 ok），属于虚假覆盖。bounds 守卫留给持有真实锚的调用方（见 offhours.ts）。
+//     staleness 需要喂价更新时间戳，快照 API 不提供，由 monitor.mjs 差分实现覆盖。
 
 import {
   assessDeviation,
-  assessBounds,
 } from '../dist/index.js';
 
 const INFO_URL = 'https://api.hyperliquid.xyz/info';
@@ -44,27 +45,17 @@ async function main() {
       const oracle = parseFloat(c.oraclePx);
       const mark = parseFloat(c.markPx);
       if (!Number.isFinite(oracle) || !Number.isFinite(mark) || mark <= 0) continue;
-      const maxLeverage = u?.maxLeverage ?? 20;
 
       const dev = assessDeviation(oracle, mark, {});
-      const bounds = assessBounds(mark, mark, undefined, { maxLeverage });
-
-      const worst = dev.severity === 'critical' || bounds.severity === 'critical'
-        ? 'critical'
-        : dev.severity === 'warn' || bounds.severity === 'warn'
-          ? 'warn'
-          : 'ok';
-      if (worst !== 'ok') {
+      if (dev.severity !== 'ok') {
         alarms.push({
           dex: dex.name,
           asset: u?.name,
-          severity: worst,
+          severity: dev.severity,
           oracle,
           mark,
           oi: parseFloat(c.openInterest ?? '0'),
-          detail: [dev.severity !== 'ok' ? dev.reason : null, bounds.severity !== 'ok' ? bounds.reason : null]
-            .filter(Boolean)
-            .join(' | '),
+          detail: dev.reason,
         });
       }
     }
@@ -72,6 +63,7 @@ async function main() {
 
   alarms.sort((a, b) => (a.severity === 'critical' ? -1 : 1) - (b.severity === 'critical' ? -1 : 1) || b.oi - a.oi);
   console.log(`# hip3-oracle-guard live check ${new Date().toISOString()}`);
+  console.log(`# checks: deviation only — bounds skipped (band anchor not exposed by snapshot API), staleness covered by monitor.mjs`);
   const crit = alarms.filter((a) => a.severity === 'critical').length;
   const warn = alarms.filter((a) => a.severity === 'warn').length;
   console.log(`# alarms: ${crit} critical, ${warn} warn\n`);

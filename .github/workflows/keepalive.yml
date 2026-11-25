@@ -1,0 +1,27 @@
+name: keepalive
+
+# GitHub 会在仓库 60 天无活动后停用 scheduled workflow。
+# data 分支每 30 分钟有 snapshot commit，理论上足以保持活跃；本 workflow 是
+# 双保险：每月向 main 推一个空 commit，自刷新计时器（1 个月 < 60 天窗口）。
+# 若 data 分支 push 因故中断，这里仍能在窗口内续命。
+
+on:
+  schedule:
+    - cron: "17 3 1 * *" # 每月 1 日 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Empty commit to refresh activity window
+        run: |
+          git config user.name "imokokok"
+          git config user.email "145034722+imokokok@users.noreply.github.com"
+          git commit --allow-empty -m "chore: keepalive — refresh scheduled workflow activity window [skip ci]"
+          git push origin main

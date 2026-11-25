@@ -43,6 +43,7 @@ function emit(alarm) {
 }
 
 const state = new Map(); // key "dex:asset" -> { oracle, lastChangeAt, oi }
+const START_AT = Date.now(); // 冷启动窗口起点：此之前的更新历史不可知（差分模式）
 
 async function pollCycle(now) {
   const dexList = (await info({ type: 'perpDexs' })).filter((x) => x);
@@ -84,11 +85,15 @@ async function pollCycle(now) {
       const ageMs = now - prev.lastChangeAt;
       const trackStaleness = !LIVE_ONLY || oi > 0;
       if (trackStaleness && ageMs >= WARN_MS) {
-        const severity = ageMs >= CRIT_MS ? 'critical' : 'warn';
+        // 冷启动窗口内（启动不足 CRIT_MS）：age 从观测起点起算，"没见过更新"
+        // 不能区分是 feed 停了还是进程刚启动——severity 封顶 warn 并置 coldStart。
+        const coldStart = now - START_AT < CRIT_MS;
+        const severity = ageMs >= CRIT_MS && !coldStart ? 'critical' : 'warn';
         emit({
           at: new Date(now).toISOString(),
           type: 'staleness',
           severity,
+          coldStart,
           dex: dex.name,
           asset,
           oracle,
