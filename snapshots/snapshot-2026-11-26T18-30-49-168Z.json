@@ -1,0 +1,3148 @@
+{
+  "sampledAt": "2026-11-26T18:30:49.168Z",
+  "dexs": [
+    {
+      "dex": "xyz",
+      "deployer": "0x88806a71d74ad0a510b350545c9ae490912f0888",
+      "oracleUpdater": null,
+      "assetCount": 150,
+      "liveAssetCount": 125,
+      "dayVolumeUsd": 2796790893.2143345,
+      "maxDeviationBps": 57.66171792152658,
+      "assets": [
+        {
+          "asset": "xyz:XYZ100",
+          "oraclePx": "26173.0",
+          "markPx": "26194.0",
+          "openInterest": "13951.3876",
+          "dayNtlVlm": "395699551.8437001109",
+          "funding": "0.00000625",
+          "deviationBps": 8.017103153393908
+        },
+        {
+          "asset": "xyz:TSLA",
+          "oraclePx": "381.72",
+          "markPx": "382.06",
+          "openInterest": "116252.154",
+          "dayNtlVlm": "19046753.4777299836",
+          "funding": "0.00000625",
+          "deviationBps": 8.899125791759802
+        },
+        {
+          "asset": "xyz:NVDA",
+          "oraclePx": "149.97",
+          "markPx": "150.17",
+          "openInterest": "2244871.0999999996",
+          "dayNtlVlm": "200806459.8092699647",
+          "funding": "0.00000625",
+          "deviationBps": 13.318239328759983
+        },
+        {
+          "asset": "xyz:GOLD",
+          "oraclePx": "3568.7",
+          "markPx": "3570.1",
+          "openInterest": "75541.5348",
+          "dayNtlVlm": "77721366.9913000017",
+          "funding": "0.00000625",
+          "deviationBps": 3.9214587826674068
+        },
+        {
+          "asset": "xyz:HOOD",
+          "oraclePx": "66.998",
+          "markPx": "67.178",
+          "openInterest": "108908.6",
+          "dayNtlVlm": "5804291.2697810009",
+          "funding": "0.0000127354",
+          "deviationBps": 26.794486290153415
+        },
+        {
+          "asset": "xyz:INTC",
+          "oraclePx": "54.842",
+          "markPx": "54.928",
+          "openInterest": "1106346.7",
+          "dayNtlVlm": "10967923.390660001",
+          "funding": "0.00000625",
+          "deviationBps": 15.656859889309374
+        },
+        {
+          "asset": "xyz:PLTR",
+          "oraclePx": "164.04",
+          "markPx": "164.09",
+          "openInterest": "36639.438",
+          "dayNtlVlm": "2094292.7421100007",
+          "funding": "-0.0000080702",
+          "deviationBps": 3.04710829422947
+        },
+        {
+          "asset": "xyz:COIN",
+          "oraclePx": "105.76",
+          "markPx": "106.07",
+          "openInterest": "78678.118",
+          "dayNtlVlm": "3049237.8357099993",
+          "funding": "0.0000252105",
+          "deviationBps": 29.22598284151863
+        },
+        {
+          "asset": "xyz:META",
+          "oraclePx": "612.15",
+          "markPx": "612.35",
+          "openInterest": "79993.79",
+          "dayNtlVlm": "13546972.2865800001",
+          "funding": "0.0000019143",
+          "deviationBps": 3.2661059851399603
+        },
+        {
+          "asset": "xyz:AAPL",
+          "oraclePx": "356.08",
+          "markPx": "356.0",
+          "openInterest": "343276.226",
+          "dayNtlVlm": "21677166.3917899951",
+          "funding": "-0.0000092213",
+          "deviationBps": 2.247191011235508
+        },
+        {
+          "asset": "xyz:MSFT",
+          "oraclePx": "493.39",
+          "markPx": "493.51",
+          "openInterest": "33823.758",
+          "dayNtlVlm": "7525779.2251799991",
+          "funding": "0.00000625",
+          "deviationBps": 2.4315616704829597
+        },
+        {
+          "asset": "xyz:ORCL",
+          "oraclePx": "105.56",
+          "markPx": "105.56",
+          "openInterest": "68877.418",
+          "dayNtlVlm": "3467315.0218499997",
+          "funding": "-0.0000250307",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:GOOGL",
+          "oraclePx": "275.48",
+          "markPx": "275.79",
+          "openInterest": "532377.834",
+          "dayNtlVlm": "37910697.3086100221",
+          "funding": "0.00000625",
+          "deviationBps": 11.240436564052441
+        },
+        {
+          "asset": "xyz:AMZN",
+          "oraclePx": "246.18",
+          "markPx": "246.12",
+          "openInterest": "93157.892",
+          "dayNtlVlm": "4553586.1288900003",
+          "funding": "-0.0000597666",
+          "deviationBps": 2.437835202340414
+        },
+        {
+          "asset": "xyz:AMD",
+          "oraclePx": "406.13",
+          "markPx": "406.39",
+          "openInterest": "75977.808",
+          "dayNtlVlm": "27376509.7482100055",
+          "funding": "-0.0000340387",
+          "deviationBps": 6.3977952213388845
+        },
+        {
+          "asset": "xyz:MU",
+          "oraclePx": "606.09",
+          "markPx": "607.59",
+          "openInterest": "266311.9079999999",
+          "dayNtlVlm": "94673843.5257399082",
+          "funding": "0.0000193481",
+          "deviationBps": 24.68770058756727
+        },
+        {
+          "asset": "xyz:SNDK",
+          "oraclePx": "74.927",
+          "markPx": "75.153",
+          "openInterest": "570011.1",
+          "dayNtlVlm": "59577505.1547430083",
+          "funding": "0.00000625",
+          "deviationBps": 30.071986480912148
+        },
+        {
+          "asset": "xyz:MSTR",
+          "oraclePx": "81.344",
+          "markPx": "81.772",
+          "openInterest": "240051.342",
+          "dayNtlVlm": "12896992.8053920008",
+          "funding": "0.0001045777",
+          "deviationBps": 52.340654502765176
+        },
+        {
+          "asset": "xyz:CRCL",
+          "oraclePx": "48.57",
+          "markPx": "48.693",
+          "openInterest": "963454.99",
+          "dayNtlVlm": "9376114.990999002",
+          "funding": "0.0000182406",
+          "deviationBps": 25.260304355861738
+        },
+        {
+          "asset": "xyz:NFLX",
+          "oraclePx": "59.347",
+          "markPx": "59.313",
+          "openInterest": "77863.802",
+          "dayNtlVlm": "1147513.0530279996",
+          "funding": "-0.0000223407",
+          "deviationBps": 5.73230151905972
+        },
+        {
+          "asset": "xyz:COST",
+          "oraclePx": "1091.0",
+          "markPx": "1091.1",
+          "openInterest": "5783.2068",
+          "dayNtlVlm": "1554134.9617300003",
+          "funding": "0.00000625",
+          "deviationBps": 0.9165062780671712
+        },
+        {
+          "asset": "xyz:LLY",
+          "oraclePx": "1401.1",
+          "markPx": "1401.9",
+          "openInterest": "4076.0004",
+          "dayNtlVlm": "891648.0490899996",
+          "funding": "0.0000073622",
+          "deviationBps": 5.706541122763263
+        },
+        {
+          "asset": "xyz:SKHX",
+          "oraclePx": "772.8",
+          "markPx": "773.54",
+          "openInterest": "484260.198",
+          "dayNtlVlm": "427243391.44753021",
+          "funding": "0.0000397242",
+          "deviationBps": 9.566408976911461
+        },
+        {
+          "asset": "xyz:TSM",
+          "oraclePx": "347.5",
+          "markPx": "347.51",
+          "openInterest": "32801.81",
+          "dayNtlVlm": "4782702.744520002",
+          "funding": "0.0000017613",
+          "deviationBps": 0.28776150326583133
+        },
+        {
+          "asset": "xyz:JPY",
+          "oraclePx": "159.29",
+          "markPx": "159.22",
+          "openInterest": "185415.44",
+          "dayNtlVlm": "1649464.2492000002",
+          "funding": "-0.0000091557",
+          "deviationBps": 4.396432608968294
+        },
+        {
+          "asset": "xyz:EUR",
+          "oraclePx": "1.0971",
+          "markPx": "1.0972",
+          "openInterest": "33415472.0",
+          "dayNtlVlm": "1666530.52076",
+          "funding": "0.0",
+          "deviationBps": 0.9114108640173988
+        },
+        {
+          "asset": "xyz:SILVER",
+          "oraclePx": "41.565",
+          "markPx": "41.576",
+          "openInterest": "3422966.1600000001",
+          "dayNtlVlm": "105409062.4739100039",
+          "funding": "0.00000625",
+          "deviationBps": 2.6457571675973606
+        },
+        {
+          "asset": "xyz:RIVN",
+          "oraclePx": "11.701",
+          "markPx": "11.695",
+          "openInterest": "66647.76",
+          "dayNtlVlm": "60484.56212",
+          "funding": "-0.000028417",
+          "deviationBps": 5.130397605814645
+        },
+        {
+          "asset": "xyz:BABA",
+          "oraclePx": "84.972",
+          "markPx": "85.006",
+          "openInterest": "108355.2",
+          "dayNtlVlm": "2422374.4271819987",
+          "funding": "0.00000625",
+          "deviationBps": 3.9997176669889214
+        },
+        {
+          "asset": "xyz:CL",
+          "oraclePx": "84.93",
+          "markPx": "84.93",
+          "openInterest": "1443313.8220000002",
+          "dayNtlVlm": "59988020.5335179716",
+          "funding": "0.00000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:COPPER",
+          "oraclePx": "5.4365",
+          "markPx": "5.4351",
+          "openInterest": "1093387.7",
+          "dayNtlVlm": "7146923.890840997",
+          "funding": "-0.0000057381",
+          "deviationBps": 2.5758495703839888
+        },
+        {
+          "asset": "xyz:NATGAS",
+          "oraclePx": "3.594",
+          "markPx": "3.5935",
+          "openInterest": "4209331.8000000007",
+          "dayNtlVlm": "4323715.7715600003",
+          "funding": "-0.0000001368",
+          "deviationBps": 1.3914011409481644
+        },
+        {
+          "asset": "xyz:URANIUM",
+          "oraclePx": "85.0",
+          "markPx": "85.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ALUMINIUM",
+          "oraclePx": "3080.0",
+          "markPx": "3080.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SMSN",
+          "oraclePx": "127.39",
+          "markPx": "127.58",
+          "openInterest": "248878.994",
+          "dayNtlVlm": "40809104.7825999856",
+          "funding": "0.00000625",
+          "deviationBps": 14.892616397554297
+        },
+        {
+          "asset": "xyz:PLATINUM",
+          "oraclePx": "1295.8",
+          "markPx": "1297.2",
+          "openInterest": "3796.4766",
+          "dayNtlVlm": "10386813.8258500043",
+          "funding": "0.0000149101",
+          "deviationBps": 10.792476102375046
+        },
+        {
+          "asset": "xyz:USAR",
+          "oraclePx": "6.7296",
+          "markPx": "6.7393",
+          "openInterest": "213420.4",
+          "dayNtlVlm": "792148.7661900001",
+          "funding": "0.0000052982",
+          "deviationBps": 14.393186235959945
+        },
+        {
+          "asset": "xyz:CRWV",
+          "oraclePx": "43.027",
+          "markPx": "43.111",
+          "openInterest": "135378.64",
+          "dayNtlVlm": "5989258.5040599983",
+          "funding": "0.00000998",
+          "deviationBps": 19.484586300479247
+        },
+        {
+          "asset": "xyz:URNM",
+          "oraclePx": "35.545",
+          "markPx": "35.578",
+          "openInterest": "22105.42",
+          "dayNtlVlm": "34314.6141",
+          "funding": "0.0000365489",
+          "deviationBps": 9.275394906965328
+        },
+        {
+          "asset": "xyz:PALLADIUM",
+          "oraclePx": "875.56",
+          "markPx": "877.39",
+          "openInterest": "1797.1588",
+          "dayNtlVlm": "730336.9485069998",
+          "funding": "0.0001130941",
+          "deviationBps": 20.85731544695108
+        },
+        {
+          "asset": "xyz:DXY",
+          "oraclePx": "97.15",
+          "markPx": "97.15",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:GME",
+          "oraclePx": "26.801",
+          "markPx": "26.831",
+          "openInterest": "143218.9",
+          "dayNtlVlm": "479272.5916500002",
+          "funding": "0.0000555351",
+          "deviationBps": 11.181096492863157
+        },
+        {
+          "asset": "xyz:KR200",
+          "oraclePx": "727.68",
+          "markPx": "728.21",
+          "openInterest": "1308.4678",
+          "dayNtlVlm": "823178.59026",
+          "funding": "0.0000126385",
+          "deviationBps": 7.278120322435649
+        },
+        {
+          "asset": "xyz:SOFTBANK",
+          "oraclePx": "18.586",
+          "markPx": "18.621",
+          "openInterest": "59472.114",
+          "dayNtlVlm": "1330693.3935370005",
+          "funding": "0.0000612529",
+          "deviationBps": 18.79598302991254
+        },
+        {
+          "asset": "xyz:JP225",
+          "oraclePx": "57630.0",
+          "markPx": "57630.0",
+          "openInterest": "22.15802",
+          "dayNtlVlm": "3504884.8145699999",
+          "funding": "0.00000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:HYUNDAI",
+          "oraclePx": "193.07",
+          "markPx": "193.39",
+          "openInterest": "18862.858",
+          "dayNtlVlm": "2845131.2329699998",
+          "funding": "0.0000434511",
+          "deviationBps": 16.546874192046808
+        },
+        {
+          "asset": "xyz:KIOXIA",
+          "oraclePx": "49.93",
+          "markPx": "50.075",
+          "openInterest": "90290.13",
+          "dayNtlVlm": "8792143.1656939965",
+          "funding": "0.0000525193",
+          "deviationBps": 28.956565152272216
+        },
+        {
+          "asset": "xyz:EWY",
+          "oraclePx": "128.9",
+          "markPx": "129.04",
+          "openInterest": "138537.742",
+          "dayNtlVlm": "33686277.2557599992",
+          "funding": "0.00000625",
+          "deviationBps": 10.8493490390566
+        },
+        {
+          "asset": "xyz:EWJ",
+          "oraclePx": "87.869",
+          "markPx": "87.869",
+          "openInterest": "6173.556",
+          "dayNtlVlm": "517361.507366",
+          "funding": "0.00000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:BRENTOIL",
+          "oraclePx": "91.68",
+          "markPx": "91.68",
+          "openInterest": "1420218.0000000002",
+          "dayNtlVlm": "57710213.9508999959",
+          "funding": "0.00000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:VIX",
+          "oraclePx": "20.0",
+          "markPx": "20.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:HIMS",
+          "oraclePx": "14.917",
+          "markPx": "14.933",
+          "openInterest": "78160.84",
+          "dayNtlVlm": "334992.4727700002",
+          "funding": "-0.0000086726",
+          "deviationBps": 10.714524877787461
+        },
+        {
+          "asset": "xyz:SP500",
+          "oraclePx": "7220.9",
+          "markPx": "7224.1",
+          "openInterest": "56912.786",
+          "dayNtlVlm": "287317487.1275999546",
+          "funding": "0.00000625",
+          "deviationBps": 4.429617530212383
+        },
+        {
+          "asset": "xyz:DKNG",
+          "oraclePx": "17.596",
+          "markPx": "17.597",
+          "openInterest": "11332.68",
+          "dayNtlVlm": "35928.50177",
+          "funding": "0.0000034234",
+          "deviationBps": 0.5682786838672627
+        },
+        {
+          "asset": "xyz:LITE",
+          "oraclePx": "483.95",
+          "markPx": "484.43",
+          "openInterest": "11881.984",
+          "dayNtlVlm": "1851406.9344599992",
+          "funding": "0.00000625",
+          "deviationBps": 9.908552319220902
+        },
+        {
+          "asset": "xyz:CORN",
+          "oraclePx": "4.61",
+          "markPx": "4.61",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:XLE",
+          "oraclePx": "61.086",
+          "markPx": "61.017",
+          "openInterest": "16672.34",
+          "dayNtlVlm": "108524.08341",
+          "funding": "-0.0000799255",
+          "deviationBps": 11.308323909729339
+        },
+        {
+          "asset": "xyz:WHEAT",
+          "oraclePx": "6.3",
+          "markPx": "6.3",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:TTF",
+          "oraclePx": "57.0",
+          "markPx": "57.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:BX",
+          "oraclePx": "119.58",
+          "markPx": "119.51",
+          "openInterest": "2782.96",
+          "dayNtlVlm": "117730.3837",
+          "funding": "-0.0000388929",
+          "deviationBps": 5.857250439293212
+        },
+        {
+          "asset": "xyz:PURRDAT",
+          "oraclePx": "7.4263",
+          "markPx": "7.4444",
+          "openInterest": "1190964.0",
+          "dayNtlVlm": "1891231.5762999989",
+          "funding": "0.000096057",
+          "deviationBps": 24.31357799150981
+        },
+        {
+          "asset": "xyz:MRVL",
+          "oraclePx": "132.73",
+          "markPx": "132.92",
+          "openInterest": "55347.28",
+          "dayNtlVlm": "5759483.5957000013",
+          "funding": "0.00000625",
+          "deviationBps": 14.29431236834169
+        },
+        {
+          "asset": "xyz:RKLB",
+          "oraclePx": "48.34",
+          "markPx": "48.397",
+          "openInterest": "52051.9",
+          "dayNtlVlm": "3906567.6527100001",
+          "funding": "0.00000625",
+          "deviationBps": 11.77758952001055
+        },
+        {
+          "asset": "xyz:BIRD",
+          "oraclePx": "1.0829",
+          "markPx": "1.0822",
+          "openInterest": "57929.6",
+          "dayNtlVlm": "5381.17049",
+          "funding": "-0.0002355097",
+          "deviationBps": 6.468305304009636
+        },
+        {
+          "asset": "xyz:VOL",
+          "oraclePx": "15.0",
+          "markPx": "15.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:DRAM",
+          "oraclePx": "35.031",
+          "markPx": "35.099",
+          "openInterest": "1668000.4000000001",
+          "dayNtlVlm": "64056831.4971000254",
+          "funding": "0.0000081689",
+          "deviationBps": 19.373771332515982
+        },
+        {
+          "asset": "xyz:CBRS",
+          "oraclePx": "91.143",
+          "markPx": "91.314",
+          "openInterest": "201104.32",
+          "dayNtlVlm": "2551584.9895400004",
+          "funding": "0.00000625",
+          "deviationBps": 18.72659176029878
+        },
+        {
+          "asset": "xyz:EWZ",
+          "oraclePx": "31.028",
+          "markPx": "31.055",
+          "openInterest": "133351.38",
+          "dayNtlVlm": "1004656.4944499998",
+          "funding": "-0.0000159192",
+          "deviationBps": 8.694252133312196
+        },
+        {
+          "asset": "xyz:KRW",
+          "oraclePx": "1343.6",
+          "markPx": "1343.6",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ZM",
+          "oraclePx": "88.835",
+          "markPx": "88.79",
+          "openInterest": "3737.336",
+          "dayNtlVlm": "56557.916785",
+          "funding": "-0.0000124953",
+          "deviationBps": 5.068138303861638
+        },
+        {
+          "asset": "xyz:EBAY",
+          "oraclePx": "115.45",
+          "markPx": "115.49",
+          "openInterest": "3770.62",
+          "dayNtlVlm": "51767.8349",
+          "funding": "0.0000158937",
+          "deviationBps": 3.4635033336212695
+        },
+        {
+          "asset": "xyz:H100",
+          "oraclePx": "2.6",
+          "markPx": "2.6",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:NIFTY",
+          "oraclePx": "25895.0",
+          "markPx": "25895.0",
+          "openInterest": "6.2558",
+          "dayNtlVlm": "27438.8323",
+          "funding": "0.0000635184",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ARM",
+          "oraclePx": "164.76",
+          "markPx": "164.87",
+          "openInterest": "16679.74",
+          "dayNtlVlm": "2828684.3003999991",
+          "funding": "-0.0000088425",
+          "deviationBps": 6.67192333353634
+        },
+        {
+          "asset": "xyz:EWT",
+          "oraclePx": "86.116",
+          "markPx": "86.204",
+          "openInterest": "6511.84",
+          "dayNtlVlm": "310965.5240500001",
+          "funding": "0.0000331655",
+          "deviationBps": 10.2083430003241
+        },
+        {
+          "asset": "xyz:GBP",
+          "oraclePx": "1.3108",
+          "markPx": "1.3108",
+          "openInterest": "413608.0",
+          "dayNtlVlm": "53452.7278",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SPCX",
+          "oraclePx": "129.25",
+          "markPx": "129.39",
+          "openInterest": "902730.6599999999",
+          "dayNtlVlm": "58288386.2312999964",
+          "funding": "0.00000625",
+          "deviationBps": 10.820001545713454
+        },
+        {
+          "asset": "xyz:IBOV",
+          "oraclePx": "175000.0",
+          "markPx": "175000.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ASML",
+          "oraclePx": "1297.2",
+          "markPx": "1298.2",
+          "openInterest": "1739.624",
+          "dayNtlVlm": "1895635.0776000002",
+          "funding": "0.00000625",
+          "deviationBps": 7.702973347712216
+        },
+        {
+          "asset": "xyz:MINIMAX",
+          "oraclePx": "12.302",
+          "markPx": "12.32",
+          "openInterest": "106846.74",
+          "dayNtlVlm": "2888257.0789699997",
+          "funding": "-0.0000049569",
+          "deviationBps": 14.610389610390165
+        },
+        {
+          "asset": "xyz:BB",
+          "oraclePx": "8.5353",
+          "markPx": "8.5468",
+          "openInterest": "528744.0",
+          "dayNtlVlm": "1155333.17215",
+          "funding": "-0.0000164523",
+          "deviationBps": 13.455328310010582
+        },
+        {
+          "asset": "xyz:QNT",
+          "oraclePx": "33.192",
+          "markPx": "33.188",
+          "openInterest": "39662.66",
+          "dayNtlVlm": "405270.7322199999",
+          "funding": "0.0000262514",
+          "deviationBps": 1.205254911413096
+        },
+        {
+          "asset": "xyz:DELL",
+          "oraclePx": "301.61",
+          "markPx": "301.83",
+          "openInterest": "17268.18",
+          "dayNtlVlm": "4662513.2015999984",
+          "funding": "0.00000625",
+          "deviationBps": 7.288871218897077
+        },
+        {
+          "asset": "xyz:IBM",
+          "oraclePx": "243.96",
+          "markPx": "243.92",
+          "openInterest": "18701.8",
+          "dayNtlVlm": "3422694.9499999997",
+          "funding": "-0.0000185336",
+          "deviationBps": 1.639881928501987
+        },
+        {
+          "asset": "xyz:AVGO",
+          "oraclePx": "302.75",
+          "markPx": "303.03",
+          "openInterest": "16752.26",
+          "dayNtlVlm": "1898780.6443999992",
+          "funding": "-0.0000187403",
+          "deviationBps": 9.240009240008341
+        },
+        {
+          "asset": "xyz:NOW",
+          "oraclePx": "92.729",
+          "markPx": "92.729",
+          "openInterest": "19746.2",
+          "dayNtlVlm": "60275.6938",
+          "funding": "0.00000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:NBIS",
+          "oraclePx": "87.225",
+          "markPx": "87.431",
+          "openInterest": "629792.4399999999",
+          "dayNtlVlm": "35849507.471160017",
+          "funding": "0.00000625",
+          "deviationBps": 23.56143701890669
+        },
+        {
+          "asset": "xyz:WDC",
+          "oraclePx": "275.2",
+          "markPx": "275.56",
+          "openInterest": "5226.546",
+          "dayNtlVlm": "1373428.3054599992",
+          "funding": "0.00000625",
+          "deviationBps": 13.064305414429295
+        },
+        {
+          "asset": "xyz:NOK",
+          "oraclePx": "7.291",
+          "markPx": "7.296",
+          "openInterest": "125568.6",
+          "dayNtlVlm": "115914.8221169999",
+          "funding": "0.0000159853",
+          "deviationBps": 6.853070175438449
+        },
+        {
+          "asset": "xyz:SMH",
+          "oraclePx": "427.17",
+          "markPx": "427.76",
+          "openInterest": "5758.65",
+          "dayNtlVlm": "547625.6085099999",
+          "funding": "-0.0000022943",
+          "deviationBps": 13.792780998690269
+        },
+        {
+          "asset": "xyz:BE",
+          "oraclePx": "155.25",
+          "markPx": "155.45",
+          "openInterest": "19178.54",
+          "dayNtlVlm": "2428253.9999999995",
+          "funding": "0.00000625",
+          "deviationBps": 12.865873271147548
+        },
+        {
+          "asset": "xyz:ZHIPU",
+          "oraclePx": "38.316",
+          "markPx": "38.338",
+          "openInterest": "174709.714",
+          "dayNtlVlm": "7700968.6159440009",
+          "funding": "-0.0000870661",
+          "deviationBps": 5.738431843079573
+        },
+        {
+          "asset": "xyz:QCOM",
+          "oraclePx": "169.76",
+          "markPx": "169.83",
+          "openInterest": "13182.04",
+          "dayNtlVlm": "471064.9258999999",
+          "funding": "-0.0000044748",
+          "deviationBps": 4.121768827652453
+        },
+        {
+          "asset": "xyz:STRC",
+          "oraclePx": "98.042",
+          "markPx": "98.09",
+          "openInterest": "138427.4",
+          "dayNtlVlm": "2096706.516099999",
+          "funding": "0.0000082464",
+          "deviationBps": 4.893465185034337
+        },
+        {
+          "asset": "xyz:BOT",
+          "oraclePx": "18.725",
+          "markPx": "18.759",
+          "openInterest": "81449.32",
+          "dayNtlVlm": "229909.3110300001",
+          "funding": "0.00000625",
+          "deviationBps": 18.12463350924832
+        },
+        {
+          "asset": "xyz:AMAT",
+          "oraclePx": "313.43",
+          "markPx": "313.67",
+          "openInterest": "2412.898",
+          "dayNtlVlm": "830673.0712000004",
+          "funding": "0.0000032648",
+          "deviationBps": 7.651353333121085
+        },
+        {
+          "asset": "xyz:IBIDEN",
+          "oraclePx": "29.983",
+          "markPx": "29.983",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:GIGADEV",
+          "oraclePx": "30.054",
+          "markPx": "30.132",
+          "openInterest": "48678.7",
+          "dayNtlVlm": "2106123.2232000004",
+          "funding": "0.0002138451",
+          "deviationBps": 25.88610115491934
+        },
+        {
+          "asset": "xyz:SHAZ",
+          "oraclePx": "17.071",
+          "markPx": "17.081",
+          "openInterest": "56843.6",
+          "dayNtlVlm": "1352597.1760399998",
+          "funding": "-0.0000031523",
+          "deviationBps": 5.854458169895212
+        },
+        {
+          "asset": "xyz:SKHY",
+          "oraclePx": "110.19",
+          "markPx": "110.36",
+          "openInterest": "1531870.5600000001",
+          "dayNtlVlm": "86113868.257199958",
+          "funding": "0.000059371",
+          "deviationBps": 15.404131931859522
+        },
+        {
+          "asset": "xyz:KSTR",
+          "oraclePx": "16.592",
+          "markPx": "16.621",
+          "openInterest": "46561.24",
+          "dayNtlVlm": "119672.20993",
+          "funding": "0.000232524",
+          "deviationBps": 17.447806991155716
+        },
+        {
+          "asset": "xyz:CXMT",
+          "oraclePx": "4.9283",
+          "markPx": "4.9374",
+          "openInterest": "2833834.7999999998",
+          "dayNtlVlm": "14280720.2102999948",
+          "funding": "0.0000002328",
+          "deviationBps": 18.430753027909645
+        },
+        {
+          "asset": "xyz:GEV",
+          "oraclePx": "725.07",
+          "markPx": "724.75",
+          "openInterest": "334.722",
+          "dayNtlVlm": "87299.10885",
+          "funding": "0.0000072724",
+          "deviationBps": 4.415315626078648
+        },
+        {
+          "asset": "xyz:KORU",
+          "oraclePx": "5.2514",
+          "markPx": "5.2688",
+          "openInterest": "1956696.8",
+          "dayNtlVlm": "18766210.7010600083",
+          "funding": "0.0000472331",
+          "deviationBps": 33.0245976313381
+        },
+        {
+          "asset": "xyz:UNITREE",
+          "oraclePx": "101.41",
+          "markPx": "101.63",
+          "openInterest": "263998.82",
+          "dayNtlVlm": "15055827.3806000073",
+          "funding": "0.0000616816",
+          "deviationBps": 21.64715143166377
+        },
+        {
+          "asset": "xyz:LYTE",
+          "oraclePx": "13.231",
+          "markPx": "13.232",
+          "openInterest": "13796.06",
+          "dayNtlVlm": "38440.20877",
+          "funding": "0.0001035008",
+          "deviationBps": 0.7557436517529065
+        },
+        {
+          "asset": "xyz:NCLD",
+          "oraclePx": "10.896",
+          "markPx": "10.854",
+          "openInterest": "32894.86",
+          "dayNtlVlm": "44858.89827",
+          "funding": "0.0000133168",
+          "deviationBps": 38.69541182974166
+        },
+        {
+          "asset": "xyz:SOXL",
+          "oraclePx": "32.902",
+          "markPx": "33.029",
+          "openInterest": "2496718.0200000005",
+          "dayNtlVlm": "173314697.0393399298",
+          "funding": "-0.0000723866",
+          "deviationBps": 38.45105816101076
+        },
+        {
+          "asset": "xyz:MAGS",
+          "oraclePx": "65.518",
+          "markPx": "65.462",
+          "openInterest": "1417.74",
+          "dayNtlVlm": "35011.9505",
+          "funding": "-0.000021296",
+          "deviationBps": 8.554581283797834
+        },
+        {
+          "asset": "xyz:IREN",
+          "oraclePx": "13.358",
+          "markPx": "13.371",
+          "openInterest": "977261.6",
+          "dayNtlVlm": "3511263.0695999991",
+          "funding": "-0.000022154",
+          "deviationBps": 9.722533841896567
+        },
+        {
+          "asset": "xyz:NET",
+          "oraclePx": "286.79",
+          "markPx": "286.76",
+          "openInterest": "7733.12",
+          "dayNtlVlm": "196152.7484",
+          "funding": "-0.0000361268",
+          "deviationBps": 1.046171014089467
+        },
+        {
+          "asset": "xyz:CRWD",
+          "oraclePx": "210.29",
+          "markPx": "210.28",
+          "openInterest": "3270.24",
+          "dayNtlVlm": "743971.3612000004",
+          "funding": "0.0000023633",
+          "deviationBps": 0.4755564009887248
+        },
+        {
+          "asset": "xyz:RDDT",
+          "oraclePx": "91.895",
+          "markPx": "91.838",
+          "openInterest": "8040.64",
+          "dayNtlVlm": "109585.20905",
+          "funding": "-0.0000835014",
+          "deviationBps": 6.2065811537710065
+        },
+        {
+          "asset": "xyz:AAOI",
+          "oraclePx": "37.894",
+          "markPx": "37.943",
+          "openInterest": "30620.0",
+          "dayNtlVlm": "950375.85338",
+          "funding": "-0.00000855",
+          "deviationBps": 12.914108004111295
+        },
+        {
+          "asset": "xyz:MRNA",
+          "oraclePx": "223.13",
+          "markPx": "223.35",
+          "openInterest": "21952.38",
+          "dayNtlVlm": "1869107.0567999999",
+          "funding": "0.00000625",
+          "deviationBps": 9.850011193194488
+        },
+        {
+          "asset": "xyz:XBI",
+          "oraclePx": "156.93",
+          "markPx": "156.93",
+          "openInterest": "758.08",
+          "dayNtlVlm": "10949.1994",
+          "funding": "-0.000020535",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SHEIN",
+          "oraclePx": "4.3355",
+          "markPx": "4.3527",
+          "openInterest": "92785.0",
+          "dayNtlVlm": "88303.3451",
+          "funding": "0.000086904",
+          "deviationBps": 39.51570289705214
+        },
+        {
+          "asset": "xyz:YMTC",
+          "oraclePx": "10.0",
+          "markPx": "10.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:BMNR",
+          "oraclePx": "13.696",
+          "markPx": "13.725",
+          "openInterest": "165556.52",
+          "dayNtlVlm": "270018.6517799998",
+          "funding": "0.0000605149",
+          "deviationBps": 21.129326047358774
+        },
+        {
+          "asset": "xyz:SNXX",
+          "oraclePx": "1.5001",
+          "markPx": "1.5088",
+          "openInterest": "1545215.3999999999",
+          "dayNtlVlm": "4338611.7721099993",
+          "funding": "-0.0000226586",
+          "deviationBps": 57.66171792152658
+        },
+        {
+          "asset": "xyz:CVX",
+          "oraclePx": "210.12",
+          "markPx": "209.82",
+          "openInterest": "410.82",
+          "dayNtlVlm": "34713.0188",
+          "funding": "0.00000625",
+          "deviationBps": 14.297969688304804
+        },
+        {
+          "asset": "xyz:TLT",
+          "oraclePx": "81.964",
+          "markPx": "81.889",
+          "openInterest": "104600.92",
+          "dayNtlVlm": "249795.49089",
+          "funding": "-0.0000994107",
+          "deviationBps": 9.158739269010837
+        },
+        {
+          "asset": "xyz:HO",
+          "oraclePx": "3.6984",
+          "markPx": "3.6984",
+          "openInterest": "20156.0",
+          "dayNtlVlm": "116906.1453",
+          "funding": "0.0000479677",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:OURA",
+          "oraclePx": "48.297",
+          "markPx": "48.297",
+          "openInterest": "10922.4",
+          "dayNtlVlm": "5321.0911",
+          "funding": "0.0000000625",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:LRCX",
+          "oraclePx": "188.0",
+          "markPx": "188.4",
+          "openInterest": "1765.8",
+          "dayNtlVlm": "294172.5164",
+          "funding": "0.00000625",
+          "deviationBps": 21.23142250530816
+        },
+        {
+          "asset": "xyz:UMC",
+          "oraclePx": "13.299",
+          "markPx": "13.299",
+          "openInterest": "10723.6",
+          "dayNtlVlm": "105962.585",
+          "funding": "0.0000043607",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:CAMBRICON",
+          "oraclePx": "140.79",
+          "markPx": "140.79",
+          "openInterest": "123.98",
+          "dayNtlVlm": "14022.5591",
+          "funding": "0.000569736",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:TWST",
+          "oraclePx": "109.65",
+          "markPx": "109.61",
+          "openInterest": "882.36",
+          "dayNtlVlm": "31376.3237",
+          "funding": "-0.0000020521",
+          "deviationBps": 3.649302070979496
+        },
+        {
+          "asset": "xyz:GLW",
+          "oraclePx": "101.58",
+          "markPx": "101.58",
+          "openInterest": "4193.5",
+          "dayNtlVlm": "69518.05384",
+          "funding": "-0.0000495414",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ACN",
+          "oraclePx": "240.49",
+          "markPx": "240.49",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:INNOLIGHT",
+          "oraclePx": "133.87",
+          "markPx": "133.87",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:AMEC",
+          "oraclePx": "47.51",
+          "markPx": "47.51",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:CATL",
+          "oraclePx": "51.88",
+          "markPx": "51.88",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:RELIANCE",
+          "oraclePx": "15.093",
+          "markPx": "15.093",
+          "openInterest": "1778.6",
+          "dayNtlVlm": "5687.7436",
+          "funding": "0.0001435992",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:JIO",
+          "oraclePx": "14.904",
+          "markPx": "14.882",
+          "openInterest": "74311.8",
+          "dayNtlVlm": "118787.4018",
+          "funding": "-0.0001206932",
+          "deviationBps": 14.782959279666873
+        },
+        {
+          "asset": "xyz:SNAP",
+          "oraclePx": "5.055",
+          "markPx": "5.055",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:TTWO",
+          "oraclePx": "223.56",
+          "markPx": "223.56",
+          "openInterest": "7992.86",
+          "dayNtlVlm": "1216999.2655000002",
+          "funding": "-0.000023274",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:MUU",
+          "oraclePx": "9.5817",
+          "markPx": "9.631",
+          "openInterest": "52241.6",
+          "dayNtlVlm": "786553.3328900001",
+          "funding": "0.0000454939",
+          "deviationBps": 51.18886927629588
+        },
+        {
+          "asset": "xyz:ANT",
+          "oraclePx": "83.741",
+          "markPx": "83.932",
+          "openInterest": "2510953.1399999992",
+          "dayNtlVlm": "155490578.1515899599",
+          "funding": "0.0000342278",
+          "deviationBps": 22.75651718057505
+        },
+        {
+          "asset": "xyz:NU",
+          "oraclePx": "12.57",
+          "markPx": "12.57",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:ICE",
+          "oraclePx": "177.89",
+          "markPx": "177.89",
+          "openInterest": "121.66",
+          "dayNtlVlm": "11800.2354",
+          "funding": "0.0000980425",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:MELI",
+          "oraclePx": "1624.53",
+          "markPx": "1624.53",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:STX",
+          "oraclePx": "593.76",
+          "markPx": "593.76",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:PANW",
+          "oraclePx": "343.5",
+          "markPx": "345.1",
+          "openInterest": "720.08",
+          "dayNtlVlm": "77315.9937",
+          "funding": "0.0000596719",
+          "deviationBps": 46.363372935381705
+        },
+        {
+          "asset": "xyz:TENCENT",
+          "oraclePx": "49.74",
+          "markPx": "49.74",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SNOW",
+          "oraclePx": "280.54",
+          "markPx": "280.54",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SMCI",
+          "oraclePx": "24.37",
+          "markPx": "24.37",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "xyz:SOXS",
+          "oraclePx": "60.376",
+          "markPx": "60.16",
+          "openInterest": "127451.8",
+          "dayNtlVlm": "21522653.7381999902",
+          "funding": "0.000085246",
+          "deviationBps": 35.904255319149115
+        },
+        {
+          "asset": "xyz:TQQQ",
+          "oraclePx": "45.666",
+          "markPx": "45.745",
+          "openInterest": "5640.8",
+          "dayNtlVlm": "153731.3137",
+          "funding": "-0.000010437",
+          "deviationBps": 17.269646955951607
+        },
+        {
+          "asset": "xyz:RBLX",
+          "oraclePx": "52.4",
+          "markPx": "52.4",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        }
+      ]
+    },
+    {
+      "dex": "flx",
+      "deployer": "0x2fab552502a6d45920d5741a2f3ebf4c35536352",
+      "oracleUpdater": "0x94757f8dcb4bf73b850195660e959d1105cfedd5",
+      "assetCount": 16,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 2926.1114548782007,
+      "assets": [
+        {
+          "asset": "flx:TSLA",
+          "oraclePx": "400.53",
+          "markPx": "395.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 127.18078381795128
+        },
+        {
+          "asset": "flx:NVDA",
+          "oraclePx": "210.49",
+          "markPx": "208.99",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 71.77376907986027
+        },
+        {
+          "asset": "flx:CRCL",
+          "oraclePx": "80.282",
+          "markPx": "80.037",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 30.610842485349316
+        },
+        {
+          "asset": "flx:COIN",
+          "oraclePx": "163.28",
+          "markPx": "164.78",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 91.03046486224056
+        },
+        {
+          "asset": "flx:XMR",
+          "oraclePx": "306.61",
+          "markPx": "317.99",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 357.87288908456225
+        },
+        {
+          "asset": "flx:GOLD",
+          "oraclePx": "4156.1",
+          "markPx": "4153.2",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 6.982567658674145
+        },
+        {
+          "asset": "flx:SILVER",
+          "oraclePx": "64.811",
+          "markPx": "65.65",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 127.79893373952758
+        },
+        {
+          "asset": "flx:OIL",
+          "oraclePx": "76.56",
+          "markPx": "76.4",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 20.942408376962902
+        },
+        {
+          "asset": "flx:GAS",
+          "oraclePx": "3.2479",
+          "markPx": "3.2429",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 15.418298436584209
+        },
+        {
+          "asset": "flx:BTC",
+          "oraclePx": "64705.0",
+          "markPx": "91470.2",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 2926.1114548782007
+        },
+        {
+          "asset": "flx:COPPER",
+          "oraclePx": "6.3374",
+          "markPx": "6.33",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 11.690363349130536
+        },
+        {
+          "asset": "flx:PALLADIUM",
+          "oraclePx": "1264.0",
+          "markPx": "1264.1",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0.7910766553271819
+        },
+        {
+          "asset": "flx:PLATINUM",
+          "oraclePx": "1669.2",
+          "markPx": "1658.2",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 66.33699191894826
+        },
+        {
+          "asset": "flx:USDE",
+          "oraclePx": "0.99892",
+          "markPx": "0.9984",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 5.208333333334094
+        },
+        {
+          "asset": "flx:USA500",
+          "oraclePx": "7514.4",
+          "markPx": "7435.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 106.79219905850657
+        },
+        {
+          "asset": "flx:USA100",
+          "oraclePx": "30368.0",
+          "markPx": "29530.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 283.77920758550624
+        }
+      ]
+    },
+    {
+      "dex": "vntl",
+      "deployer": "0x8888888192a4a0593c13532ba48449fc24c3beda",
+      "oracleUpdater": null,
+      "assetCount": 15,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 1457.6913960654183,
+      "assets": [
+        {
+          "asset": "vntl:SPACEX",
+          "oraclePx": "2417.0",
+          "markPx": "2109.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 1457.6913960654183
+        },
+        {
+          "asset": "vntl:OPENAI",
+          "oraclePx": "1341.8",
+          "markPx": "1336.2",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 41.90989372848308
+        },
+        {
+          "asset": "vntl:ANTHROPIC",
+          "oraclePx": "1618.9",
+          "markPx": "1619.3",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 2.470203174210236
+        },
+        {
+          "asset": "vntl:MAG7",
+          "oraclePx": "65.52",
+          "markPx": "63.661",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 292.0155197059416
+        },
+        {
+          "asset": "vntl:SEMIS",
+          "oraclePx": "659.88",
+          "markPx": "661.1",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 18.45409166540655
+        },
+        {
+          "asset": "vntl:ROBOT",
+          "oraclePx": "38.37",
+          "markPx": "38.317",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 13.831980583030319
+        },
+        {
+          "asset": "vntl:INFOTECH",
+          "oraclePx": "191.26",
+          "markPx": "191.3",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 2.090956612651357
+        },
+        {
+          "asset": "vntl:NUCLEAR",
+          "oraclePx": "126.76",
+          "markPx": "128.05",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 100.74189769621289
+        },
+        {
+          "asset": "vntl:DEFENSE",
+          "oraclePx": "62.32",
+          "markPx": "62.011",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 49.829868894228035
+        },
+        {
+          "asset": "vntl:ENERGY",
+          "oraclePx": "53.76",
+          "markPx": "54.599",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 153.6658180552755
+        },
+        {
+          "asset": "vntl:BIOTECH",
+          "oraclePx": "140.63",
+          "markPx": "140.88",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 17.745599091425326
+        },
+        {
+          "asset": "vntl:GOLDJM",
+          "oraclePx": "124.0",
+          "markPx": "124.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "vntl:SILVERJM",
+          "oraclePx": "31.5",
+          "markPx": "31.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "vntl:WHEAT",
+          "oraclePx": "613.38",
+          "markPx": "611.42",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 32.0565241568813
+        },
+        {
+          "asset": "vntl:SOY",
+          "oraclePx": "1141.9",
+          "markPx": "1142.3",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 3.501707082201379
+        }
+      ]
+    },
+    {
+      "dex": "hyna",
+      "deployer": "0x53e655101ea361537124ef814ad4e654b54d0637",
+      "oracleUpdater": "0xaab93501e78f5105e265a1eafda10ce6530de17e",
+      "assetCount": 25,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 4836.795252225519,
+      "assets": [
+        {
+          "asset": "hyna:BTC",
+          "oraclePx": "77142.1",
+          "markPx": "76888.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 33.04806991988422
+        },
+        {
+          "asset": "hyna:ETH",
+          "oraclePx": "2396.5",
+          "markPx": "2400.9",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 18.326460910492276
+        },
+        {
+          "asset": "hyna:HYPE",
+          "oraclePx": "81.125",
+          "markPx": "81.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 46.01226993865031
+        },
+        {
+          "asset": "hyna:SOL",
+          "oraclePx": "99.11",
+          "markPx": "98.311",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 81.27269583261204
+        },
+        {
+          "asset": "hyna:LIT",
+          "oraclePx": "1.74",
+          "markPx": "3.37",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 4836.795252225519
+        },
+        {
+          "asset": "hyna:ZEC",
+          "oraclePx": "813.55",
+          "markPx": "856.99",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 506.89039545385657
+        },
+        {
+          "asset": "hyna:XRP",
+          "oraclePx": "1.334695",
+          "markPx": "1.3608",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 191.83568489124076
+        },
+        {
+          "asset": "hyna:LIGHTER",
+          "oraclePx": "2.5752",
+          "markPx": "2.5774",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 8.535733685108085
+        },
+        {
+          "asset": "hyna:BNB",
+          "oraclePx": "686.505",
+          "markPx": "685.89",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 8.966452346586319
+        },
+        {
+          "asset": "hyna:DOGE",
+          "oraclePx": "0.08153",
+          "markPx": "0.082257",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 88.38153591791479
+        },
+        {
+          "asset": "hyna:SUI",
+          "oraclePx": "0.72105",
+          "markPx": "0.72033",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 9.99541876639794
+        },
+        {
+          "asset": "hyna:PUMP",
+          "oraclePx": "0.004134",
+          "markPx": "0.004217",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 196.82238558216883
+        },
+        {
+          "asset": "hyna:FARTCOIN",
+          "oraclePx": "0.16155",
+          "markPx": "0.17364",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 696.2681409813401
+        },
+        {
+          "asset": "hyna:ENA",
+          "oraclePx": "0.15115",
+          "markPx": "0.1549",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 242.09167204648182
+        },
+        {
+          "asset": "hyna:XMR",
+          "oraclePx": "332.37",
+          "markPx": "331.4",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 29.269764634883142
+        },
+        {
+          "asset": "hyna:LTC",
+          "oraclePx": "49.195",
+          "markPx": "48.665",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 108.90783930956563
+        },
+        {
+          "asset": "hyna:LINK",
+          "oraclePx": "11.10304",
+          "markPx": "11.323",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 194.2594718714125
+        },
+        {
+          "asset": "hyna:XPL",
+          "oraclePx": "0.083485",
+          "markPx": "0.088667",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 584.4338931056642
+        },
+        {
+          "asset": "hyna:IP",
+          "oraclePx": "0.3027",
+          "markPx": "0.2947",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 271.4625042416019
+        },
+        {
+          "asset": "hyna:BCH",
+          "oraclePx": "234.8",
+          "markPx": "236.67",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 79.01297164828564
+        },
+        {
+          "asset": "hyna:ADA",
+          "oraclePx": "0.19615",
+          "markPx": "0.1969",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 38.09040121889287
+        },
+        {
+          "asset": "hyna:1000PEPE",
+          "oraclePx": "0.003404",
+          "markPx": "0.003494",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 257.58443045220446
+        },
+        {
+          "asset": "hyna:SILVER",
+          "oraclePx": "77.877",
+          "markPx": "85.97",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 941.3748982203099
+        },
+        {
+          "asset": "hyna:GOLD",
+          "oraclePx": "4993.2",
+          "markPx": "4993.2",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "hyna:BASED",
+          "oraclePx": "0.06708",
+          "markPx": "0.069301",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 320.4859958730755
+        }
+      ]
+    },
+    {
+      "dex": "km",
+      "deployer": "0x71f0019cc7fa79e4f42587fb7b9a817d8d2429ec",
+      "oracleUpdater": null,
+      "assetCount": 23,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 2029.8014589451752,
+      "assets": [
+        {
+          "asset": "km:US500",
+          "oraclePx": "749.64",
+          "markPx": "750.97",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 17.71042784665221
+        },
+        {
+          "asset": "km:BABA",
+          "oraclePx": "109.67",
+          "markPx": "116.54",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 589.4971683542135
+        },
+        {
+          "asset": "km:EUR",
+          "oraclePx": "1.159",
+          "markPx": "1.1612",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 18.945918015845503
+        },
+        {
+          "asset": "km:USBOND",
+          "oraclePx": "86.316",
+          "markPx": "86.038",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 32.31130430739973
+        },
+        {
+          "asset": "km:SMALL2000",
+          "oraclePx": "293.98",
+          "markPx": "292.75",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 42.01537147737039
+        },
+        {
+          "asset": "km:USTECH",
+          "oraclePx": "732.18",
+          "markPx": "733.79",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 21.940882268769183
+        },
+        {
+          "asset": "km:USENERGY",
+          "oraclePx": "55.159",
+          "markPx": "58.247",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 530.1560595395473
+        },
+        {
+          "asset": "km:USOIL",
+          "oraclePx": "116.9",
+          "markPx": "114.1",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 245.39877300613597
+        },
+        {
+          "asset": "km:TSLA",
+          "oraclePx": "399.03",
+          "markPx": "386.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 324.19146183699803
+        },
+        {
+          "asset": "km:SILVER",
+          "oraclePx": "70.42",
+          "markPx": "70.451",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 4.400221430496615
+        },
+        {
+          "asset": "km:GOLD",
+          "oraclePx": "4347.7",
+          "markPx": "4348.8",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 2.5294334069176867
+        },
+        {
+          "asset": "km:AAPL",
+          "oraclePx": "298.4",
+          "markPx": "292.11",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 215.32984149806452
+        },
+        {
+          "asset": "km:GOOGL",
+          "oraclePx": "363.96",
+          "markPx": "358.55",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 150.885511086319
+        },
+        {
+          "asset": "km:SEMI",
+          "oraclePx": "610.42",
+          "markPx": "543.11",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 1239.343779344883
+        },
+        {
+          "asset": "km:GLDMINE",
+          "oraclePx": "88.887",
+          "markPx": "73.889",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 2029.8014589451752
+        },
+        {
+          "asset": "km:NVDA",
+          "oraclePx": "207.22",
+          "markPx": "211.07",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 182.40394182024895
+        },
+        {
+          "asset": "km:TENCENT",
+          "oraclePx": "462.96",
+          "markPx": "465.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 43.87096774193592
+        },
+        {
+          "asset": "km:JPN225",
+          "oraclePx": "56942.0",
+          "markPx": "56942.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "km:MU",
+          "oraclePx": "1041.8",
+          "markPx": "1080.7",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 359.951883038772
+        },
+        {
+          "asset": "km:PLTR",
+          "oraclePx": "133.84",
+          "markPx": "130.51",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 255.15286184966766
+        },
+        {
+          "asset": "km:XIAOMI",
+          "oraclePx": "26.367",
+          "markPx": "26.311",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 21.283873665007388
+        },
+        {
+          "asset": "km:BMNR",
+          "oraclePx": "16.279",
+          "markPx": "15.749",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 336.52930344783755
+        },
+        {
+          "asset": "km:RTX",
+          "oraclePx": "189.7",
+          "markPx": "181.52",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 450.6390480387824
+        }
+      ]
+    },
+    {
+      "dex": "abcd",
+      "deployer": "0x372c7f69d0ecc14f73f89bd8a7dfb41bdf29857c",
+      "oracleUpdater": null,
+      "assetCount": 1,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 0,
+      "assets": [
+        {
+          "asset": "abcd:USA500",
+          "oraclePx": "6980.0",
+          "markPx": "6980.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        }
+      ]
+    },
+    {
+      "dex": "cash",
+      "deployer": "0xffa8198c62adb1e811629bd54c9b646d726deef7",
+      "oracleUpdater": null,
+      "assetCount": 17,
+      "liveAssetCount": 0,
+      "dayVolumeUsd": 0,
+      "maxDeviationBps": 1987.8031484895766,
+      "assets": [
+        {
+          "asset": "cash:USA500",
+          "oraclePx": "7551.328",
+          "markPx": "7457.8",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 125.40963823111406
+        },
+        {
+          "asset": "cash:TSLA",
+          "oraclePx": "407.557",
+          "markPx": "400.21",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 183.5786212238584
+        },
+        {
+          "asset": "cash:NVDA",
+          "oraclePx": "203.655",
+          "markPx": "197.49",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 312.16770469390815
+        },
+        {
+          "asset": "cash:HOOD",
+          "oraclePx": "116.026",
+          "markPx": "113.27",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 243.31243930431714
+        },
+        {
+          "asset": "cash:GOOGL",
+          "oraclePx": "357.246",
+          "markPx": "359.53",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 63.5273829722135
+        },
+        {
+          "asset": "cash:INTC",
+          "oraclePx": "112.988",
+          "markPx": "141.02",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 1987.8031484895766
+        },
+        {
+          "asset": "cash:AMZN",
+          "oraclePx": "244.563",
+          "markPx": "241.75",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 116.3598759048599
+        },
+        {
+          "asset": "cash:MSFT",
+          "oraclePx": "381.118",
+          "markPx": "371.48",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 259.44869171960744
+        },
+        {
+          "asset": "cash:META",
+          "oraclePx": "616.274",
+          "markPx": "622.67",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 102.71893619413106
+        },
+        {
+          "asset": "cash:GOLD",
+          "oraclePx": "4128.21",
+          "markPx": "4035.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 231.00371747211904
+        },
+        {
+          "asset": "cash:SILVER",
+          "oraclePx": "60.0967",
+          "markPx": "59.831",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 44.40841704133232
+        },
+        {
+          "asset": "cash:EWY",
+          "oraclePx": "185.2315",
+          "markPx": "199.56",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 718.0046101423127
+        },
+        {
+          "asset": "cash:WTI",
+          "oraclePx": "71.6675",
+          "markPx": "69.373",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 330.74827382411013
+        },
+        {
+          "asset": "cash:BTC",
+          "oraclePx": "70000.0",
+          "markPx": "70000.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "cash:KWEB",
+          "oraclePx": "26.47805",
+          "markPx": "24.422",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 841.8843665547453
+        },
+        {
+          "asset": "cash:ETH",
+          "oraclePx": "2184.0",
+          "markPx": "2184.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "cash:CAR",
+          "oraclePx": "162.6652",
+          "markPx": "150.83",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 784.671484452694
+        }
+      ]
+    },
+    {
+      "dex": "para",
+      "deployer": "0x8888888c43cbb7e1c4132542e46831bffd866ed3",
+      "oracleUpdater": "0x8888888c43cbb7e1c4132542e46831bffd866ed3",
+      "assetCount": 40,
+      "liveAssetCount": 33,
+      "dayVolumeUsd": 5441729.009275002,
+      "maxDeviationBps": 117.32124874118826,
+      "assets": [
+        {
+          "asset": "para:TOTAL2",
+          "oraclePx": "840.296",
+          "markPx": "839.848",
+          "openInterest": "636.084",
+          "dayNtlVlm": "1197.16901",
+          "funding": "-0.0000213776",
+          "deviationBps": 5.3342985873645326
+        },
+        {
+          "asset": "para:OTHERS",
+          "oraclePx": "158.1189",
+          "markPx": "157.7518",
+          "openInterest": "581.12",
+          "dayNtlVlm": "24695.1933",
+          "funding": "-0.0001878138",
+          "deviationBps": 23.270732885456365
+        },
+        {
+          "asset": "para:BTCD",
+          "oraclePx": "59.19289",
+          "markPx": "59.20103",
+          "openInterest": "10000.2",
+          "dayNtlVlm": "68480.322",
+          "funding": "0.0000075",
+          "deviationBps": 1.3749760772750874
+        },
+        {
+          "asset": "para:H100",
+          "oraclePx": "2.56",
+          "markPx": "2.56",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:AVGO",
+          "oraclePx": "303.21",
+          "markPx": "303.21",
+          "openInterest": "700.6",
+          "dayNtlVlm": "63352.0003",
+          "funding": "-0.0001094604",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:COHR",
+          "oraclePx": "200.8417",
+          "markPx": "200.96",
+          "openInterest": "4740.14",
+          "dayNtlVlm": "353394.8385000001",
+          "funding": "-0.0000593752",
+          "deviationBps": 5.886743630573495
+        },
+        {
+          "asset": "para:GLW",
+          "oraclePx": "101.6222",
+          "markPx": "101.594",
+          "openInterest": "6288.56",
+          "dayNtlVlm": "157433.81994",
+          "funding": "-0.0000975457",
+          "deviationBps": 2.7757544736906157
+        },
+        {
+          "asset": "para:CRDO",
+          "oraclePx": "108.9742",
+          "markPx": "109.0736",
+          "openInterest": "3397.78",
+          "dayNtlVlm": "182394.7245",
+          "funding": "-0.0001032091",
+          "deviationBps": 9.113112613868326
+        },
+        {
+          "asset": "para:LRCX",
+          "oraclePx": "188.1104",
+          "markPx": "188.15",
+          "openInterest": "1621.68",
+          "dayNtlVlm": "257453.2471999999",
+          "funding": "-0.0000485861",
+          "deviationBps": 2.1047036938616626
+        },
+        {
+          "asset": "para:NET",
+          "oraclePx": "287.23",
+          "markPx": "286.74",
+          "openInterest": "296.68",
+          "dayNtlVlm": "56927.1388",
+          "funding": "-0.0001126509",
+          "deviationBps": 17.08865174025281
+        },
+        {
+          "asset": "para:STX",
+          "oraclePx": "481.2",
+          "markPx": "481.4",
+          "openInterest": "788.626",
+          "dayNtlVlm": "100357.46032",
+          "funding": "-0.0000879635",
+          "deviationBps": 4.154549231408156
+        },
+        {
+          "asset": "para:IREN",
+          "oraclePx": "13.3387",
+          "markPx": "13.3573",
+          "openInterest": "23501.06",
+          "dayNtlVlm": "303073.0321900001",
+          "funding": "-0.0001114673",
+          "deviationBps": 13.924969866665464
+        },
+        {
+          "asset": "para:VST",
+          "oraclePx": "122.97",
+          "markPx": "122.96",
+          "openInterest": "2235.78",
+          "dayNtlVlm": "64557.9696",
+          "funding": "-0.0000452112",
+          "deviationBps": 0.8132726089789457
+        },
+        {
+          "asset": "para:TER",
+          "oraclePx": "216.17",
+          "markPx": "216.21",
+          "openInterest": "1019.08",
+          "dayNtlVlm": "145894.0251",
+          "funding": "-0.0000941848",
+          "deviationBps": 1.850053189030131
+        },
+        {
+          "asset": "para:AAOI",
+          "oraclePx": "37.8857",
+          "markPx": "37.8936",
+          "openInterest": "3218.98",
+          "dayNtlVlm": "470815.67746",
+          "funding": "-0.0000952001",
+          "deviationBps": 2.0847847657650243
+        },
+        {
+          "asset": "para:10Y",
+          "oraclePx": "4.878",
+          "markPx": "4.8786",
+          "openInterest": "299355.0",
+          "dayNtlVlm": "18444.53378",
+          "funding": "0.00000125",
+          "deviationBps": 1.2298610257030498
+        },
+        {
+          "asset": "para:CIEN",
+          "oraclePx": "247.0701",
+          "markPx": "246.37",
+          "openInterest": "297.7",
+          "dayNtlVlm": "22117.7467",
+          "funding": "-0.0002024639",
+          "deviationBps": 28.41660916507659
+        },
+        {
+          "asset": "para:NAVER",
+          "oraclePx": "146.0",
+          "markPx": "146.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:RDDT",
+          "oraclePx": "91.8708",
+          "markPx": "91.817",
+          "openInterest": "1096.78",
+          "dayNtlVlm": "24000.63256",
+          "funding": "-0.0001161822",
+          "deviationBps": 5.859481359662112
+        },
+        {
+          "asset": "para:UNITREE",
+          "oraclePx": "101.2057",
+          "markPx": "101.4686",
+          "openInterest": "7317.06",
+          "dayNtlVlm": "755206.7257000004",
+          "funding": "0.0001882779",
+          "deviationBps": 25.909493183112996
+        },
+        {
+          "asset": "para:CRWD",
+          "oraclePx": "209.7134",
+          "markPx": "209.7134",
+          "openInterest": "693.2",
+          "dayNtlVlm": "68132.1594",
+          "funding": "0.0000075",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:TENCENT",
+          "oraclePx": "61.0",
+          "markPx": "61.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:CAMBRICON",
+          "oraclePx": "178.0",
+          "markPx": "178.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:MELI",
+          "oraclePx": "1474.507",
+          "markPx": "1475.997",
+          "openInterest": "117.972",
+          "dayNtlVlm": "69082.9071",
+          "funding": "0.0000082353",
+          "deviationBps": 10.094871466540983
+        },
+        {
+          "asset": "para:SMCI",
+          "oraclePx": "23.3501",
+          "markPx": "23.322",
+          "openInterest": "19677.1",
+          "dayNtlVlm": "222900.79086",
+          "funding": "-0.0001438774",
+          "deviationBps": 12.048709373124952
+        },
+        {
+          "asset": "para:ANSEM",
+          "oraclePx": "0.01976",
+          "markPx": "0.0197",
+          "openInterest": "11159514.0",
+          "dayNtlVlm": "229567.089216",
+          "funding": "0.0005344947",
+          "deviationBps": 30.456852791878696
+        },
+        {
+          "asset": "para:INNOLIGHT",
+          "oraclePx": "157.0",
+          "markPx": "157.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:30Y",
+          "oraclePx": "5.249",
+          "markPx": "5.2496",
+          "openInterest": "19798.0",
+          "dayNtlVlm": "31.4544",
+          "funding": "0.00000125",
+          "deviationBps": 1.1429442243225731
+        },
+        {
+          "asset": "para:2Y",
+          "oraclePx": "4.672",
+          "markPx": "4.677",
+          "openInterest": "282863.2",
+          "dayNtlVlm": "16845.20822",
+          "funding": "0.00000125",
+          "deviationBps": 10.690613641222779
+        },
+        {
+          "asset": "para:IGV",
+          "oraclePx": "95.1894",
+          "markPx": "95.1894",
+          "openInterest": "1582.08",
+          "dayNtlVlm": "55390.8086",
+          "funding": "-0.0000858228",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:SOFI",
+          "oraclePx": "13.3034",
+          "markPx": "13.2835",
+          "openInterest": "11208.98",
+          "dayNtlVlm": "76991.64761",
+          "funding": "-0.0001068014",
+          "deviationBps": 14.980991455565029
+        },
+        {
+          "asset": "para:ANTH",
+          "oraclePx": "83.71",
+          "markPx": "83.92",
+          "openInterest": "2164.916",
+          "dayNtlVlm": "114161.848448",
+          "funding": "0.0000208822",
+          "deviationBps": 25.02383222116396
+        },
+        {
+          "asset": "para:TTWO",
+          "oraclePx": "224.8249",
+          "markPx": "224.16",
+          "openInterest": "7214.76",
+          "dayNtlVlm": "129604.943",
+          "funding": "-0.0001486276",
+          "deviationBps": 29.661848679515398
+        },
+        {
+          "asset": "para:CIFR",
+          "oraclePx": "5.6129",
+          "markPx": "5.6129",
+          "openInterest": "10592.32",
+          "dayNtlVlm": "18324.298171",
+          "funding": "-0.0001364533",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:TREAD",
+          "oraclePx": "1.265397",
+          "markPx": "1.265397",
+          "openInterest": "161060.0",
+          "dayNtlVlm": "90691.495",
+          "funding": "-0.0007350595",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:DRV",
+          "oraclePx": "0.39254",
+          "markPx": "0.3972",
+          "openInterest": "3567506.0",
+          "dayNtlVlm": "1048204.8338200008",
+          "funding": "0.001014011",
+          "deviationBps": 117.32124874118826
+        },
+        {
+          "asset": "para:GDX",
+          "oraclePx": "74.6835",
+          "markPx": "74.634",
+          "openInterest": "1435.78",
+          "dayNtlVlm": "145949.9171",
+          "funding": "-0.0001305989",
+          "deviationBps": 6.632365945814879
+        },
+        {
+          "asset": "para:SMH",
+          "oraclePx": "427.555",
+          "markPx": "427.45",
+          "openInterest": "262.844",
+          "dayNtlVlm": "86053.35137",
+          "funding": "-0.0001214359",
+          "deviationBps": 2.4564276523574264
+        },
+        {
+          "asset": "para:PAPER",
+          "oraclePx": "0.0259",
+          "markPx": "0.0259",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "para:HYPE2",
+          "oraclePx": "85.33",
+          "markPx": "85.33",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        }
+      ]
+    },
+    {
+      "dex": "mkts",
+      "deployer": "0x71f0019cc7fa79e4f42587fb7b9a817d8d2429ec",
+      "oracleUpdater": null,
+      "assetCount": 24,
+      "liveAssetCount": 1,
+      "dayVolumeUsd": 247321.9223200001,
+      "maxDeviationBps": 422.31898621113146,
+      "assets": [
+        {
+          "asset": "mkts:US500",
+          "oraclePx": "766.42",
+          "markPx": "770.37",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 51.27406311253093
+        },
+        {
+          "asset": "mkts:BABA",
+          "oraclePx": "116.54",
+          "markPx": "116.54",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:EUR",
+          "oraclePx": "1.1612",
+          "markPx": "1.1612",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:USBOND",
+          "oraclePx": "82.04",
+          "markPx": "81.33",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 87.29865978113956
+        },
+        {
+          "asset": "mkts:SMALL2000",
+          "oraclePx": "284.73",
+          "markPx": "281.75",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 105.76752440106542
+        },
+        {
+          "asset": "mkts:USTECH",
+          "oraclePx": "686.26",
+          "markPx": "716.52",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 422.31898621113146
+        },
+        {
+          "asset": "mkts:USENERGY",
+          "oraclePx": "58.247",
+          "markPx": "58.247",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:USOIL",
+          "oraclePx": "114.1",
+          "markPx": "114.1",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:TSLA",
+          "oraclePx": "386.5",
+          "markPx": "386.5",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:SILVER",
+          "oraclePx": "70.451",
+          "markPx": "70.451",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:GOLD",
+          "oraclePx": "4348.8",
+          "markPx": "4348.8",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:AAPL",
+          "oraclePx": "292.11",
+          "markPx": "292.11",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:GOOGL",
+          "oraclePx": "358.55",
+          "markPx": "358.55",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:SEMI",
+          "oraclePx": "543.11",
+          "markPx": "543.11",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:GLDMINE",
+          "oraclePx": "73.889",
+          "markPx": "73.889",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:NVDA",
+          "oraclePx": "211.07",
+          "markPx": "211.07",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:TENCENT",
+          "oraclePx": "465.0",
+          "markPx": "465.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:JPN225",
+          "oraclePx": "56942.0",
+          "markPx": "56942.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:MU",
+          "oraclePx": "1080.7",
+          "markPx": "1080.7",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:PLTR",
+          "oraclePx": "130.51",
+          "markPx": "130.51",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:XIAOMI",
+          "oraclePx": "26.311",
+          "markPx": "26.311",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:BMNR",
+          "oraclePx": "15.749",
+          "markPx": "15.749",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:RTX",
+          "oraclePx": "181.52",
+          "markPx": "181.52",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "mkts:BVIV",
+          "oraclePx": "54.683",
+          "markPx": "54.683",
+          "openInterest": "2479.5",
+          "dayNtlVlm": "247321.9223200001",
+          "funding": "-0.0000673925",
+          "deviationBps": 0
+        }
+      ]
+    },
+    {
+      "dex": "io",
+      "deployer": "0x320c8988e3d1b5198f335802d7bfd2728a8fcac6",
+      "oracleUpdater": "0x94757f8dcb4bf73b850195660e959d1105cfedd5",
+      "assetCount": 26,
+      "liveAssetCount": 19,
+      "dayVolumeUsd": 38979105.508811995,
+      "maxDeviationBps": 18.860669095969225,
+      "assets": [
+        {
+          "asset": "io:OAI",
+          "oraclePx": "1230.7",
+          "markPx": "1230.7",
+          "openInterest": "5451.69",
+          "dayNtlVlm": "654307.1285",
+          "funding": "-0.0000073144",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:ANTH",
+          "oraclePx": "1476.6",
+          "markPx": "1476.1",
+          "openInterest": "41758.762",
+          "dayNtlVlm": "5932119.3426999999",
+          "funding": "0.00000625",
+          "deviationBps": 3.3873043831718723
+        },
+        {
+          "asset": "io:SNDK",
+          "oraclePx": "75.11",
+          "markPx": "75.02",
+          "openInterest": "45126.6534",
+          "dayNtlVlm": "3004106.6241319994",
+          "funding": "-0.0000271358",
+          "deviationBps": 11.996800853106294
+        },
+        {
+          "asset": "io:IONQ",
+          "oraclePx": "23.99",
+          "markPx": "23.97",
+          "openInterest": "13787.98",
+          "dayNtlVlm": "49615.48701",
+          "funding": "-0.0000513862",
+          "deviationBps": 8.343763037129568
+        },
+        {
+          "asset": "io:NBIS",
+          "oraclePx": "87.403",
+          "markPx": "87.354",
+          "openInterest": "59292.42",
+          "dayNtlVlm": "1899635.9525899997",
+          "funding": "-0.0000068287",
+          "deviationBps": 5.609359617190581
+        },
+        {
+          "asset": "io:EWY",
+          "oraclePx": "129.09",
+          "markPx": "129.03",
+          "openInterest": "2612.9",
+          "dayNtlVlm": "192225.9193",
+          "funding": "0.0000029277",
+          "deviationBps": 4.6500813764242634
+        },
+        {
+          "asset": "io:GPRO",
+          "oraclePx": "0.54714",
+          "markPx": "0.54611",
+          "openInterest": "115661.6",
+          "dayNtlVlm": "26758.15797",
+          "funding": "-0.0000404421",
+          "deviationBps": 18.860669095969225
+        },
+        {
+          "asset": "io:SBE",
+          "oraclePx": "50.0",
+          "markPx": "50.0",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:TCNT",
+          "oraclePx": "43.761",
+          "markPx": "43.784",
+          "openInterest": "2353.968",
+          "dayNtlVlm": "9796.068034",
+          "funding": "-0.0000092315",
+          "deviationBps": 5.253060478712803
+        },
+        {
+          "asset": "io:DRAM",
+          "oraclePx": "35.111",
+          "markPx": "35.077",
+          "openInterest": "18062.48",
+          "dayNtlVlm": "1444998.6741500008",
+          "funding": "-0.000022991",
+          "deviationBps": 9.692961199646184
+        },
+        {
+          "asset": "io:PRL",
+          "oraclePx": "1.9555",
+          "markPx": "1.953",
+          "openInterest": "5177826.8000000007",
+          "dayNtlVlm": "3399294.6552099986",
+          "funding": "0.00000625",
+          "deviationBps": 12.800819252431882
+        },
+        {
+          "asset": "io:XIAOMI",
+          "oraclePx": "3.4036",
+          "markPx": "3.3977",
+          "openInterest": "14123.88",
+          "dayNtlVlm": "25003.101208",
+          "funding": "0.00000625",
+          "deviationBps": 17.364687877093374
+        },
+        {
+          "asset": "io:H100",
+          "oraclePx": "2.78",
+          "markPx": "2.78",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:MOONSHOT",
+          "oraclePx": "67.24",
+          "markPx": "67.24",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:NVDA",
+          "oraclePx": "150.17",
+          "markPx": "150.11",
+          "openInterest": "56975.73",
+          "dayNtlVlm": "15569854.3500700053",
+          "funding": "-0.0000000653",
+          "deviationBps": 3.9970688161997097
+        },
+        {
+          "asset": "io:SKHX",
+          "oraclePx": "775.97",
+          "markPx": "775.55",
+          "openInterest": "2277.428",
+          "dayNtlVlm": "4814769.1405099975",
+          "funding": "0.0000057237",
+          "deviationBps": 5.415511572433406
+        },
+        {
+          "asset": "io:AAPL",
+          "oraclePx": "355.81",
+          "markPx": "355.87",
+          "openInterest": "1586.774",
+          "dayNtlVlm": "577600.2575699999",
+          "funding": "0.0000027558",
+          "deviationBps": 1.686008935847424
+        },
+        {
+          "asset": "io:CRCL",
+          "oraclePx": "48.68",
+          "markPx": "48.659",
+          "openInterest": "3612.006",
+          "dayNtlVlm": "254604.685948",
+          "funding": "0.00000625",
+          "deviationBps": 4.315748371318933
+        },
+        {
+          "asset": "io:GOOGL",
+          "oraclePx": "275.59",
+          "markPx": "275.62",
+          "openInterest": "393.134",
+          "dayNtlVlm": "149696.98488",
+          "funding": "0.0000074038",
+          "deviationBps": 1.0884551193683172
+        },
+        {
+          "asset": "io:MU",
+          "oraclePx": "607.56",
+          "markPx": "607.15",
+          "openInterest": "348.276",
+          "dayNtlVlm": "796159.86333",
+          "funding": "0.00000625",
+          "deviationBps": 6.752861731037934
+        },
+        {
+          "asset": "io:META",
+          "oraclePx": "612.39",
+          "markPx": "612.41",
+          "openInterest": "255.81",
+          "dayNtlVlm": "91560.45576",
+          "funding": "0.00000625",
+          "deviationBps": 0.32657859930409056
+        },
+        {
+          "asset": "io:INTC",
+          "oraclePx": "54.899",
+          "markPx": "54.9",
+          "openInterest": "2205.56",
+          "dayNtlVlm": "86998.65994",
+          "funding": "0.00000625",
+          "deviationBps": 0.18214936247680683
+        },
+        {
+          "asset": "io:NVDL",
+          "oraclePx": "18.57",
+          "markPx": "18.57",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:AMD",
+          "oraclePx": "584.33",
+          "markPx": "584.33",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:SOXS",
+          "oraclePx": "75.483",
+          "markPx": "75.483",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        },
+        {
+          "asset": "io:SOXL",
+          "oraclePx": "50.68",
+          "markPx": "50.68",
+          "openInterest": "0.0",
+          "dayNtlVlm": "0.0",
+          "funding": "0.0",
+          "deviationBps": 0
+        }
+      ]
+    }
+  ]
+}
