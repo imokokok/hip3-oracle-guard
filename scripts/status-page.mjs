@@ -111,7 +111,7 @@ tr.warn td { background: #fdf8ec; }
 a { color: #4a3fbf; }
 </style></head><body>
 <h1>HIP-3 Oracle Feed Health</h1>
-<div class="sub">Live snapshot of every HIP-3 perp DEX oracle vs mark price on Hyperliquid · generated <strong>${esc(snap.sampledAt)}</strong> (UTC) · refreshed automatically by the sampling workflow (GitHub Actions scheduling is best-effort — see repo for run history)</div>
+<div class="sub">Live snapshot of every HIP-3 perp DEX oracle vs mark price on Hyperliquid · generated <strong>${esc(snap.sampledAt)}</strong> (UTC) · refreshed every 30 min via workflow_dispatch (external cron scheduler; run history in repo Actions)</div>
 <div class="summary">
   <div class="card"><div class="v">${totals.dex}</div><div class="k">DEXs</div></div>
   <div class="card"><div class="v">${totals.live}<span style="color:#999;font-size:.8rem">/${totals.assets}</span></div><div class="k">live assets</div></div>
