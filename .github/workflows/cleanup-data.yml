@@ -1,0 +1,54 @@
+name: data-cleanup
+
+# data 分支 30 天保留策略：每月 1 日 04:17 UTC（避开采样整点）删除过期快照，
+# 并以孤儿提交重建 data 分支——普通 git rm 只删工作树，历史里的 blob 仍在；
+# 只有 orphan rebuild + force push 才能真正收缩仓库体积。
+# 现状 ≈ 4.3MB/天（90KB/快照），30 天保留 ≈ 130MB，重建后历史仅剩单提交。
+# 手动触发：gh workflow run data-cleanup
+
+on:
+  schedule:
+    - cron: "17 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 与采样共用一把锁：两者都写 data 分支，禁止并发（排队执行）
+concurrency:
+  group: data-branch
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+
+      - name: Delete snapshots older than 30 days
+        run: |
+          CUTOFF=$(date -u -d '30 days ago' +%Y-%m-%d)
+          DELETED=0
+          for f in snapshots/snapshot-*.json; do
+            [ -e "$f" ] || continue
+            D=$(basename "$f" | sed -E 's/^snapshot-([0-9]{4}-[0-9]{2}-[0-9]{2})T.*/\1/')
+            if [[ "$D" < "$CUTOFF" ]]; then
+              rm "$f"
+              DELETED=$((DELETED+1))
+            fi
+          done
+          REMAINING=$(ls snapshots 2>/dev/null | wc -l)
+          SIZE=$(du -sh snapshots 2>/dev/null | cut -f1)
+          echo "cutoff=$CUTOFF deleted=$DELETED remaining=$REMAINING size=$SIZE" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Rebuild data branch as a single orphan commit
+        run: |
+          git config user.name "imokokok"
+          git config user.email "145034722+imokokok@users.noreply.github.com"
+          git checkout --orphan fresh
+          git add -A
+          git commit -m "data: 30-day retention cleanup $(date -u +%F) [skip ci]"
+          git branch -D data
+          git branch -m data
+          git push -f origin data

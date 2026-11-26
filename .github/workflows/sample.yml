@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+# 与 data-cleanup 共用一把锁：两者都写 data 分支，禁止并发（排队执行）
+concurrency:
+  group: data-branch
+
 jobs:
   sample:
     runs-on: ubuntu-latest
