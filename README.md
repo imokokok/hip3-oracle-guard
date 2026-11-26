@@ -10,7 +10,7 @@ HIP-3 deployer 喂价守卫——开源参考实现。防止你的 500k HYPE 质
 
 **开发阶段**。验证报告见 [`research/VALIDATION-REPORT.md`](research/VALIDATION-REPORT.md)（含实测数据与竞争格局分析），SK Hynix 事故复盘见 [`docs/postmortem/2026-07-28-sk-hynix.md`](docs/postmortem/2026-07-28-sk-hynix.md)。
 
-📊 **[HIP-3 喂价健康度实时状态页](https://imokokok.github.io/hip3-oracle-guard/)** — 全部 HIP-3 DEX 的 oracle/mark 偏离、OI、24h 量，每 30 分钟刷新，由采样 workflow 自动生成。
+📊 **[HIP-3 喂价健康度实时状态页](https://imokokok.github.io/hip3-oracle-guard/)** — 全部 HIP-3 DEX 的 oracle/mark 偏离、OI、24h 量，由采样 workflow 自动刷新（GitHub Actions 调度为尽力而为，实际频率取决于其负载）。
 
 ## 模块
 
