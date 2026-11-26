@@ -1,7 +1,8 @@
 name: oracle-sampling
 
-# HIP-3 全生态喂价连续采样：每 30 分钟一次，快照落到 data 分支，
-# 同时生成喂价健康度公开状态页并部署到 GitHub Pages。
+# HIP-3 全生态喂价连续采样：每 30 分钟一次，快照 + 喂价健康度状态页
+# 一起落到 data 分支；GitHub Pages 以 data 分支为源自动构建
+# （legacy branch 模式，不依赖 Actions artifact，绕开其间歇性元数据故障）。
 # 注意：GitHub 会在仓库 60 天无活动后停用 scheduled workflow，期间需保持提交活跃。
 
 on:
@@ -11,13 +12,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-  actions: read
-
-concurrency:
-  group: pages-deploy
-  cancel-in-progress: false
 
 jobs:
   sample:
@@ -35,7 +29,7 @@ jobs:
       - name: Generate status page
         run: node scripts/status-page.mjs "$(ls .data-run/snapshot-*.json | head -1)" .status
 
-      - name: Commit snapshot to data branch
+      - name: Commit snapshot + status page to data branch
         run: |
           git config user.name "imokokok"
           git config user.email "145034722+imokokok@users.noreply.github.com"
@@ -49,18 +43,8 @@ jobs:
           fi
           mkdir -p .data-branch/snapshots
           cp "$FILE" .data-branch/snapshots/
+          cp .status/index.html .data-branch/index.html
           cd .data-branch
-          git add snapshots
+          git add snapshots index.html
           git commit -m "snapshot $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
           git push origin HEAD:data
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .status
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
