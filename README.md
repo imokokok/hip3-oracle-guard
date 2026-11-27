@@ -10,7 +10,7 @@ HIP-3 deployer 喂价守卫——开源参考实现。防止你的 500k HYPE 质
 
 **开发阶段**。验证报告见 [`research/VALIDATION-REPORT.md`](research/VALIDATION-REPORT.md)（含实测数据与竞争格局分析），SK Hynix 事故复盘见 [`docs/postmortem/2026-07-28-sk-hynix.md`](docs/postmortem/2026-07-28-sk-hynix.md)。
 
-📊 **[HIP-3 喂价健康度实时状态页](https://imokokok.github.io/hip3-oracle-guard/)** — 全部 HIP-3 DEX 的 oracle/mark 偏离、OI、24h 量，每 30 分钟刷新。调度链路：外部 cron 触发器（Cloudflare Worker）→ workflow_dispatch（绕开 GitHub scheduled 调度的静默跳过）→ 快照落 data 分支并原生构建 Pages。
+📊 **[HIP-3 喂价风险雷达实时状态页](https://imokokok.github.io/hip3-oracle-guard/)** — 交易员/质押者视角的观察雷达（v2）：红（偏离≥20bps×名义OI>$100M）/ 黄（观察名单）/ 陷阱（量≈0 但 OI>0）/ 墓志铭（48h 窗口全低活跃 DEX）四层视图，按 OI 加权偏离排序，每 30 分钟刷新，机器可读告警见 alarms.jsonl 与 RSS feed.xml。观察性指标，非清算风险估算；阈值与守卫库 guard 阈值无关。调度链路：外部 cron 触发器（Cloudflare Worker）→ workflow_dispatch（绕开 GitHub scheduled 调度的静默跳过）→ 快照落 data 分支并原生构建 Pages。
 
 ## 模块
 
