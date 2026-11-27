@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HIP-3 Oracle Feed Health — live</title>
+<title>HIP-3 Oracle Risk Radar — live</title>
 <style>
 :root { color-scheme: light; }
 body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #fafafa; margin: 0; padding: 2rem; max-width: 72rem; margin-inline: auto; }
@@ -11,7 +11,8 @@ h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
 .card { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: .75rem 1.1rem; min-width: 7rem; }
 .card .v { font-size: 1.3rem; font-weight: 600; }
 .card .k { font-size: .75rem; color: #666; text-transform: uppercase; letter-spacing: .04em; }
-section.dex { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+section.zone { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+section.tombzone { background: #f4f3ef; }
 h2 { font-size: 1.05rem; margin: 0 0 .6rem; }
 h2 .meta { font-size: .78rem; font-weight: 400; color: #666; }
 table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
@@ -21,392 +22,437 @@ td.num { text-align: right; }
 tr.crit td { background: #fdf0ef; }
 tr.warn td { background: #fdf8ec; }
 .badge { font-size: .7rem; font-weight: 700; padding: .1rem .45rem; border-radius: 999px; letter-spacing: .03em; }
-.badge.ok { background: #e7f5ec; color: #1a7f4b; }
-.badge.warn { background: #fbeeC9; color: #91660a; }
 .badge.crit { background: #f8d7d5; color: #b03028; }
-.badge.dead { background: #eee; color: #888; }
+.badge.warn { background: #fbeec9; color: #91660a; }
+.empty { color: #777; font-size: .9rem; margin: .4rem 0; }
+.tombgrid { display: flex; gap: .75rem; flex-wrap: wrap; }
+.tomb { background: #fff; border: 1px solid #e3e3ec; border-radius: 6px; padding: .4rem .7rem; font-size: .85rem; }
+.tomb .meta { color: #888; font-size: .72rem; }
+.zonefoot { font-size: .78rem; color: #666; margin: .8rem 0 0; line-height: 1.6; }
+details.dexdetails, details.whitedetails { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: .7rem 1.1rem; margin-bottom: .7rem; }
+details summary { cursor: pointer; font-weight: 600; }
+details summary .meta { font-weight: 400; font-size: .78rem; color: #666; }
 .note { font-size: .8rem; color: #666; margin-top: 2rem; line-height: 1.6; }
 a { color: #4a3fbf; }
 </style></head><body>
-<h1>HIP-3 Oracle Feed Health</h1>
-<div class="sub">Live snapshot of every HIP-3 perp DEX oracle vs mark price on Hyperliquid · generated <strong>2026-11-27T06:30:51.873Z</strong> (UTC) · refreshed every 30 min via workflow_dispatch (external cron scheduler; run history in repo Actions)</div>
+<h1>HIP-3 Oracle Risk Radar</h1>
+<div class="sub">Observational view of every HIP-3 perp DEX oracle vs mark price on Hyperliquid · one question: where does real open interest sit against a misbehaving feed? · generated <strong>2026-11-27T06:59:33.402Z</strong> (UTC) · refreshed every 30 min via workflow_dispatch (external cron scheduler)</div>
 <div class="summary">
-  <div class="card"><div class="v">10</div><div class="k">DEXs</div></div>
-  <div class="card"><div class="v">178<span style="color:#999;font-size:.8rem">/337</span></div><div class="k">live assets</div></div>
-  <div class="card"><div class="v" style="color:#b03028">0</div><div class="k">critical dev</div></div>
-  <div class="card"><div class="v" style="color:#91660a">4</div><div class="k">warn dev</div></div>
-  <div class="card"><div class="v">$2346.1M</div><div class="k">24h volume</div></div>
+  <div class="card"><div class="v">$2.38B</div><div class="k">24h volume</div></div>
+  <div class="card"><div class="v" style="color:#b03028">1</div><div class="k">red markets</div></div>
+  <div class="card"><div class="v" style="color:#91660a">37</div><div class="k">on watchlist</div></div>
+  <div class="card"><div class="v" style="color:#91660a">4</div><div class="k">trapped</div></div>
+  <div class="card"><div class="v" style="color:#888">6/10</div><div class="k">dormant dexs</div></div>
 </div>
-<section class="dex">
-  <h2>xyz <span class="meta">deployer 0x88806a… · updater <em>self</em> · live 125/150 · 24h $2312.5M · max dev 3.37%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="warn"><td>xyz:UNITREE</td><td class="num">119.18</td><td class="num">115.3</td><td class="num">3.37%</td><td class="num">264,022.94</td><td class="num">$18.2M</td><td><span class="badge warn">WARN</span></td></tr>
-<tr class="warn"><td>xyz:CAMBRICON</td><td class="num">167.22</td><td class="num">164.14</td><td class="num">1.88%</td><td class="num">117.52</td><td class="num">$24.0K</td><td><span class="badge warn">WARN</span></td></tr>
-<tr class="warn"><td>xyz:TWST</td><td class="num">113.82</td><td class="num">112.32</td><td class="num">1.34%</td><td class="num">880.68</td><td class="num">$8.2K</td><td><span class="badge warn">WARN</span></td></tr>
-<tr class="ok"><td>xyz:JIO</td><td class="num">14.815</td><td class="num">14.691</td><td class="num">0.84%</td><td class="num">74,328.8</td><td class="num">$118.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:LYTE</td><td class="num">14.495</td><td class="num">14.586</td><td class="num">0.62%</td><td class="num">18,256.36</td><td class="num">$70.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:RELIANCE</td><td class="num">14.907</td><td class="num">15</td><td class="num">0.62%</td><td class="num">1,700.4</td><td class="num">$14.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BIRD</td><td class="num">1.0885</td><td class="num">1.0949</td><td class="num">0.58%</td><td class="num">59,401.4</td><td class="num">$1.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:KR200</td><td class="num">757.05</td><td class="num">761.04</td><td class="num">0.52%</td><td class="num">1,652.99</td><td class="num">$907.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SHEIN</td><td class="num">4.4643</td><td class="num">4.4421</td><td class="num">0.50%</td><td class="num">95,066</td><td class="num">$113.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:UMC</td><td class="num">13.57</td><td class="num">13.506</td><td class="num">0.47%</td><td class="num">7,412</td><td class="num">$32.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:QNT</td><td class="num">33.97</td><td class="num">34.12</td><td class="num">0.44%</td><td class="num">47,052.82</td><td class="num">$514.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SKHY</td><td class="num">117.78</td><td class="num">117.3</td><td class="num">0.41%</td><td class="num">1,510,148.64</td><td class="num">$85.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CVX</td><td class="num">212.05</td><td class="num">211.22</td><td class="num">0.39%</td><td class="num">432.88</td><td class="num">$39.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:HYUNDAI</td><td class="num">200.54</td><td class="num">201.33</td><td class="num">0.39%</td><td class="num">7,583.36</td><td class="num">$5.5M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CXMT</td><td class="num">5.5363</td><td class="num">5.5151</td><td class="num">0.38%</td><td class="num">2,746,187</td><td class="num">$22.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GIGADEV</td><td class="num">32.653</td><td class="num">32.528</td><td class="num">0.38%</td><td class="num">43,604.54</td><td class="num">$1.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NCLD</td><td class="num">11.383</td><td class="num">11.425</td><td class="num">0.37%</td><td class="num">32,785.22</td><td class="num">$9.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SNXX</td><td class="num">1.7503</td><td class="num">1.7559</td><td class="num">0.32%</td><td class="num">1,216,172</td><td class="num">$3.2M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:HO</td><td class="num">3.7393</td><td class="num">3.7507</td><td class="num">0.30%</td><td class="num">18,808</td><td class="num">$55.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ZHIPU</td><td class="num">45.626</td><td class="num">45.497</td><td class="num">0.28%</td><td class="num">148,567.92</td><td class="num">$10.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SKHX</td><td class="num">825.99</td><td class="num">828.16</td><td class="num">0.26%</td><td class="num">361,773.37</td><td class="num">$407.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:URNM</td><td class="num">36.636</td><td class="num">36.709</td><td class="num">0.20%</td><td class="num">22,509.08</td><td class="num">$43.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:XBI</td><td class="num">158.95</td><td class="num">158.64</td><td class="num">0.20%</td><td class="num">745.62</td><td class="num">$5.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NET</td><td class="num">296.95</td><td class="num">297.46</td><td class="num">0.17%</td><td class="num">7,699.48</td><td class="num">$74.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:PALLADIUM</td><td class="num">918.22</td><td class="num">919.73</td><td class="num">0.16%</td><td class="num">1,888.7</td><td class="num">$529.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SMSN</td><td class="num">133.46</td><td class="num">133.67</td><td class="num">0.16%</td><td class="num">223,474.23</td><td class="num">$25.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:USAR</td><td class="num">6.98</td><td class="num">6.9893</td><td class="num">0.13%</td><td class="num">206,482.76</td><td class="num">$362.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NBIS</td><td class="num">93.358</td><td class="num">93.475</td><td class="num">0.13%</td><td class="num">724,670.96</td><td class="num">$27.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:TQQQ</td><td class="num">49.08</td><td class="num">49.141</td><td class="num">0.12%</td><td class="num">6,581</td><td class="num">$149.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:TTWO</td><td class="num">227.54</td><td class="num">227.28</td><td class="num">0.11%</td><td class="num">7,468.74</td><td class="num">$757.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NIFTY</td><td class="num">25,728</td><td class="num">25,757</td><td class="num">0.11%</td><td class="num">6.35</td><td class="num">$8.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MUU</td><td class="num">10.75</td><td class="num">10.762</td><td class="num">0.11%</td><td class="num">55,756</td><td class="num">$280.1K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MAGS</td><td class="num">66.87</td><td class="num">66.796</td><td class="num">0.11%</td><td class="num">1,526.46</td><td class="num">$22.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:LLY</td><td class="num">1,399.5</td><td class="num">1,401</td><td class="num">0.11%</td><td class="num">3,962.21</td><td class="num">$555.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:DKNG</td><td class="num">17.829</td><td class="num">17.848</td><td class="num">0.11%</td><td class="num">11,467.42</td><td class="num">$20.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AMAT</td><td class="num">332.14</td><td class="num">331.81</td><td class="num">0.10%</td><td class="num">1,862.17</td><td class="num">$757.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MINIMAX</td><td class="num">14.51</td><td class="num">14.496</td><td class="num">0.10%</td><td class="num">115,279.28</td><td class="num">$3.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:IBM</td><td class="num">245.96</td><td class="num">246.19</td><td class="num">0.09%</td><td class="num">18,326.32</td><td class="num">$368.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ORCL</td><td class="num">109.15</td><td class="num">109.25</td><td class="num">0.09%</td><td class="num">69,565.33</td><td class="num">$2.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ZM</td><td class="num">90.206</td><td class="num">90.281</td><td class="num">0.08%</td><td class="num">3,524.44</td><td class="num">$23.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NVDA</td><td class="num">156.42</td><td class="num">156.55</td><td class="num">0.08%</td><td class="num">2,428,676.88</td><td class="num">$189.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GME</td><td class="num">27.038</td><td class="num">27.06</td><td class="num">0.08%</td><td class="num">143,502.02</td><td class="num">$254.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SHAZ</td><td class="num">18.127</td><td class="num">18.141</td><td class="num">0.08%</td><td class="num">51,302.42</td><td class="num">$209.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:STRC</td><td class="num">98.425</td><td class="num">98.351</td><td class="num">0.08%</td><td class="num">137,922.6</td><td class="num">$835.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NOW</td><td class="num">94.95</td><td class="num">94.884</td><td class="num">0.07%</td><td class="num">19,942.76</td><td class="num">$106.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:DELL</td><td class="num">314.51</td><td class="num">314.72</td><td class="num">0.07%</td><td class="num">16,730.5</td><td class="num">$3.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CRWV</td><td class="num">45.69</td><td class="num">45.72</td><td class="num">0.07%</td><td class="num">136,251.4</td><td class="num">$4.2M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SNDK</td><td class="num">81.205</td><td class="num">81.258</td><td class="num">0.07%</td><td class="num">514,846.56</td><td class="num">$38.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SMH</td><td class="num">445.18</td><td class="num">445.47</td><td class="num">0.07%</td><td class="num">5,764.87</td><td class="num">$390.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NOK</td><td class="num">7.59</td><td class="num">7.5948</td><td class="num">0.06%</td><td class="num">120,770.14</td><td class="num">$67.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MSTR</td><td class="num">85.63</td><td class="num">85.683</td><td class="num">0.06%</td><td class="num">255,627.28</td><td class="num">$13.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SILVER</td><td class="num">44.315</td><td class="num">44.342</td><td class="num">0.06%</td><td class="num">3,320,880.68</td><td class="num">$132.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GOLD</td><td class="num">3,650.7</td><td class="num">3,652.9</td><td class="num">0.06%</td><td class="num">77,212.08</td><td class="num">$39.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ASML</td><td class="num">1,359</td><td class="num">1,358.2</td><td class="num">0.06%</td><td class="num">1,544.42</td><td class="num">$2.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:LITE</td><td class="num">519.75</td><td class="num">520.05</td><td class="num">0.06%</td><td class="num">11,790.62</td><td class="num">$1.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:COIN</td><td class="num">108.44</td><td class="num">108.5</td><td class="num">0.06%</td><td class="num">80,046.8</td><td class="num">$2.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:KORU</td><td class="num">5.945</td><td class="num">5.9482</td><td class="num">0.05%</td><td class="num">2,251,072.6</td><td class="num">$16.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:TSLA</td><td class="num">390.21</td><td class="num">390.42</td><td class="num">0.05%</td><td class="num">139,435.43</td><td class="num">$22.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:EWY</td><td class="num">134.83</td><td class="num">134.9</td><td class="num">0.05%</td><td class="num">93,640.93</td><td class="num">$26.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CRWD</td><td class="num">216.26</td><td class="num">216.15</td><td class="num">0.05%</td><td class="num">3,195.42</td><td class="num">$459.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AAOI</td><td class="num">40.55</td><td class="num">40.57</td><td class="num">0.05%</td><td class="num">31,308.58</td><td class="num">$707.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BE</td><td class="num">165.32</td><td class="num">165.4</td><td class="num">0.05%</td><td class="num">18,691.44</td><td class="num">$1.5M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:KSTR</td><td class="num">18.735</td><td class="num">18.744</td><td class="num">0.05%</td><td class="num">48,676.86</td><td class="num">$163.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AMZN</td><td class="num">251.3</td><td class="num">251.42</td><td class="num">0.05%</td><td class="num">94,761.08</td><td class="num">$5.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NATGAS</td><td class="num">3.605</td><td class="num">3.6033</td><td class="num">0.05%</td><td class="num">4,342,406</td><td class="num">$3.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MU</td><td class="num">644.28</td><td class="num">644.58</td><td class="num">0.05%</td><td class="num">249,160.48</td><td class="num">$73.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GOOGL</td><td class="num">280.9</td><td class="num">281.03</td><td class="num">0.05%</td><td class="num">570,161.98</td><td class="num">$32.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:COST</td><td class="num">1,086</td><td class="num">1,086.5</td><td class="num">0.05%</td><td class="num">5,578.79</td><td class="num">$615.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:TLT</td><td class="num">81.585</td><td class="num">81.55</td><td class="num">0.04%</td><td class="num">103,681.8</td><td class="num">$257.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AAPL</td><td class="num">358.77</td><td class="num">358.62</td><td class="num">0.04%</td><td class="num">346,331.89</td><td class="num">$13.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:RKLB</td><td class="num">50.34</td><td class="num">50.361</td><td class="num">0.04%</td><td class="num">51,239.78</td><td class="num">$1.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:INTC</td><td class="num">57.58</td><td class="num">57.604</td><td class="num">0.04%</td><td class="num">1,107,480.18</td><td class="num">$8.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GBP</td><td class="num">1.3126</td><td class="num">1.3131</td><td class="num">0.04%</td><td class="num">479,628</td><td class="num">$103.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CBRS</td><td class="num">95.23</td><td class="num">95.195</td><td class="num">0.04%</td><td class="num">201,666.74</td><td class="num">$2.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:NFLX</td><td class="num">60</td><td class="num">60.021</td><td class="num">0.03%</td><td class="num">78,041.78</td><td class="num">$759.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:HOOD</td><td class="num">69.465</td><td class="num">69.441</td><td class="num">0.03%</td><td class="num">109,376.25</td><td class="num">$1.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:EBAY</td><td class="num">116.27</td><td class="num">116.31</td><td class="num">0.03%</td><td class="num">3,692.4</td><td class="num">$19.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ANT</td><td class="num">88.55</td><td class="num">88.579</td><td class="num">0.03%</td><td class="num">2,680,752.92</td><td class="num">$99.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AMD</td><td class="num">431.55</td><td class="num">431.41</td><td class="num">0.03%</td><td class="num">62,962.65</td><td class="num">$30.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SOXL</td><td class="num">37.53</td><td class="num">37.542</td><td class="num">0.03%</td><td class="num">2,299,566.74</td><td class="num">$109.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:JPY</td><td class="num">159.34</td><td class="num">159.29</td><td class="num">0.03%</td><td class="num">184,865.7</td><td class="num">$2.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BRENTOIL</td><td class="num">92.545</td><td class="num">92.517</td><td class="num">0.03%</td><td class="num">1,380,352.94</td><td class="num">$42.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SPCX</td><td class="num">133.65</td><td class="num">133.69</td><td class="num">0.03%</td><td class="num">914,937.94</td><td class="num">$33.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:PLTR</td><td class="num">169.42</td><td class="num">169.37</td><td class="num">0.03%</td><td class="num">35,527.83</td><td class="num">$2.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:IREN</td><td class="num">14.098</td><td class="num">14.102</td><td class="num">0.03%</td><td class="num">1,028,109.4</td><td class="num">$2.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:TSM</td><td class="num">356.84</td><td class="num">356.94</td><td class="num">0.03%</td><td class="num">31,936.15</td><td class="num">$3.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:EUR</td><td class="num">1.098</td><td class="num">1.0983</td><td class="num">0.03%</td><td class="num">33,585,868.6</td><td class="num">$1.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:EWZ</td><td class="num">32.96</td><td class="num">32.969</td><td class="num">0.03%</td><td class="num">215,514.38</td><td class="num">$3.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BABA</td><td class="num">89.693</td><td class="num">89.716</td><td class="num">0.03%</td><td class="num">103,958.31</td><td class="num">$3.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:PANW</td><td class="num">363.36</td><td class="num">363.27</td><td class="num">0.02%</td><td class="num">749.98</td><td class="num">$66.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:RDDT</td><td class="num">95.41</td><td class="num">95.391</td><td class="num">0.02%</td><td class="num">8,220.94</td><td class="num">$221.1K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:XYZ100</td><td class="num">26,782</td><td class="num">26,787</td><td class="num">0.02%</td><td class="num">13,924.61</td><td class="num">$338.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:LRCX</td><td class="num">198.76</td><td class="num">198.73</td><td class="num">0.02%</td><td class="num">1,564.46</td><td class="num">$356.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CL</td><td class="num">86.13</td><td class="num">86.117</td><td class="num">0.02%</td><td class="num">1,423,644.52</td><td class="num">$60.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:PLATINUM</td><td class="num">1,356</td><td class="num">1,356.2</td><td class="num">0.01%</td><td class="num">3,444.43</td><td class="num">$2.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:EWJ</td><td class="num">88.63</td><td class="num">88.643</td><td class="num">0.01%</td><td class="num">7,057.37</td><td class="num">$217.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MRVL</td><td class="num">140.95</td><td class="num">140.97</td><td class="num">0.01%</td><td class="num">52,011.22</td><td class="num">$4.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BMNR</td><td class="num">14.21</td><td class="num">14.212</td><td class="num">0.01%</td><td class="num">167,911.84</td><td class="num">$119.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MRNA</td><td class="num">228.94</td><td class="num">228.97</td><td class="num">0.01%</td><td class="num">21,762.9</td><td class="num">$2.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:COPPER</td><td class="num">5.716</td><td class="num">5.7166</td><td class="num">0.01%</td><td class="num">1,138,187.5</td><td class="num">$6.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:RIVN</td><td class="num">12.015</td><td class="num">12.014</td><td class="num">0.01%</td><td class="num">68,994.76</td><td class="num">$31.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:DRAM</td><td class="num">37.27</td><td class="num">37.273</td><td class="num">0.01%</td><td class="num">1,633,572.6</td><td class="num">$39.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:ARM</td><td class="num">174.65</td><td class="num">174.66</td><td class="num">0.01%</td><td class="num">13,749.68</td><td class="num">$1.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:QCOM</td><td class="num">175.47</td><td class="num">175.46</td><td class="num">0.01%</td><td class="num">13,274.58</td><td class="num">$704.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:XLE</td><td class="num">61.418</td><td class="num">61.421</td><td class="num">0.00%</td><td class="num">16,473.9</td><td class="num">$118.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:MSFT</td><td class="num">499.9</td><td class="num">499.88</td><td class="num">0.00%</td><td class="num">33,241.21</td><td class="num">$5.6M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:SP500</td><td class="num">7,310.3</td><td class="num">7,310.1</td><td class="num">0.00%</td><td class="num">59,455.13</td><td class="num">$209.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:CRCL</td><td class="num">50.583</td><td class="num">50.582</td><td class="num">0.00%</td><td class="num">944,288.17</td><td class="num">$6.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:META</td><td class="num">626.85</td><td class="num">626.85</td><td class="num">0.00%</td><td class="num">78,625.63</td><td class="num">$11.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:URANIUM</td><td class="num">85</td><td class="num">85</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:ALUMINIUM</td><td class="num">3,080</td><td class="num">3,080</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:DXY</td><td class="num">97.15</td><td class="num">97.15</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:SOFTBANK</td><td class="num">18.743</td><td class="num">18.743</td><td class="num">0.00%</td><td class="num">55,108.05</td><td class="num">$599.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:JP225</td><td class="num">58,686</td><td class="num">58,686</td><td class="num">0.00%</td><td class="num">21.06</td><td class="num">$1.8M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:KIOXIA</td><td class="num">52.906</td><td class="num">52.906</td><td class="num">0.00%</td><td class="num">77,656.25</td><td class="num">$10.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:VIX</td><td class="num">20</td><td class="num">20</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:HIMS</td><td class="num">15.333</td><td class="num">15.333</td><td class="num">0.00%</td><td class="num">90,403.16</td><td class="num">$222.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:CORN</td><td class="num">4.61</td><td class="num">4.61</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:WHEAT</td><td class="num">6.3</td><td class="num">6.3</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:TTF</td><td class="num">57</td><td class="num">57</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:BX</td><td class="num">121.01</td><td class="num">121.01</td><td class="num">0.00%</td><td class="num">2,767.92</td><td class="num">$21.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:PURRDAT</td><td class="num">8.05</td><td class="num">8.05</td><td class="num">0.00%</td><td class="num">1,247,970</td><td class="num">$938.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:VOL</td><td class="num">15</td><td class="num">15</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:KRW</td><td class="num">1,338.2</td><td class="num">1,338.2</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:H100</td><td class="num">2.6</td><td class="num">2.6</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:EWT</td><td class="num">87.495</td><td class="num">87.495</td><td class="num">0.00%</td><td class="num">5,195.58</td><td class="num">$210.1K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:IBOV</td><td class="num">175,000</td><td class="num">175,000</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:BB</td><td class="num">8.8504</td><td class="num">8.8504</td><td class="num">0.00%</td><td class="num">518,507.8</td><td class="num">$374.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:AVGO</td><td class="num">315.39</td><td class="num">315.39</td><td class="num">0.00%</td><td class="num">15,340.08</td><td class="num">$1.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:WDC</td><td class="num">291.35</td><td class="num">291.35</td><td class="num">0.00%</td><td class="num">4,163.71</td><td class="num">$1.5M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:BOT</td><td class="num">19.764</td><td class="num">19.764</td><td class="num">0.00%</td><td class="num">91,905.58</td><td class="num">$339.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:IBIDEN</td><td class="num">32.136</td><td class="num">32.136</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:GEV</td><td class="num">744</td><td class="num">744</td><td class="num">0.00%</td><td class="num">297.82</td><td class="num">$119.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:YMTC</td><td class="num">10</td><td class="num">10</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:OURA</td><td class="num">48.297</td><td class="num">48.297</td><td class="num">0.00%</td><td class="num">10,921.6</td><td class="num">$1.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>xyz:GLW</td><td class="num">106.22</td><td class="num">106.22</td><td class="num">0.00%</td><td class="num">4,103.14</td><td class="num">$19.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:ACN</td><td class="num">242.13</td><td class="num">242.13</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:INNOLIGHT</td><td class="num">133.87</td><td class="num">133.87</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:AMEC</td><td class="num">47.51</td><td class="num">47.51</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:CATL</td><td class="num">51.88</td><td class="num">51.88</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:SNAP</td><td class="num">5.055</td><td class="num">5.055</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:NU</td><td class="num">13.065</td><td class="num">13.065</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:ICE</td><td class="num">177.89</td><td class="num">177.89</td><td class="num">0.00%</td><td class="num">121.54</td><td class="num">$2.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:MELI</td><td class="num">1,624.5</td><td class="num">1,624.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:STX</td><td class="num">593.76</td><td class="num">593.76</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:TENCENT</td><td class="num">49.74</td><td class="num">49.74</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:SNOW</td><td class="num">280.54</td><td class="num">280.54</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>xyz:SMCI</td><td class="num">24.37</td><td class="num">24.37</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>xyz:SOXS</td><td class="num">51.583</td><td class="num">51.583</td><td class="num">0.00%</td><td class="num">156,356.6</td><td class="num">$7.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>xyz:RBLX</td><td class="num">52.4</td><td class="num">52.4</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>io <span class="meta">deployer 0x320c89… · updater 0x94757f… · live 19/26 · 24h $28.4M · max dev 0.61%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="ok"><td>io:GPRO</td><td class="num">0.56974</td><td class="num">0.56631</td><td class="num">0.61%</td><td class="num">115,880.4</td><td class="num">$8.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:PRL</td><td class="num">1.8384</td><td class="num">1.8469</td><td class="num">0.46%</td><td class="num">5,056,111.6</td><td class="num">$2.9M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:IONQ</td><td class="num">24.905</td><td class="num">24.993</td><td class="num">0.35%</td><td class="num">28,793.36</td><td class="num">$389.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:XIAOMI</td><td class="num">3.5272</td><td class="num">3.536</td><td class="num">0.25%</td><td class="num">14,963.36</td><td class="num">$28.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:NVDA</td><td class="num">156.42</td><td class="num">156.64</td><td class="num">0.14%</td><td class="num">60,249.61</td><td class="num">$8.4M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:MU</td><td class="num">644.32</td><td class="num">645.02</td><td class="num">0.11%</td><td class="num">214.66</td><td class="num">$759.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:INTC</td><td class="num">57.58</td><td class="num">57.639</td><td class="num">0.10%</td><td class="num">2,408.22</td><td class="num">$47.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:AAPL</td><td class="num">358.84</td><td class="num">358.48</td><td class="num">0.10%</td><td class="num">2,750.89</td><td class="num">$625.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:GOOGL</td><td class="num">280.86</td><td class="num">281.1</td><td class="num">0.09%</td><td class="num">385.55</td><td class="num">$131.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:TCNT</td><td class="num">44.898</td><td class="num">44.934</td><td class="num">0.08%</td><td class="num">2,394.17</td><td class="num">$19.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:CRCL</td><td class="num">50.58</td><td class="num">50.612</td><td class="num">0.06%</td><td class="num">3,576.76</td><td class="num">$172.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:META</td><td class="num">626.8</td><td class="num">627.07</td><td class="num">0.04%</td><td class="num">195.89</td><td class="num">$121.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:OAI</td><td class="num">1,250.1</td><td class="num">1,250.3</td><td class="num">0.02%</td><td class="num">5,432.92</td><td class="num">$534.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:SKHX</td><td class="num">826.6</td><td class="num">826.55</td><td class="num">0.01%</td><td class="num">1,819.31</td><td class="num">$6.3M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:ANTH</td><td class="num">1,559.2</td><td class="num">1,559.2</td><td class="num">0.00%</td><td class="num">42,742.63</td><td class="num">$3.7M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:SNDK</td><td class="num">81.2</td><td class="num">81.2</td><td class="num">0.00%</td><td class="num">47,097.09</td><td class="num">$2.2M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:NBIS</td><td class="num">93.33</td><td class="num">93.33</td><td class="num">0.00%</td><td class="num">59,731.5</td><td class="num">$1.1M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>io:EWY</td><td class="num">134.83</td><td class="num">134.83</td><td class="num">0.00%</td><td class="num">2,526.42</td><td class="num">$48.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>io:SBE</td><td class="num">50</td><td class="num">50</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>io:DRAM</td><td class="num">37.275</td><td class="num">37.275</td><td class="num">0.00%</td><td class="num">17,145.58</td><td class="num">$1.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>io:H100</td><td class="num">2.78</td><td class="num">2.78</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>io:MOONSHOT</td><td class="num">67.24</td><td class="num">67.24</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>io:NVDL</td><td class="num">18.57</td><td class="num">18.57</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>io:AMD</td><td class="num">584.33</td><td class="num">584.33</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>io:SOXS</td><td class="num">75.483</td><td class="num">75.483</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>io:SOXL</td><td class="num">50.68</td><td class="num">50.68</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>para <span class="meta">deployer 0x888888… · updater 0x888888… · live 33/40 · 24h $5.2M · max dev 3.23%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="warn"><td>para:UNITREE</td><td class="num">119.1764</td><td class="num">115.4505</td><td class="num">3.23%</td><td class="num">8,241.72</td><td class="num">$1.0M</td><td><span class="badge warn">WARN</span></td></tr>
-<tr class="ok"><td>para:TREAD</td><td class="num">1.3761</td><td class="num">1.38848</td><td class="num">0.89%</td><td class="num">152,424</td><td class="num">$230.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:NET</td><td class="num">296.13</td><td class="num">298.16</td><td class="num">0.68%</td><td class="num">227.04</td><td class="num">$37.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:SMH</td><td class="num">441.998</td><td class="num">444.914</td><td class="num">0.66%</td><td class="num">205.04</td><td class="num">$54.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:RDDT</td><td class="num">94.636</td><td class="num">95.25</td><td class="num">0.64%</td><td class="num">1,101.28</td><td class="num">$7.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:MELI</td><td class="num">1,510</td><td class="num">1,519.4</td><td class="num">0.62%</td><td class="num">407.94</td><td class="num">$223.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:CIEN</td><td class="num">257.63</td><td class="num">258.8788</td><td class="num">0.48%</td><td class="num">253.66</td><td class="num">$9.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:DRV</td><td class="num">0.37743</td><td class="num">0.378435</td><td class="num">0.27%</td><td class="num">3,583,910</td><td class="num">$1.0M</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:OTHERS</td><td class="num">161.2169</td><td class="num">160.8179</td><td class="num">0.25%</td><td class="num">581.68</td><td class="num">$28.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:STX</td><td class="num">505.51</td><td class="num">506.64</td><td class="num">0.22%</td><td class="num">748.01</td><td class="num">$93.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:SOFI</td><td class="num">13.5725</td><td class="num">13.6</td><td class="num">0.20%</td><td class="num">11,117.4</td><td class="num">$89.1K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:CIFR</td><td class="num">5.9638</td><td class="num">5.9739</td><td class="num">0.17%</td><td class="num">11,021.94</td><td class="num">$8.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:ANSEM</td><td class="num">0.019014</td><td class="num">0.019038</td><td class="num">0.13%</td><td class="num">8,157,546</td><td class="num">$148.7K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:TTWO</td><td class="num">227.195</td><td class="num">227.47</td><td class="num">0.12%</td><td class="num">7,153.04</td><td class="num">$160.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:IGV</td><td class="num">97.5</td><td class="num">97.6158</td><td class="num">0.12%</td><td class="num">1,578.02</td><td class="num">$15.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:10Y</td><td class="num">4.939</td><td class="num">4.9441</td><td class="num">0.10%</td><td class="num">296,686</td><td class="num">$19.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:CRWD</td><td class="num">215.985</td><td class="num">216.2017</td><td class="num">0.10%</td><td class="num">719.34</td><td class="num">$92.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:30Y</td><td class="num">5.297</td><td class="num">5.3021</td><td class="num">0.10%</td><td class="num">24,002.4</td><td class="num">$12.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:2Y</td><td class="num">4.719</td><td class="num">4.7228</td><td class="num">0.08%</td><td class="num">282,848.4</td><td class="num">$3.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:AVGO</td><td class="num">315.32</td><td class="num">315.16</td><td class="num">0.05%</td><td class="num">695.52</td><td class="num">$17.1K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:COHR</td><td class="num">213.85</td><td class="num">213.9389</td><td class="num">0.04%</td><td class="num">4,421.08</td><td class="num">$289.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:IREN</td><td class="num">14.09</td><td class="num">14.0953</td><td class="num">0.04%</td><td class="num">21,861.4</td><td class="num">$233.8K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:VST</td><td class="num">125.63</td><td class="num">125.6</td><td class="num">0.02%</td><td class="num">2,217.3</td><td class="num">$54.2K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:ANTH</td><td class="num">88.51</td><td class="num">88.53</td><td class="num">0.02%</td><td class="num">2,267.2</td><td class="num">$20.4K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:AAOI</td><td class="num">40.52</td><td class="num">40.5257</td><td class="num">0.01%</td><td class="num">3,158.06</td><td class="num">$285.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:GLW</td><td class="num">106.1479</td><td class="num">106.16</td><td class="num">0.01%</td><td class="num">5,793.72</td><td class="num">$66.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:CRDO</td><td class="num">115.16</td><td class="num">115.1715</td><td class="num">0.01%</td><td class="num">3,223.84</td><td class="num">$95.0K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:TOTAL2</td><td class="num">853.92</td><td class="num">853.86</td><td class="num">0.01%</td><td class="num">636.3</td><td class="num">$1.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:BTCD</td><td class="num">59.22382</td><td class="num">59.22382</td><td class="num">0.00%</td><td class="num">10,000.2</td><td class="num">$69.5K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>para:H100</td><td class="num">2.56</td><td class="num">2.56</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>para:LRCX</td><td class="num">198.84</td><td class="num">198.84</td><td class="num">0.00%</td><td class="num">1,241.78</td><td class="num">$219.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="ok"><td>para:TER</td><td class="num">228</td><td class="num">228</td><td class="num">0.00%</td><td class="num">999.54</td><td class="num">$88.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>para:NAVER</td><td class="num">146</td><td class="num">146</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>para:TENCENT</td><td class="num">61</td><td class="num">61</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>para:CAMBRICON</td><td class="num">178</td><td class="num">178</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>para:SMCI</td><td class="num">24.5</td><td class="num">24.5</td><td class="num">0.00%</td><td class="num">13,291.76</td><td class="num">$249.9K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>para:INNOLIGHT</td><td class="num">157</td><td class="num">157</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>para:GDX</td><td class="num">77.44</td><td class="num">77.44</td><td class="num">0.00%</td><td class="num">1,442.98</td><td class="num">$140.3K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>para:PAPER</td><td class="num">0.0259</td><td class="num">0.0259</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>para:HYPE2</td><td class="num">85.33</td><td class="num">85.33</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>mkts <span class="meta">deployer 0x71f001… · updater <em>self</em> · live 1/24 · 24h $57.6K · max dev 4.22%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>mkts:USTECH</td><td class="num">686.26</td><td class="num">716.52</td><td class="num">4.22%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:SMALL2000</td><td class="num">284.73</td><td class="num">281.75</td><td class="num">1.06%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:USBOND</td><td class="num">82.04</td><td class="num">81.33</td><td class="num">0.87%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:US500</td><td class="num">766.42</td><td class="num">770.37</td><td class="num">0.51%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="ok"><td>mkts:BVIV</td><td class="num">54.818</td><td class="num">54.832</td><td class="num">0.03%</td><td class="num">2,661.94</td><td class="num">$57.6K</td><td><span class="badge ok">OK</span></td></tr>
-<tr class="dead"><td>mkts:BABA</td><td class="num">116.54</td><td class="num">116.54</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:EUR</td><td class="num">1.1612</td><td class="num">1.1612</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:USENERGY</td><td class="num">58.247</td><td class="num">58.247</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:USOIL</td><td class="num">114.1</td><td class="num">114.1</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:TSLA</td><td class="num">386.5</td><td class="num">386.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:SILVER</td><td class="num">70.451</td><td class="num">70.451</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:GOLD</td><td class="num">4,348.8</td><td class="num">4,348.8</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:AAPL</td><td class="num">292.11</td><td class="num">292.11</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:GOOGL</td><td class="num">358.55</td><td class="num">358.55</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:SEMI</td><td class="num">543.11</td><td class="num">543.11</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:GLDMINE</td><td class="num">73.889</td><td class="num">73.889</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:NVDA</td><td class="num">211.07</td><td class="num">211.07</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:TENCENT</td><td class="num">465</td><td class="num">465</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:JPN225</td><td class="num">56,942</td><td class="num">56,942</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:MU</td><td class="num">1,080.7</td><td class="num">1,080.7</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:PLTR</td><td class="num">130.51</td><td class="num">130.51</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:XIAOMI</td><td class="num">26.311</td><td class="num">26.311</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:BMNR</td><td class="num">15.749</td><td class="num">15.749</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>mkts:RTX</td><td class="num">181.52</td><td class="num">181.52</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>flx <span class="meta">deployer 0x2fab55… · updater 0x94757f… · live 0/16 · 24h — · max dev 29.26%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>flx:BTC</td><td class="num">64,705</td><td class="num">91,470.2</td><td class="num">29.26%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:XMR</td><td class="num">306.61</td><td class="num">317.99</td><td class="num">3.58%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:USA100</td><td class="num">30,368</td><td class="num">29,530</td><td class="num">2.84%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:SILVER</td><td class="num">64.811</td><td class="num">65.65</td><td class="num">1.28%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:TSLA</td><td class="num">400.53</td><td class="num">395.5</td><td class="num">1.27%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:USA500</td><td class="num">7,514.4</td><td class="num">7,435</td><td class="num">1.07%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:COIN</td><td class="num">163.28</td><td class="num">164.78</td><td class="num">0.91%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:NVDA</td><td class="num">210.49</td><td class="num">208.99</td><td class="num">0.72%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:PLATINUM</td><td class="num">1,669.2</td><td class="num">1,658.2</td><td class="num">0.66%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:CRCL</td><td class="num">80.282</td><td class="num">80.037</td><td class="num">0.31%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:OIL</td><td class="num">76.56</td><td class="num">76.4</td><td class="num">0.21%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:GAS</td><td class="num">3.2479</td><td class="num">3.2429</td><td class="num">0.15%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:COPPER</td><td class="num">6.3374</td><td class="num">6.33</td><td class="num">0.12%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:GOLD</td><td class="num">4,156.1</td><td class="num">4,153.2</td><td class="num">0.07%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:USDE</td><td class="num">0.99892</td><td class="num">0.9984</td><td class="num">0.05%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>flx:PALLADIUM</td><td class="num">1,264</td><td class="num">1,264.1</td><td class="num">0.01%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>vntl <span class="meta">deployer 0x888888… · updater <em>self</em> · live 0/15 · 24h — · max dev 14.58%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>vntl:SPACEX</td><td class="num">2,417</td><td class="num">2,109.5</td><td class="num">14.58%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:MAG7</td><td class="num">65.52</td><td class="num">63.661</td><td class="num">2.92%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:ENERGY</td><td class="num">53.76</td><td class="num">54.599</td><td class="num">1.54%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:NUCLEAR</td><td class="num">126.76</td><td class="num">128.05</td><td class="num">1.01%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:DEFENSE</td><td class="num">62.32</td><td class="num">62.011</td><td class="num">0.50%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:OPENAI</td><td class="num">1,341.8</td><td class="num">1,336.2</td><td class="num">0.42%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:WHEAT</td><td class="num">613.38</td><td class="num">611.42</td><td class="num">0.32%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:SEMIS</td><td class="num">659.88</td><td class="num">661.1</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:BIOTECH</td><td class="num">140.63</td><td class="num">140.88</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:ROBOT</td><td class="num">38.37</td><td class="num">38.317</td><td class="num">0.14%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:SOY</td><td class="num">1,141.9</td><td class="num">1,142.3</td><td class="num">0.04%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:ANTHROPIC</td><td class="num">1,618.9</td><td class="num">1,619.3</td><td class="num">0.02%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:INFOTECH</td><td class="num">191.26</td><td class="num">191.3</td><td class="num">0.02%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:GOLDJM</td><td class="num">124</td><td class="num">124</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>vntl:SILVERJM</td><td class="num">31.5</td><td class="num">31.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>hyna <span class="meta">deployer 0x53e655… · updater 0xaab935… · live 0/25 · 24h — · max dev 48.37%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>hyna:LIT</td><td class="num">1.74</td><td class="num">3.37</td><td class="num">48.37%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:SILVER</td><td class="num">77.877</td><td class="num">85.97</td><td class="num">9.41%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:FARTCOIN</td><td class="num">0.16155</td><td class="num">0.17364</td><td class="num">6.96%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:XPL</td><td class="num">0.083485</td><td class="num">0.088667</td><td class="num">5.84%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:ZEC</td><td class="num">813.55</td><td class="num">856.99</td><td class="num">5.07%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:BASED</td><td class="num">0.06708</td><td class="num">0.069301</td><td class="num">3.20%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:IP</td><td class="num">0.3027</td><td class="num">0.2947</td><td class="num">2.71%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:1000PEPE</td><td class="num">0.003404</td><td class="num">0.003494</td><td class="num">2.58%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:ENA</td><td class="num">0.15115</td><td class="num">0.1549</td><td class="num">2.42%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:PUMP</td><td class="num">0.004134</td><td class="num">0.004217</td><td class="num">1.97%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:LINK</td><td class="num">11.10304</td><td class="num">11.323</td><td class="num">1.94%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:XRP</td><td class="num">1.334695</td><td class="num">1.3608</td><td class="num">1.92%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:LTC</td><td class="num">49.195</td><td class="num">48.665</td><td class="num">1.09%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:DOGE</td><td class="num">0.08153</td><td class="num">0.082257</td><td class="num">0.88%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:SOL</td><td class="num">99.11</td><td class="num">98.311</td><td class="num">0.81%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:BCH</td><td class="num">234.8</td><td class="num">236.67</td><td class="num">0.79%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:HYPE</td><td class="num">81.125</td><td class="num">81.5</td><td class="num">0.46%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:ADA</td><td class="num">0.19615</td><td class="num">0.1969</td><td class="num">0.38%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:BTC</td><td class="num">77,142.1</td><td class="num">76,888</td><td class="num">0.33%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:XMR</td><td class="num">332.37</td><td class="num">331.4</td><td class="num">0.29%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:ETH</td><td class="num">2,396.5</td><td class="num">2,400.9</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:SUI</td><td class="num">0.72105</td><td class="num">0.72033</td><td class="num">0.10%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:BNB</td><td class="num">686.505</td><td class="num">685.89</td><td class="num">0.09%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:LIGHTER</td><td class="num">2.5752</td><td class="num">2.5774</td><td class="num">0.09%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>hyna:GOLD</td><td class="num">4,993.2</td><td class="num">4,993.2</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>km <span class="meta">deployer 0x71f001… · updater <em>self</em> · live 0/23 · 24h — · max dev 20.30%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>km:GLDMINE</td><td class="num">88.887</td><td class="num">73.889</td><td class="num">20.30%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:SEMI</td><td class="num">610.42</td><td class="num">543.11</td><td class="num">12.39%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:BABA</td><td class="num">109.67</td><td class="num">116.54</td><td class="num">5.89%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:USENERGY</td><td class="num">55.159</td><td class="num">58.247</td><td class="num">5.30%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:RTX</td><td class="num">189.7</td><td class="num">181.52</td><td class="num">4.51%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:MU</td><td class="num">1,041.8</td><td class="num">1,080.7</td><td class="num">3.60%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:BMNR</td><td class="num">16.279</td><td class="num">15.749</td><td class="num">3.37%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:TSLA</td><td class="num">399.03</td><td class="num">386.5</td><td class="num">3.24%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:PLTR</td><td class="num">133.84</td><td class="num">130.51</td><td class="num">2.55%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:USOIL</td><td class="num">116.9</td><td class="num">114.1</td><td class="num">2.45%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:AAPL</td><td class="num">298.4</td><td class="num">292.11</td><td class="num">2.15%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:NVDA</td><td class="num">207.22</td><td class="num">211.07</td><td class="num">1.82%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:GOOGL</td><td class="num">363.96</td><td class="num">358.55</td><td class="num">1.51%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:TENCENT</td><td class="num">462.96</td><td class="num">465</td><td class="num">0.44%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:SMALL2000</td><td class="num">293.98</td><td class="num">292.75</td><td class="num">0.42%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:USBOND</td><td class="num">86.316</td><td class="num">86.038</td><td class="num">0.32%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:USTECH</td><td class="num">732.18</td><td class="num">733.79</td><td class="num">0.22%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:XIAOMI</td><td class="num">26.367</td><td class="num">26.311</td><td class="num">0.21%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:EUR</td><td class="num">1.159</td><td class="num">1.1612</td><td class="num">0.19%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:US500</td><td class="num">749.64</td><td class="num">750.97</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:SILVER</td><td class="num">70.42</td><td class="num">70.451</td><td class="num">0.04%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:GOLD</td><td class="num">4,347.7</td><td class="num">4,348.8</td><td class="num">0.03%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>km:JPN225</td><td class="num">56,942</td><td class="num">56,942</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>abcd <span class="meta">deployer 0x372c7f… · updater <em>self</em> · live 0/1 · 24h — · max dev 0.00%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>abcd:USA500</td><td class="num">6,980</td><td class="num">6,980</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
-<section class="dex">
-  <h2>cash <span class="meta">deployer 0xffa819… · updater <em>self</em> · live 0/17 · 24h — · max dev 19.88%</span></h2>
-  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th><th></th></tr></thead>
-  <tbody><tr class="dead"><td>cash:INTC</td><td class="num">112.988</td><td class="num">141.02</td><td class="num">19.88%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:KWEB</td><td class="num">26.47805</td><td class="num">24.422</td><td class="num">8.42%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:CAR</td><td class="num">162.6652</td><td class="num">150.83</td><td class="num">7.85%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:EWY</td><td class="num">185.2315</td><td class="num">199.56</td><td class="num">7.18%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:WTI</td><td class="num">71.6675</td><td class="num">69.373</td><td class="num">3.31%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:NVDA</td><td class="num">203.655</td><td class="num">197.49</td><td class="num">3.12%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:MSFT</td><td class="num">381.118</td><td class="num">371.48</td><td class="num">2.59%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:HOOD</td><td class="num">116.026</td><td class="num">113.27</td><td class="num">2.43%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:GOLD</td><td class="num">4,128.2</td><td class="num">4,035</td><td class="num">2.31%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:TSLA</td><td class="num">407.557</td><td class="num">400.21</td><td class="num">1.84%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:USA500</td><td class="num">7,551.3</td><td class="num">7,457.8</td><td class="num">1.25%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:AMZN</td><td class="num">244.563</td><td class="num">241.75</td><td class="num">1.16%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:META</td><td class="num">616.274</td><td class="num">622.67</td><td class="num">1.03%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:GOOGL</td><td class="num">357.246</td><td class="num">359.53</td><td class="num">0.64%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:SILVER</td><td class="num">60.0967</td><td class="num">59.831</td><td class="num">0.44%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:BTC</td><td class="num">70,000</td><td class="num">70,000</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr>
-<tr class="dead"><td>cash:ETH</td><td class="num">2,184</td><td class="num">2,184</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td><td><span class="badge dead">NO OI</span></td></tr></tbody></table></section>
+
+<section class="zone">
+<h2>Live markets · OI-weighted deviation anomalies <span class="meta">red first, then watchlist · sorted by notional × deviation</span></h2>
+<table><thead><tr><th>market</th><th>oracle↔mark</th><th>est. OI notional</th><th>24h vol</th><th>observation</th></tr></thead><tbody><tr class="crit"><td>xyz:SKHY</td><td class="num">45.5</td><td class="num">$173.6M</td><td class="num">$88.0M</td><td>OI-weighted deviation anomaly: 45.5bps on $174M notional — watch closely</td></tr>
+<tr class="warn"><td>xyz:UNITREE</td><td class="num">261.4</td><td class="num">$31.7M</td><td class="num">$20.6M</td><td>on watchlist: deviation 261.4bps</td></tr>
+<tr class="warn"><td>xyz:SKHX</td><td class="num">11.8</td><td class="num">$294.0M</td><td class="num">$407.3M</td><td>on watchlist: large notional $294M with 11.8bps</td></tr>
+<tr class="warn"><td>xyz:CXMT</td><td class="num">93.6</td><td class="num">$15.0M</td><td class="num">$22.1M</td><td>on watchlist: deviation 93.6bps</td></tr>
+<tr class="warn"><td>xyz:PURRDAT</td><td class="num">69.1</td><td class="num">$10.3M</td><td class="num">$1.1M</td><td>on watchlist: deviation 69.1bps</td></tr>
+<tr class="warn"><td>xyz:SMSN</td><td class="num">15.0</td><td class="num">$29.8M</td><td class="num">$25.5M</td><td>on watchlist: deviation 15.0bps</td></tr>
+<tr class="warn"><td>io:PRL</td><td class="num">33.2</td><td class="num">$9.3M</td><td class="num">$2.8M</td><td>on watchlist: deviation 33.2bps</td></tr>
+<tr class="warn"><td>para:UNITREE</td><td class="num">244.5</td><td class="num">$1.1M</td><td class="num">$1.3M</td><td>on watchlist: deviation 244.5bps</td></tr>
+<tr class="warn"><td>xyz:BB</td><td class="num">33.8</td><td class="num">$4.5M</td><td class="num">$608.6K</td><td>on watchlist: deviation 33.8bps</td></tr>
+<tr class="warn"><td>xyz:ZHIPU</td><td class="num">21.3</td><td class="num">$6.5M</td><td class="num">$10.9M</td><td>on watchlist: deviation 21.3bps</td></tr>
+<tr class="warn"><td>io:NBIS</td><td class="num">21.5</td><td class="num">$5.5M</td><td class="num">$1.2M</td><td>on watchlist: deviation 21.5bps</td></tr>
+<tr class="warn"><td>xyz:JIO</td><td class="num">89.3</td><td class="num">$1.1M</td><td class="num">$122.0K</td><td>on watchlist: deviation 89.3bps</td></tr>
+<tr class="warn"><td>para:DRV</td><td class="num">35.1</td><td class="num">$1.4M</td><td class="num">$1.0M</td><td>on watchlist: deviation 35.1bps</td></tr>
+<tr class="warn"><td>xyz:SHAZ</td><td class="num">41.6</td><td class="num">$924.2K</td><td class="num">$212.4K</td><td>on watchlist: deviation 41.6bps</td></tr>
+<tr class="warn"><td>xyz:GIGADEV</td><td class="num">26.4</td><td class="num">$1.4M</td><td class="num">$1.7M</td><td>on watchlist: deviation 26.4bps</td></tr>
+<tr class="warn"><td>xyz:PALLADIUM</td><td class="num">20.7</td><td class="num">$1.7M</td><td class="num">$564.3K</td><td>on watchlist: deviation 20.7bps</td></tr>
+<tr class="warn"><td>para:MELI</td><td class="num">42.7</td><td class="num">$621.0K</td><td class="num">$223.0K</td><td>on watchlist: deviation 42.7bps</td></tr>
+<tr class="warn"><td>xyz:QNT</td><td class="num">15.6</td><td class="num">$1.6M</td><td class="num">$530.7K</td><td>on watchlist: deviation 15.6bps</td></tr>
+<tr class="warn"><td>io:IONQ</td><td class="num">31.4</td><td class="num">$715.5K</td><td class="num">$398.0K</td><td>on watchlist: deviation 31.4bps</td></tr>
+<tr class="warn"><td>xyz:KSTR</td><td class="num">20.0</td><td class="num">$848.1K</td><td class="num">$331.4K</td><td>on watchlist: deviation 20.0bps</td></tr>
+<tr class="warn"><td>xyz:SHEIN</td><td class="num">35.4</td><td class="num">$417.1K</td><td class="num">$114.7K</td><td>on watchlist: deviation 35.4bps</td></tr>
+<tr class="warn"><td>para:STX</td><td class="num">31.5</td><td class="num">$370.4K</td><td class="num">$96.7K</td><td>on watchlist: deviation 31.5bps</td></tr>
+<tr class="warn"><td>io:DRAM</td><td class="num">15.7</td><td class="num">$644.9K</td><td class="num">$1.0M</td><td>on watchlist: deviation 15.7bps</td></tr>
+<tr class="warn"><td>xyz:NCLD</td><td class="num">24.5</td><td class="num">$374.4K</td><td class="num">$9.4K</td><td>on watchlist: deviation 24.5bps</td></tr>
+<tr class="warn"><td>para:SMCI</td><td class="num">23.4</td><td class="num">$324.4K</td><td class="num">$249.2K</td><td>on watchlist: deviation 23.4bps</td></tr>
+<tr class="warn"><td>para:SMH</td><td class="num">57.1</td><td class="num">$90.6K</td><td class="num">$54.1K</td><td>on watchlist: deviation 57.1bps</td></tr>
+<tr class="warn"><td>xyz:UMC</td><td class="num">50.3</td><td class="num">$100.1K</td><td class="num">$32.8K</td><td>on watchlist: deviation 50.3bps</td></tr>
+<tr class="warn"><td>para:ANSEM</td><td class="num">31.3</td><td class="num">$153.8K</td><td class="num">$148.5K</td><td>on watchlist: deviation 31.3bps</td></tr>
+<tr class="warn"><td>io:GPRO</td><td class="num">73.0</td><td class="num">$65.5K</td><td class="num">$8.7K</td><td>on watchlist: deviation 73.0bps</td></tr>
+<tr class="warn"><td>xyz:NIFTY</td><td class="num">24.1</td><td class="num">$167.0K</td><td class="num">$10.3K</td><td>on watchlist: deviation 24.1bps</td></tr>
+<tr class="warn"><td>para:CIEN</td><td class="num">56.2</td><td class="num">$65.5K</td><td class="num">$10.0K</td><td>on watchlist: deviation 56.2bps</td></tr>
+<tr class="warn"><td>xyz:BIRD</td><td class="num">53.9</td><td class="num">$65.1K</td><td class="num">$1.5K</td><td>on watchlist: deviation 53.9bps</td></tr>
+<tr class="warn"><td>para:RDDT</td><td class="num">30.7</td><td class="num">$104.7K</td><td class="num">$7.4K</td><td>on watchlist: deviation 30.7bps</td></tr>
+<tr class="warn"><td>xyz:XBI</td><td class="num">26.5</td><td class="num">$118.3K</td><td class="num">$5.9K</td><td>on watchlist: deviation 26.5bps</td></tr>
+<tr class="warn"><td>xyz:CVX</td><td class="num">31.2</td><td class="num">$91.6K</td><td class="num">$39.3K</td><td>on watchlist: deviation 31.2bps</td></tr>
+<tr class="warn"><td>mkts:BVIV</td><td class="num">16.6</td><td class="num">$144.6K</td><td class="num">$57.6K</td><td>on watchlist: deviation 16.6bps</td></tr>
+<tr class="warn"><td>xyz:TWST</td><td class="num">22.2</td><td class="num">$98.8K</td><td class="num">$9.6K</td><td>on watchlist: deviation 22.2bps</td></tr>
+<tr class="warn"><td>xyz:CAMBRICON</td><td class="num">38.8</td><td class="num">$19.5K</td><td class="num">$24.4K</td><td>on watchlist: deviation 38.8bps</td></tr></tbody></table>
+</section>
+<section class="zone"><h2>Trapped <span class="meta">24h vol &lt; $5.0K but open interest &gt; 0 — positions in place, no fresh prints. Not abandonment; the pre-incident shape.</span></h2>
+  <table><thead><tr><th>market</th><th>oracle↔mark</th><th>est. OI notional</th><th>24h vol</th><th>observation</th></tr></thead><tbody><tr class="warn"><td>para:2Y</td><td class="num">0.0</td><td class="num">$1.3M</td><td class="num">$3.2K</td><td>no fresh prints (24h vol $3207) but open interest remains (282,848.4 units)</td></tr>
+<tr class="warn"><td>para:TOTAL2</td><td class="num">2.2</td><td class="num">$542.8K</td><td class="num">$1.6K</td><td>no fresh prints (24h vol $1645) but open interest remains (636.3 units)</td></tr>
+<tr class="warn"><td>xyz:OURA</td><td class="num">0.0</td><td class="num">$527.5K</td><td class="num">$1.8K</td><td>no fresh prints (24h vol $1767) but open interest remains (10,921.6 units)</td></tr>
+<tr class="warn"><td>xyz:ICE</td><td class="num">0.0</td><td class="num">$21.6K</td><td class="num">$2.3K</td><td>no fresh prints (24h vol $2341) but open interest remains (121.54 units)</td></tr></tbody></table></section>
+<section class="zone tombzone"><h2>Archaeology <span class="meta">every market across 59 snapshots in window (~30h): no open interest, 24h vol &lt; $5.0K — single-snapshot zero does NOT imply abandoned</span></h2>
+  <div class="tombgrid"><div class="tomb"><strong>abcd</strong> max dev 0.00% <span class="meta">(59 consecutive snapshots)</span></div><div class="tomb"><strong>cash</strong> max dev 19.88% <span class="meta">(59 consecutive snapshots)</span></div><div class="tomb"><strong>flx</strong> max dev 29.26% <span class="meta">(59 consecutive snapshots)</span></div><div class="tomb"><strong>hyna</strong> max dev 48.37% <span class="meta">(59 consecutive snapshots)</span></div><div class="tomb"><strong>km</strong> max dev 20.30% <span class="meta">(59 consecutive snapshots)</span></div><div class="tomb"><strong>vntl</strong> max dev 14.58% <span class="meta">(59 consecutive snapshots)</span></div></div>
+  <p class="zonefoot">These are not alarms — they are the page's own thesis visualized: 6/10 deployers stopped operating. Max dev shown is archaeological, not actionable.</p></section>
+
+<details class="whitedetails"><summary>Below-threshold markets by DEX (4 DEXs, aggregated)</summary>
+  <table><thead><tr><th>DEX</th><th>markets below threshold</th><th>largest deviation among them</th></tr></thead><tbody><tr><td>xyz</td><td class="num">125</td><td class="num">xyz:SOFTBANK (14.9bps)</td></tr>
+<tr><td>io</td><td class="num">21</td><td class="num">io:GOOGL (13.5bps)</td></tr>
+<tr><td>para</td><td class="num">29</td><td class="num">para:CRWD (12.4bps)</td></tr>
+<tr><td>mkts</td><td class="num">23</td><td class="num">mkts:USTECH (422.3bps)</td></tr></tbody></table>
+  <p class="zonefoot">Full per-asset detail: expand the per-DEX sections below.</p></details>
+<h2 style="margin-top:2rem">Full per-DEX detail</h2>
+<details class="dexdetails"><summary>xyz <span class="meta">deployer 0x88806a… · updater <em>self</em> · live 125/150 · 24h $2.35B · max dev 2.61%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="warn"><td>xyz:UNITREE</td><td class="num">119.71</td><td class="num">116.66</td><td class="num">2.61%</td><td class="num">271,343.3</td><td class="num">$20.6M</td></tr>
+<tr class="warn"><td>xyz:CXMT</td><td class="num">5.5426</td><td class="num">5.4912</td><td class="num">0.94%</td><td class="num">2,732,505</td><td class="num">$22.1M</td></tr>
+<tr class="warn"><td>xyz:JIO</td><td class="num">14.793</td><td class="num">14.662</td><td class="num">0.89%</td><td class="num">74,329.4</td><td class="num">$122.0K</td></tr>
+<tr class="warn"><td>xyz:PURRDAT</td><td class="num">8.105</td><td class="num">8.1614</td><td class="num">0.69%</td><td class="num">1,261,002</td><td class="num">$1.1M</td></tr>
+<tr class="warn"><td>xyz:BIRD</td><td class="num">1.0897</td><td class="num">1.0956</td><td class="num">0.54%</td><td class="num">59,401.4</td><td class="num">$1.5K</td></tr>
+<tr class="warn"><td>xyz:UMC</td><td class="num">13.585</td><td class="num">13.517</td><td class="num">0.50%</td><td class="num">7,405.8</td><td class="num">$32.8K</td></tr>
+<tr class="crit"><td>xyz:SKHY</td><td class="num">116.9</td><td class="num">116.37</td><td class="num">0.46%</td><td class="num">1,491,917.3</td><td class="num">$88.0M</td></tr>
+<tr class="warn"><td>xyz:SHAZ</td><td class="num">18.091</td><td class="num">18.016</td><td class="num">0.42%</td><td class="num">51,300.56</td><td class="num">$212.4K</td></tr>
+<tr class="warn"><td>xyz:CAMBRICON</td><td class="num">168.08</td><td class="num">167.43</td><td class="num">0.39%</td><td class="num">116.7</td><td class="num">$24.4K</td></tr>
+<tr class="warn"><td>xyz:SHEIN</td><td class="num">4.3968</td><td class="num">4.3813</td><td class="num">0.35%</td><td class="num">95,209</td><td class="num">$114.7K</td></tr>
+<tr class="warn"><td>xyz:BB</td><td class="num">8.8357</td><td class="num">8.8059</td><td class="num">0.34%</td><td class="num">512,203.2</td><td class="num">$608.6K</td></tr>
+<tr class="warn"><td>xyz:CVX</td><td class="num">212.23</td><td class="num">211.57</td><td class="num">0.31%</td><td class="num">432.88</td><td class="num">$39.3K</td></tr>
+<tr class="warn"><td>xyz:XBI</td><td class="num">159.08</td><td class="num">158.66</td><td class="num">0.26%</td><td class="num">745.62</td><td class="num">$5.9K</td></tr>
+<tr class="warn"><td>xyz:GIGADEV</td><td class="num">32.638</td><td class="num">32.552</td><td class="num">0.26%</td><td class="num">41,614.16</td><td class="num">$1.7M</td></tr>
+<tr class="warn"><td>xyz:NCLD</td><td class="num">11.396</td><td class="num">11.424</td><td class="num">0.25%</td><td class="num">32,772.04</td><td class="num">$9.4K</td></tr>
+<tr class="warn"><td>xyz:NIFTY</td><td class="num">25,716</td><td class="num">25,778</td><td class="num">0.24%</td><td class="num">6.48</td><td class="num">$10.3K</td></tr>
+<tr class="warn"><td>xyz:TWST</td><td class="num">112.98</td><td class="num">112.73</td><td class="num">0.22%</td><td class="num">876.74</td><td class="num">$9.6K</td></tr>
+<tr class="warn"><td>xyz:ZHIPU</td><td class="num">45.68</td><td class="num">45.583</td><td class="num">0.21%</td><td class="num">142,288.28</td><td class="num">$10.9M</td></tr>
+<tr class="warn"><td>xyz:PALLADIUM</td><td class="num">915.89</td><td class="num">917.79</td><td class="num">0.21%</td><td class="num">1,872.18</td><td class="num">$564.3K</td></tr>
+<tr class="warn"><td>xyz:KSTR</td><td class="num">19.045</td><td class="num">19.007</td><td class="num">0.20%</td><td class="num">44,620.52</td><td class="num">$331.4K</td></tr>
+<tr class="warn"><td>xyz:QNT</td><td class="num">33.89</td><td class="num">33.943</td><td class="num">0.16%</td><td class="num">46,575.68</td><td class="num">$530.7K</td></tr>
+<tr class="warn"><td>xyz:SMSN</td><td class="num">133.39</td><td class="num">133.19</td><td class="num">0.15%</td><td class="num">223,964.32</td><td class="num">$25.5M</td></tr>
+<tr class="ok"><td>xyz:SOFTBANK</td><td class="num">18.785</td><td class="num">18.757</td><td class="num">0.15%</td><td class="num">55,051.28</td><td class="num">$597.9K</td></tr>
+<tr class="ok"><td>xyz:EWZ</td><td class="num">32.845</td><td class="num">32.893</td><td class="num">0.15%</td><td class="num">217,192.52</td><td class="num">$3.7M</td></tr>
+<tr class="ok"><td>xyz:RDDT</td><td class="num">95.015</td><td class="num">95.15</td><td class="num">0.14%</td><td class="num">8,269.66</td><td class="num">$223.3K</td></tr>
+<tr class="ok"><td>xyz:EWT</td><td class="num">87.153</td><td class="num">87.259</td><td class="num">0.12%</td><td class="num">5,196.6</td><td class="num">$208.2K</td></tr>
+<tr class="warn"><td>xyz:SKHX</td><td class="num">825.66</td><td class="num">824.69</td><td class="num">0.12%</td><td class="num">356,461.67</td><td class="num">$407.3M</td></tr>
+<tr class="ok"><td>xyz:PANW</td><td class="num">361.8</td><td class="num">361.4</td><td class="num">0.11%</td><td class="num">749.08</td><td class="num">$66.7K</td></tr>
+<tr class="ok"><td>xyz:SOXL</td><td class="num">36.58</td><td class="num">36.62</td><td class="num">0.11%</td><td class="num">2,492,696.86</td><td class="num">$120.1M</td></tr>
+<tr class="ok"><td>xyz:NBIS</td><td class="num">92.593</td><td class="num">92.687</td><td class="num">0.10%</td><td class="num">739,324.3</td><td class="num">$28.5M</td></tr>
+<tr class="ok"><td>xyz:COST</td><td class="num">1,084.5</td><td class="num">1,085.6</td><td class="num">0.10%</td><td class="num">5,575.79</td><td class="num">$620.4K</td></tr>
+<tr class="ok"><td>xyz:HIMS</td><td class="num">15.32</td><td class="num">15.305</td><td class="num">0.10%</td><td class="num">90,264.76</td><td class="num">$227.0K</td></tr>
+<tr class="ok"><td>xyz:CRWD</td><td class="num">215.1</td><td class="num">215.31</td><td class="num">0.10%</td><td class="num">3,133.6</td><td class="num">$473.1K</td></tr>
+<tr class="ok"><td>xyz:MUU</td><td class="num">10.56</td><td class="num">10.57</td><td class="num">0.09%</td><td class="num">54,826.2</td><td class="num">$282.1K</td></tr>
+<tr class="ok"><td>xyz:MU</td><td class="num">638.09</td><td class="num">638.68</td><td class="num">0.09%</td><td class="num">256,047.21</td><td class="num">$76.0M</td></tr>
+<tr class="ok"><td>xyz:RIVN</td><td class="num">12.03</td><td class="num">12.019</td><td class="num">0.09%</td><td class="num">68,986.26</td><td class="num">$31.6K</td></tr>
+<tr class="ok"><td>xyz:CBRS</td><td class="num">94.455</td><td class="num">94.374</td><td class="num">0.09%</td><td class="num">201,519.14</td><td class="num">$2.8M</td></tr>
+<tr class="ok"><td>xyz:NET</td><td class="num">296.3</td><td class="num">296.55</td><td class="num">0.08%</td><td class="num">7,698.66</td><td class="num">$74.7K</td></tr>
+<tr class="ok"><td>xyz:ORCL</td><td class="num">108.82</td><td class="num">108.91</td><td class="num">0.08%</td><td class="num">69,677.14</td><td class="num">$2.7M</td></tr>
+<tr class="ok"><td>xyz:IBM</td><td class="num">246</td><td class="num">246.2</td><td class="num">0.08%</td><td class="num">18,326.42</td><td class="num">$368.0K</td></tr>
+<tr class="ok"><td>xyz:LRCX</td><td class="num">197.26</td><td class="num">197.1</td><td class="num">0.08%</td><td class="num">1,563.98</td><td class="num">$356.7K</td></tr>
+<tr class="ok"><td>xyz:TQQQ</td><td class="num">48.73</td><td class="num">48.769</td><td class="num">0.08%</td><td class="num">6,606</td><td class="num">$168.4K</td></tr>
+<tr class="ok"><td>xyz:BMNR</td><td class="num">14.175</td><td class="num">14.186</td><td class="num">0.08%</td><td class="num">167,827.44</td><td class="num">$118.6K</td></tr>
+<tr class="ok"><td>xyz:NOK</td><td class="num">7.57</td><td class="num">7.5757</td><td class="num">0.08%</td><td class="num">120,777.52</td><td class="num">$68.0K</td></tr>
+<tr class="ok"><td>xyz:ASML</td><td class="num">1,349.9</td><td class="num">1,348.9</td><td class="num">0.07%</td><td class="num">1,541.17</td><td class="num">$2.7M</td></tr>
+<tr class="ok"><td>xyz:KORU</td><td class="num">5.885</td><td class="num">5.8893</td><td class="num">0.07%</td><td class="num">2,247,172.8</td><td class="num">$16.9M</td></tr>
+<tr class="ok"><td>xyz:AAOI</td><td class="num">40.195</td><td class="num">40.224</td><td class="num">0.07%</td><td class="num">31,080.5</td><td class="num">$681.2K</td></tr>
+<tr class="ok"><td>xyz:SMH</td><td class="num">442.08</td><td class="num">442.39</td><td class="num">0.07%</td><td class="num">5,773.13</td><td class="num">$396.6K</td></tr>
+<tr class="ok"><td>xyz:DELL</td><td class="num">312.53</td><td class="num">312.74</td><td class="num">0.07%</td><td class="num">16,714.66</td><td class="num">$2.8M</td></tr>
+<tr class="ok"><td>xyz:EWJ</td><td class="num">88.63</td><td class="num">88.573</td><td class="num">0.06%</td><td class="num">7,057.37</td><td class="num">$188.6K</td></tr>
+<tr class="ok"><td>xyz:SILVER</td><td class="num">44.163</td><td class="num">44.191</td><td class="num">0.06%</td><td class="num">3,333,476.34</td><td class="num">$133.6M</td></tr>
+<tr class="ok"><td>xyz:GME</td><td class="num">27.015</td><td class="num">27.032</td><td class="num">0.06%</td><td class="num">143,727.72</td><td class="num">$251.8K</td></tr>
+<tr class="ok"><td>xyz:SOXS</td><td class="num">53.38</td><td class="num">53.347</td><td class="num">0.06%</td><td class="num">148,790.4</td><td class="num">$7.4M</td></tr>
+<tr class="ok"><td>xyz:DKNG</td><td class="num">17.83</td><td class="num">17.841</td><td class="num">0.06%</td><td class="num">11,464.82</td><td class="num">$20.0K</td></tr>
+<tr class="ok"><td>xyz:LYTE</td><td class="num">14.64</td><td class="num">14.649</td><td class="num">0.06%</td><td class="num">18,236.82</td><td class="num">$71.5K</td></tr>
+<tr class="ok"><td>xyz:BE</td><td class="num">163.54</td><td class="num">163.64</td><td class="num">0.06%</td><td class="num">18,763.36</td><td class="num">$1.5M</td></tr>
+<tr class="ok"><td>xyz:GOOGL</td><td class="num">280.3</td><td class="num">280.46</td><td class="num">0.06%</td><td class="num">569,936.72</td><td class="num">$32.6M</td></tr>
+<tr class="ok"><td>xyz:NOW</td><td class="num">94.77</td><td class="num">94.824</td><td class="num">0.06%</td><td class="num">19,930.74</td><td class="num">$107.5K</td></tr>
+<tr class="ok"><td>xyz:KR200</td><td class="num">757.75</td><td class="num">758.17</td><td class="num">0.06%</td><td class="num">1,650.9</td><td class="num">$904.8K</td></tr>
+<tr class="ok"><td>xyz:COIN</td><td class="num">108.32</td><td class="num">108.38</td><td class="num">0.06%</td><td class="num">80,257.63</td><td class="num">$2.8M</td></tr>
+<tr class="ok"><td>xyz:TLT</td><td class="num">81.68</td><td class="num">81.637</td><td class="num">0.05%</td><td class="num">103,605.66</td><td class="num">$261.7K</td></tr>
+<tr class="ok"><td>xyz:PLATINUM</td><td class="num">1,357.7</td><td class="num">1,357</td><td class="num">0.05%</td><td class="num">3,422.8</td><td class="num">$2.7M</td></tr>
+<tr class="ok"><td>xyz:GEV</td><td class="num">743.05</td><td class="num">742.69</td><td class="num">0.05%</td><td class="num">297.03</td><td class="num">$120.6K</td></tr>
+<tr class="ok"><td>xyz:AAPL</td><td class="num">358.69</td><td class="num">358.52</td><td class="num">0.05%</td><td class="num">346,642.68</td><td class="num">$14.0M</td></tr>
+<tr class="ok"><td>xyz:GOLD</td><td class="num">3,655.2</td><td class="num">3,656.9</td><td class="num">0.05%</td><td class="num">77,203.13</td><td class="num">$39.5M</td></tr>
+<tr class="ok"><td>xyz:HO</td><td class="num">3.738</td><td class="num">3.7397</td><td class="num">0.05%</td><td class="num">18,848</td><td class="num">$55.5K</td></tr>
+<tr class="ok"><td>xyz:BABA</td><td class="num">89.8</td><td class="num">89.84</td><td class="num">0.04%</td><td class="num">103,806.89</td><td class="num">$3.3M</td></tr>
+<tr class="ok"><td>xyz:URNM</td><td class="num">36.652</td><td class="num">36.636</td><td class="num">0.04%</td><td class="num">22,492.76</td><td class="num">$44.8K</td></tr>
+<tr class="ok"><td>xyz:BX</td><td class="num">121</td><td class="num">120.95</td><td class="num">0.04%</td><td class="num">2,767.92</td><td class="num">$21.0K</td></tr>
+<tr class="ok"><td>xyz:NATGAS</td><td class="num">3.592</td><td class="num">3.5906</td><td class="num">0.04%</td><td class="num">4,375,945</td><td class="num">$3.8M</td></tr>
+<tr class="ok"><td>xyz:KIOXIA</td><td class="num">52.683</td><td class="num">52.702</td><td class="num">0.04%</td><td class="num">78,101.23</td><td class="num">$10.7M</td></tr>
+<tr class="ok"><td>xyz:INTC</td><td class="num">57.135</td><td class="num">57.153</td><td class="num">0.03%</td><td class="num">1,115,212.52</td><td class="num">$8.2M</td></tr>
+<tr class="ok"><td>xyz:JPY</td><td class="num">159.36</td><td class="num">159.31</td><td class="num">0.03%</td><td class="num">184,861.42</td><td class="num">$2.0M</td></tr>
+<tr class="ok"><td>xyz:MSTR</td><td class="num">85.083</td><td class="num">85.109</td><td class="num">0.03%</td><td class="num">254,286.49</td><td class="num">$13.1M</td></tr>
+<tr class="ok"><td>xyz:GBP</td><td class="num">1.3124</td><td class="num">1.3128</td><td class="num">0.03%</td><td class="num">479,956</td><td class="num">$103.7K</td></tr>
+<tr class="ok"><td>xyz:SPCX</td><td class="num">133.07</td><td class="num">133.11</td><td class="num">0.03%</td><td class="num">916,379.1</td><td class="num">$33.9M</td></tr>
+<tr class="ok"><td>xyz:EUR</td><td class="num">1.0978</td><td class="num">1.0981</td><td class="num">0.03%</td><td class="num">33,582,504.2</td><td class="num">$1.4M</td></tr>
+<tr class="ok"><td>xyz:BRENTOIL</td><td class="num">92.37</td><td class="num">92.347</td><td class="num">0.02%</td><td class="num">1,379,850.92</td><td class="num">$42.6M</td></tr>
+<tr class="ok"><td>xyz:TTWO</td><td class="num">227.22</td><td class="num">227.17</td><td class="num">0.02%</td><td class="num">7,444.22</td><td class="num">$769.1K</td></tr>
+<tr class="ok"><td>xyz:AMZN</td><td class="num">251.28</td><td class="num">251.33</td><td class="num">0.02%</td><td class="num">94,571.72</td><td class="num">$5.9M</td></tr>
+<tr class="ok"><td>xyz:ANT</td><td class="num">89</td><td class="num">89.017</td><td class="num">0.02%</td><td class="num">2,688,702.96</td><td class="num">$108.6M</td></tr>
+<tr class="ok"><td>xyz:DRAM</td><td class="num">36.975</td><td class="num">36.982</td><td class="num">0.02%</td><td class="num">1,595,356.6</td><td class="num">$41.4M</td></tr>
+<tr class="ok"><td>xyz:CL</td><td class="num">85.97</td><td class="num">85.954</td><td class="num">0.02%</td><td class="num">1,425,816.73</td><td class="num">$60.7M</td></tr>
+<tr class="ok"><td>xyz:META</td><td class="num">625.61</td><td class="num">625.72</td><td class="num">0.02%</td><td class="num">78,559.17</td><td class="num">$11.9M</td></tr>
+<tr class="ok"><td>xyz:QCOM</td><td class="num">174.39</td><td class="num">174.36</td><td class="num">0.02%</td><td class="num">13,289.98</td><td class="num">$708.4K</td></tr>
+<tr class="ok"><td>xyz:HOOD</td><td class="num">69.23</td><td class="num">69.219</td><td class="num">0.02%</td><td class="num">109,311.8</td><td class="num">$1.3M</td></tr>
+<tr class="ok"><td>xyz:TSLA</td><td class="num">389.63</td><td class="num">389.69</td><td class="num">0.02%</td><td class="num">139,599.24</td><td class="num">$22.8M</td></tr>
+<tr class="ok"><td>xyz:IREN</td><td class="num">13.983</td><td class="num">13.985</td><td class="num">0.01%</td><td class="num">1,025,461.4</td><td class="num">$2.6M</td></tr>
+<tr class="ok"><td>xyz:MRVL</td><td class="num">139.96</td><td class="num">139.98</td><td class="num">0.01%</td><td class="num">52,006.32</td><td class="num">$4.4M</td></tr>
+<tr class="ok"><td>xyz:WDC</td><td class="num">288.53</td><td class="num">288.57</td><td class="num">0.01%</td><td class="num">4,237.98</td><td class="num">$1.5M</td></tr>
+<tr class="ok"><td>xyz:NFLX</td><td class="num">59.97</td><td class="num">59.978</td><td class="num">0.01%</td><td class="num">78,046.07</td><td class="num">$759.7K</td></tr>
+<tr class="ok"><td>xyz:SNDK</td><td class="num">80.31</td><td class="num">80.32</td><td class="num">0.01%</td><td class="num">517,311.42</td><td class="num">$39.4M</td></tr>
+<tr class="ok"><td>xyz:SP500</td><td class="num">7,307.4</td><td class="num">7,306.5</td><td class="num">0.01%</td><td class="num">59,438.41</td><td class="num">$210.2M</td></tr>
+<tr class="ok"><td>xyz:LITE</td><td class="num">516.02</td><td class="num">516.08</td><td class="num">0.01%</td><td class="num">11,969.1</td><td class="num">$1.2M</td></tr>
+<tr class="ok"><td>xyz:XYZ100</td><td class="num">26,714</td><td class="num">26,717</td><td class="num">0.01%</td><td class="num">13,889.49</td><td class="num">$333.8M</td></tr>
+<tr class="ok"><td>xyz:GLW</td><td class="num">105.72</td><td class="num">105.73</td><td class="num">0.01%</td><td class="num">4,102.74</td><td class="num">$19.9K</td></tr>
+<tr class="ok"><td>xyz:RKLB</td><td class="num">50.235</td><td class="num">50.239</td><td class="num">0.01%</td><td class="num">51,658.84</td><td class="num">$1.6M</td></tr>
+<tr class="ok"><td>xyz:EWY</td><td class="num">134.35</td><td class="num">134.36</td><td class="num">0.01%</td><td class="num">87,141.98</td><td class="num">$26.8M</td></tr>
+<tr class="ok"><td>xyz:AMD</td><td class="num">428.13</td><td class="num">428.1</td><td class="num">0.01%</td><td class="num">63,107.65</td><td class="num">$29.9M</td></tr>
+<tr class="ok"><td>xyz:NVDA</td><td class="num">155.6</td><td class="num">155.61</td><td class="num">0.01%</td><td class="num">2,411,691.7</td><td class="num">$192.7M</td></tr>
+<tr class="ok"><td>xyz:AVGO</td><td class="num">313.65</td><td class="num">313.63</td><td class="num">0.01%</td><td class="num">15,351.4</td><td class="num">$1.8M</td></tr>
+<tr class="ok"><td>xyz:PLTR</td><td class="num">169</td><td class="num">168.99</td><td class="num">0.01%</td><td class="num">35,716.27</td><td class="num">$2.8M</td></tr>
+<tr class="ok"><td>xyz:USAR</td><td class="num">6.96</td><td class="num">6.9604</td><td class="num">0.01%</td><td class="num">205,543.22</td><td class="num">$387.2K</td></tr>
+<tr class="ok"><td>xyz:HYUNDAI</td><td class="num">200.69</td><td class="num">200.7</td><td class="num">0.00%</td><td class="num">7,631.2</td><td class="num">$5.2M</td></tr>
+<tr class="ok"><td>xyz:MRNA</td><td class="num">228.14</td><td class="num">228.13</td><td class="num">0.00%</td><td class="num">21,716.36</td><td class="num">$2.1M</td></tr>
+<tr class="ok"><td>xyz:CRCL</td><td class="num">50.523</td><td class="num">50.521</td><td class="num">0.00%</td><td class="num">943,528.96</td><td class="num">$6.0M</td></tr>
+<tr class="ok"><td>xyz:MSFT</td><td class="num">499.34</td><td class="num">499.34</td><td class="num">0.00%</td><td class="num">34,726.65</td><td class="num">$5.6M</td></tr>
+<tr class="ok"><td>xyz:LLY</td><td class="num">1,399.8</td><td class="num">1,399.8</td><td class="num">0.00%</td><td class="num">3,958.88</td><td class="num">$569.3K</td></tr>
+<tr class="ok"><td>xyz:TSM</td><td class="num">355.34</td><td class="num">355.34</td><td class="num">0.00%</td><td class="num">31,918.92</td><td class="num">$3.0M</td></tr>
+<tr class="ok"><td>xyz:COPPER</td><td class="num">5.6905</td><td class="num">5.6905</td><td class="num">0.00%</td><td class="num">1,135,763.9</td><td class="num">$6.3M</td></tr>
+<tr class="dead"><td>xyz:URANIUM</td><td class="num">85</td><td class="num">85</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:ALUMINIUM</td><td class="num">3,080</td><td class="num">3,080</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:CRWV</td><td class="num">45.375</td><td class="num">45.375</td><td class="num">0.00%</td><td class="num">135,701.48</td><td class="num">$4.1M</td></tr>
+<tr class="dead"><td>xyz:DXY</td><td class="num">97.15</td><td class="num">97.15</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:JP225</td><td class="num">58,693</td><td class="num">58,693</td><td class="num">0.00%</td><td class="num">21.04</td><td class="num">$1.8M</td></tr>
+<tr class="dead"><td>xyz:VIX</td><td class="num">20</td><td class="num">20</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:CORN</td><td class="num">4.61</td><td class="num">4.61</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:XLE</td><td class="num">61.37</td><td class="num">61.37</td><td class="num">0.00%</td><td class="num">16,473.9</td><td class="num">$122.5K</td></tr>
+<tr class="dead"><td>xyz:WHEAT</td><td class="num">6.3</td><td class="num">6.3</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:TTF</td><td class="num">57</td><td class="num">57</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:VOL</td><td class="num">15</td><td class="num">15</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:KRW</td><td class="num">1,337.1</td><td class="num">1,337.1</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:ZM</td><td class="num">90.208</td><td class="num">90.208</td><td class="num">0.00%</td><td class="num">3,524.44</td><td class="num">$23.7K</td></tr>
+<tr class="ok"><td>xyz:EBAY</td><td class="num">116.28</td><td class="num">116.28</td><td class="num">0.00%</td><td class="num">3,690.58</td><td class="num">$19.7K</td></tr>
+<tr class="dead"><td>xyz:H100</td><td class="num">2.6</td><td class="num">2.6</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:ARM</td><td class="num">173.26</td><td class="num">173.26</td><td class="num">0.00%</td><td class="num">13,852.64</td><td class="num">$1.7M</td></tr>
+<tr class="dead"><td>xyz:IBOV</td><td class="num">175,000</td><td class="num">175,000</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:MINIMAX</td><td class="num">14.396</td><td class="num">14.396</td><td class="num">0.00%</td><td class="num">115,203.18</td><td class="num">$3.2M</td></tr>
+<tr class="ok"><td>xyz:STRC</td><td class="num">98.355</td><td class="num">98.355</td><td class="num">0.00%</td><td class="num">137,917.8</td><td class="num">$775.4K</td></tr>
+<tr class="ok"><td>xyz:BOT</td><td class="num">19.753</td><td class="num">19.753</td><td class="num">0.00%</td><td class="num">91,845.58</td><td class="num">$337.0K</td></tr>
+<tr class="ok"><td>xyz:AMAT</td><td class="num">328.54</td><td class="num">328.54</td><td class="num">0.00%</td><td class="num">1,751.17</td><td class="num">$783.6K</td></tr>
+<tr class="dead"><td>xyz:IBIDEN</td><td class="num">31.972</td><td class="num">31.972</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:MAGS</td><td class="num">66.765</td><td class="num">66.765</td><td class="num">0.00%</td><td class="num">1,526.46</td><td class="num">$22.8K</td></tr>
+<tr class="dead"><td>xyz:YMTC</td><td class="num">10</td><td class="num">10</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:SNXX</td><td class="num">1.725</td><td class="num">1.725</td><td class="num">0.00%</td><td class="num">1,179,391.8</td><td class="num">$3.3M</td></tr>
+<tr class="warn"><td>xyz:OURA</td><td class="num">48.297</td><td class="num">48.297</td><td class="num">0.00%</td><td class="num">10,921.6</td><td class="num">$1.8K</td></tr>
+<tr class="dead"><td>xyz:ACN</td><td class="num">243.43</td><td class="num">243.43</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:INNOLIGHT</td><td class="num">133.87</td><td class="num">133.87</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:AMEC</td><td class="num">47.51</td><td class="num">47.51</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:CATL</td><td class="num">51.88</td><td class="num">51.88</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>xyz:RELIANCE</td><td class="num">14.926</td><td class="num">14.926</td><td class="num">0.00%</td><td class="num">1,699.8</td><td class="num">$14.0K</td></tr>
+<tr class="dead"><td>xyz:SNAP</td><td class="num">5.055</td><td class="num">5.055</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:NU</td><td class="num">13.11</td><td class="num">13.11</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="warn"><td>xyz:ICE</td><td class="num">177.89</td><td class="num">177.89</td><td class="num">0.00%</td><td class="num">121.54</td><td class="num">$2.3K</td></tr>
+<tr class="dead"><td>xyz:MELI</td><td class="num">1,624.5</td><td class="num">1,624.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:STX</td><td class="num">593.76</td><td class="num">593.76</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:TENCENT</td><td class="num">49.74</td><td class="num">49.74</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:SNOW</td><td class="num">280.54</td><td class="num">280.54</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:SMCI</td><td class="num">24.37</td><td class="num">24.37</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>xyz:RBLX</td><td class="num">52.4</td><td class="num">52.4</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>io <span class="meta">deployer 0x320c89… · updater 0x94757f… · live 19/26 · 24h $28.7M · max dev 0.73%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="warn"><td>io:GPRO</td><td class="num">0.56971</td><td class="num">0.56558</td><td class="num">0.73%</td><td class="num">115,880.4</td><td class="num">$8.7K</td></tr>
+<tr class="warn"><td>io:PRL</td><td class="num">1.8323</td><td class="num">1.8384</td><td class="num">0.33%</td><td class="num">5,059,300.8</td><td class="num">$2.8M</td></tr>
+<tr class="warn"><td>io:IONQ</td><td class="num">24.759</td><td class="num">24.837</td><td class="num">0.31%</td><td class="num">28,809.42</td><td class="num">$398.0K</td></tr>
+<tr class="warn"><td>io:NBIS</td><td class="num">92.56</td><td class="num">92.759</td><td class="num">0.21%</td><td class="num">59,773.12</td><td class="num">$1.2M</td></tr>
+<tr class="warn"><td>io:DRAM</td><td class="num">36.974</td><td class="num">37.032</td><td class="num">0.16%</td><td class="num">17,415.56</td><td class="num">$1.0M</td></tr>
+<tr class="ok"><td>io:GOOGL</td><td class="num">280.26</td><td class="num">280.64</td><td class="num">0.14%</td><td class="num">329.13</td><td class="num">$138.3K</td></tr>
+<tr class="ok"><td>io:MU</td><td class="num">638.27</td><td class="num">639.02</td><td class="num">0.12%</td><td class="num">253.35</td><td class="num">$800.8K</td></tr>
+<tr class="ok"><td>io:INTC</td><td class="num">57.14</td><td class="num">57.204</td><td class="num">0.11%</td><td class="num">2,408.22</td><td class="num">$46.0K</td></tr>
+<tr class="ok"><td>io:SNDK</td><td class="num">80.26</td><td class="num">80.34</td><td class="num">0.10%</td><td class="num">47,219.93</td><td class="num">$2.2M</td></tr>
+<tr class="ok"><td>io:CRCL</td><td class="num">50.51</td><td class="num">50.558</td><td class="num">0.09%</td><td class="num">3,568.66</td><td class="num">$169.3K</td></tr>
+<tr class="ok"><td>io:META</td><td class="num">625.49</td><td class="num">625.97</td><td class="num">0.08%</td><td class="num">189.55</td><td class="num">$126.0K</td></tr>
+<tr class="ok"><td>io:NVDA</td><td class="num">155.64</td><td class="num">155.73</td><td class="num">0.06%</td><td class="num">60,285.18</td><td class="num">$8.4M</td></tr>
+<tr class="ok"><td>io:TCNT</td><td class="num">44.906</td><td class="num">44.888</td><td class="num">0.04%</td><td class="num">2,394.17</td><td class="num">$19.7K</td></tr>
+<tr class="ok"><td>io:AAPL</td><td class="num">358.64</td><td class="num">358.54</td><td class="num">0.03%</td><td class="num">2,749.98</td><td class="num">$613.2K</td></tr>
+<tr class="ok"><td>io:SKHX</td><td class="num">824.68</td><td class="num">824.49</td><td class="num">0.02%</td><td class="num">1,884.78</td><td class="num">$6.4M</td></tr>
+<tr class="ok"><td>io:OAI</td><td class="num">1,251.3</td><td class="num">1,251.5</td><td class="num">0.02%</td><td class="num">5,435.27</td><td class="num">$522.3K</td></tr>
+<tr class="ok"><td>io:ANTH</td><td class="num">1,567.8</td><td class="num">1,567.8</td><td class="num">0.00%</td><td class="num">42,772.92</td><td class="num">$3.8M</td></tr>
+<tr class="ok"><td>io:EWY</td><td class="num">134.34</td><td class="num">134.34</td><td class="num">0.00%</td><td class="num">2,519.66</td><td class="num">$46.0K</td></tr>
+<tr class="dead"><td>io:SBE</td><td class="num">50</td><td class="num">50</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>io:XIAOMI</td><td class="num">3.5262</td><td class="num">3.5262</td><td class="num">0.00%</td><td class="num">14,977.72</td><td class="num">$28.5K</td></tr>
+<tr class="dead"><td>io:H100</td><td class="num">2.78</td><td class="num">2.78</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>io:MOONSHOT</td><td class="num">67.24</td><td class="num">67.24</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>io:NVDL</td><td class="num">18.57</td><td class="num">18.57</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>io:AMD</td><td class="num">584.33</td><td class="num">584.33</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>io:SOXS</td><td class="num">75.483</td><td class="num">75.483</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>io:SOXL</td><td class="num">50.68</td><td class="num">50.68</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>para <span class="meta">deployer 0x888888… · updater 0x888888… · live 33/40 · 24h $5.4M · max dev 2.45%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="warn"><td>para:UNITREE</td><td class="num">119.738</td><td class="num">116.88</td><td class="num">2.45%</td><td class="num">9,031.54</td><td class="num">$1.3M</td></tr>
+<tr class="warn"><td>para:SMH</td><td class="num">439.531</td><td class="num">442.053</td><td class="num">0.57%</td><td class="num">205.04</td><td class="num">$54.1K</td></tr>
+<tr class="warn"><td>para:CIEN</td><td class="num">256.69</td><td class="num">258.1399</td><td class="num">0.56%</td><td class="num">253.66</td><td class="num">$10.0K</td></tr>
+<tr class="warn"><td>para:MELI</td><td class="num">1,515.8</td><td class="num">1,522.3</td><td class="num">0.43%</td><td class="num">407.94</td><td class="num">$223.0K</td></tr>
+<tr class="warn"><td>para:DRV</td><td class="num">0.3773</td><td class="num">0.37863</td><td class="num">0.35%</td><td class="num">3,575,156</td><td class="num">$1.0M</td></tr>
+<tr class="warn"><td>para:STX</td><td class="num">500.13</td><td class="num">501.71</td><td class="num">0.31%</td><td class="num">738.32</td><td class="num">$96.7K</td></tr>
+<tr class="warn"><td>para:ANSEM</td><td class="num">0.018785</td><td class="num">0.018844</td><td class="num">0.31%</td><td class="num">8,162,304</td><td class="num">$148.5K</td></tr>
+<tr class="warn"><td>para:RDDT</td><td class="num">94.8277</td><td class="num">95.1194</td><td class="num">0.31%</td><td class="num">1,100.2</td><td class="num">$7.4K</td></tr>
+<tr class="warn"><td>para:SMCI</td><td class="num">24.35</td><td class="num">24.407</td><td class="num">0.23%</td><td class="num">13,291.76</td><td class="num">$249.2K</td></tr>
+<tr class="ok"><td>para:CRWD</td><td class="num">215</td><td class="num">215.2662</td><td class="num">0.12%</td><td class="num">719.34</td><td class="num">$92.0K</td></tr>
+<tr class="ok"><td>para:OTHERS</td><td class="num">160.9154</td><td class="num">160.73</td><td class="num">0.12%</td><td class="num">581.04</td><td class="num">$30.5K</td></tr>
+<tr class="ok"><td>para:VST</td><td class="num">125.4</td><td class="num">125.27</td><td class="num">0.10%</td><td class="num">2,217.3</td><td class="num">$53.1K</td></tr>
+<tr class="ok"><td>para:LRCX</td><td class="num">196.8</td><td class="num">196.88</td><td class="num">0.04%</td><td class="num">1,229.86</td><td class="num">$219.9K</td></tr>
+<tr class="ok"><td>para:TTWO</td><td class="num">227.2574</td><td class="num">227.34</td><td class="num">0.04%</td><td class="num">7,153.04</td><td class="num">$160.8K</td></tr>
+<tr class="ok"><td>para:IREN</td><td class="num">13.98</td><td class="num">13.985</td><td class="num">0.04%</td><td class="num">21,855.64</td><td class="num">$234.6K</td></tr>
+<tr class="ok"><td>para:AAOI</td><td class="num">40.2</td><td class="num">40.2123</td><td class="num">0.03%</td><td class="num">3,155.36</td><td class="num">$274.6K</td></tr>
+<tr class="ok"><td>para:IGV</td><td class="num">97.32</td><td class="num">97.3471</td><td class="num">0.03%</td><td class="num">1,344</td><td class="num">$27.1K</td></tr>
+<tr class="warn"><td>para:TOTAL2</td><td class="num">853.219</td><td class="num">853.03</td><td class="num">0.02%</td><td class="num">636.3</td><td class="num">$1.6K</td></tr>
+<tr class="ok"><td>para:GLW</td><td class="num">105.8</td><td class="num">105.8128</td><td class="num">0.01%</td><td class="num">5,781.86</td><td class="num">$66.0K</td></tr>
+<tr class="ok"><td>para:AVGO</td><td class="num">313.65</td><td class="num">313.62</td><td class="num">0.01%</td><td class="num">695.52</td><td class="num">$10.8K</td></tr>
+<tr class="ok"><td>para:SOFI</td><td class="num">13.61</td><td class="num">13.6087</td><td class="num">0.01%</td><td class="num">11,117.4</td><td class="num">$89.0K</td></tr>
+<tr class="ok"><td>para:BTCD</td><td class="num">59.23431</td><td class="num">59.235</td><td class="num">0.00%</td><td class="num">10,000.2</td><td class="num">$69.5K</td></tr>
+<tr class="dead"><td>para:H100</td><td class="num">2.56</td><td class="num">2.56</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>para:COHR</td><td class="num">212.63</td><td class="num">212.63</td><td class="num">0.00%</td><td class="num">4,416.94</td><td class="num">$290.0K</td></tr>
+<tr class="ok"><td>para:CRDO</td><td class="num">113.815</td><td class="num">113.815</td><td class="num">0.00%</td><td class="num">3,164.7</td><td class="num">$108.3K</td></tr>
+<tr class="ok"><td>para:NET</td><td class="num">296.16</td><td class="num">296.16</td><td class="num">0.00%</td><td class="num">227.04</td><td class="num">$37.3K</td></tr>
+<tr class="ok"><td>para:TER</td><td class="num">225.38</td><td class="num">225.38</td><td class="num">0.00%</td><td class="num">999.54</td><td class="num">$87.0K</td></tr>
+<tr class="ok"><td>para:10Y</td><td class="num">4.939</td><td class="num">4.939</td><td class="num">0.00%</td><td class="num">296,727.6</td><td class="num">$19.9K</td></tr>
+<tr class="dead"><td>para:NAVER</td><td class="num">146</td><td class="num">146</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>para:TENCENT</td><td class="num">61</td><td class="num">61</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>para:CAMBRICON</td><td class="num">178</td><td class="num">178</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>para:INNOLIGHT</td><td class="num">157</td><td class="num">157</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="ok"><td>para:30Y</td><td class="num">5.298</td><td class="num">5.298</td><td class="num">0.00%</td><td class="num">24,002.4</td><td class="num">$12.4K</td></tr>
+<tr class="warn"><td>para:2Y</td><td class="num">4.719</td><td class="num">4.719</td><td class="num">0.00%</td><td class="num">282,848.4</td><td class="num">$3.2K</td></tr>
+<tr class="ok"><td>para:ANTH</td><td class="num">89</td><td class="num">89</td><td class="num">0.00%</td><td class="num">2,477.74</td><td class="num">$36.4K</td></tr>
+<tr class="ok"><td>para:CIFR</td><td class="num">5.9653</td><td class="num">5.9653</td><td class="num">0.00%</td><td class="num">11,018.58</td><td class="num">$8.7K</td></tr>
+<tr class="ok"><td>para:TREAD</td><td class="num">1.4029</td><td class="num">1.4029</td><td class="num">0.00%</td><td class="num">150,388</td><td class="num">$235.1K</td></tr>
+<tr class="ok"><td>para:GDX</td><td class="num">77.485</td><td class="num">77.485</td><td class="num">0.00%</td><td class="num">1,442.98</td><td class="num">$140.3K</td></tr>
+<tr class="dead"><td>para:PAPER</td><td class="num">0.0259</td><td class="num">0.0259</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>para:HYPE2</td><td class="num">85.33</td><td class="num">85.33</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>mkts <span class="meta">deployer 0x71f001… · updater <em>self</em> · live 1/24 · 24h $57.6K · max dev 4.22%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>mkts:USTECH</td><td class="num">686.26</td><td class="num">716.52</td><td class="num">4.22%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:SMALL2000</td><td class="num">284.73</td><td class="num">281.75</td><td class="num">1.06%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:USBOND</td><td class="num">82.04</td><td class="num">81.33</td><td class="num">0.87%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:US500</td><td class="num">766.42</td><td class="num">770.37</td><td class="num">0.51%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="warn"><td>mkts:BVIV</td><td class="num">54.21</td><td class="num">54.3</td><td class="num">0.17%</td><td class="num">2,662.82</td><td class="num">$57.6K</td></tr>
+<tr class="dead"><td>mkts:BABA</td><td class="num">116.54</td><td class="num">116.54</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:EUR</td><td class="num">1.1612</td><td class="num">1.1612</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:USENERGY</td><td class="num">58.247</td><td class="num">58.247</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:USOIL</td><td class="num">114.1</td><td class="num">114.1</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:TSLA</td><td class="num">386.5</td><td class="num">386.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:SILVER</td><td class="num">70.451</td><td class="num">70.451</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:GOLD</td><td class="num">4,348.8</td><td class="num">4,348.8</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:AAPL</td><td class="num">292.11</td><td class="num">292.11</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:GOOGL</td><td class="num">358.55</td><td class="num">358.55</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:SEMI</td><td class="num">543.11</td><td class="num">543.11</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:GLDMINE</td><td class="num">73.889</td><td class="num">73.889</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:NVDA</td><td class="num">211.07</td><td class="num">211.07</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:TENCENT</td><td class="num">465</td><td class="num">465</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:JPN225</td><td class="num">56,942</td><td class="num">56,942</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:MU</td><td class="num">1,080.7</td><td class="num">1,080.7</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:PLTR</td><td class="num">130.51</td><td class="num">130.51</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:XIAOMI</td><td class="num">26.311</td><td class="num">26.311</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:BMNR</td><td class="num">15.749</td><td class="num">15.749</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>mkts:RTX</td><td class="num">181.52</td><td class="num">181.52</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>flx <span class="meta">deployer 0x2fab55… · updater 0x94757f… · live 0/16 · 24h — · max dev 29.26%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>flx:BTC</td><td class="num">64,705</td><td class="num">91,470.2</td><td class="num">29.26%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:XMR</td><td class="num">306.61</td><td class="num">317.99</td><td class="num">3.58%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:USA100</td><td class="num">30,368</td><td class="num">29,530</td><td class="num">2.84%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:SILVER</td><td class="num">64.811</td><td class="num">65.65</td><td class="num">1.28%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:TSLA</td><td class="num">400.53</td><td class="num">395.5</td><td class="num">1.27%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:USA500</td><td class="num">7,514.4</td><td class="num">7,435</td><td class="num">1.07%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:COIN</td><td class="num">163.28</td><td class="num">164.78</td><td class="num">0.91%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:NVDA</td><td class="num">210.49</td><td class="num">208.99</td><td class="num">0.72%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:PLATINUM</td><td class="num">1,669.2</td><td class="num">1,658.2</td><td class="num">0.66%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:CRCL</td><td class="num">80.282</td><td class="num">80.037</td><td class="num">0.31%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:OIL</td><td class="num">76.56</td><td class="num">76.4</td><td class="num">0.21%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:GAS</td><td class="num">3.2479</td><td class="num">3.2429</td><td class="num">0.15%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:COPPER</td><td class="num">6.3374</td><td class="num">6.33</td><td class="num">0.12%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:GOLD</td><td class="num">4,156.1</td><td class="num">4,153.2</td><td class="num">0.07%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:USDE</td><td class="num">0.99892</td><td class="num">0.9984</td><td class="num">0.05%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>flx:PALLADIUM</td><td class="num">1,264</td><td class="num">1,264.1</td><td class="num">0.01%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>vntl <span class="meta">deployer 0x888888… · updater <em>self</em> · live 0/15 · 24h — · max dev 14.58%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>vntl:SPACEX</td><td class="num">2,417</td><td class="num">2,109.5</td><td class="num">14.58%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:MAG7</td><td class="num">65.52</td><td class="num">63.661</td><td class="num">2.92%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:ENERGY</td><td class="num">53.76</td><td class="num">54.599</td><td class="num">1.54%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:NUCLEAR</td><td class="num">126.76</td><td class="num">128.05</td><td class="num">1.01%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:DEFENSE</td><td class="num">62.32</td><td class="num">62.011</td><td class="num">0.50%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:OPENAI</td><td class="num">1,341.8</td><td class="num">1,336.2</td><td class="num">0.42%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:WHEAT</td><td class="num">613.38</td><td class="num">611.42</td><td class="num">0.32%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:SEMIS</td><td class="num">659.88</td><td class="num">661.1</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:BIOTECH</td><td class="num">140.63</td><td class="num">140.88</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:ROBOT</td><td class="num">38.37</td><td class="num">38.317</td><td class="num">0.14%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:SOY</td><td class="num">1,141.9</td><td class="num">1,142.3</td><td class="num">0.04%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:ANTHROPIC</td><td class="num">1,618.9</td><td class="num">1,619.3</td><td class="num">0.02%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:INFOTECH</td><td class="num">191.26</td><td class="num">191.3</td><td class="num">0.02%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:GOLDJM</td><td class="num">124</td><td class="num">124</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>vntl:SILVERJM</td><td class="num">31.5</td><td class="num">31.5</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>hyna <span class="meta">deployer 0x53e655… · updater 0xaab935… · live 0/25 · 24h — · max dev 48.37%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>hyna:LIT</td><td class="num">1.74</td><td class="num">3.37</td><td class="num">48.37%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:SILVER</td><td class="num">77.877</td><td class="num">85.97</td><td class="num">9.41%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:FARTCOIN</td><td class="num">0.16155</td><td class="num">0.17364</td><td class="num">6.96%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:XPL</td><td class="num">0.083485</td><td class="num">0.088667</td><td class="num">5.84%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:ZEC</td><td class="num">813.55</td><td class="num">856.99</td><td class="num">5.07%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:BASED</td><td class="num">0.06708</td><td class="num">0.069301</td><td class="num">3.20%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:IP</td><td class="num">0.3027</td><td class="num">0.2947</td><td class="num">2.71%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:1000PEPE</td><td class="num">0.003404</td><td class="num">0.003494</td><td class="num">2.58%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:ENA</td><td class="num">0.15115</td><td class="num">0.1549</td><td class="num">2.42%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:PUMP</td><td class="num">0.004134</td><td class="num">0.004217</td><td class="num">1.97%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:LINK</td><td class="num">11.10304</td><td class="num">11.323</td><td class="num">1.94%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:XRP</td><td class="num">1.334695</td><td class="num">1.3608</td><td class="num">1.92%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:LTC</td><td class="num">49.195</td><td class="num">48.665</td><td class="num">1.09%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:DOGE</td><td class="num">0.08153</td><td class="num">0.082257</td><td class="num">0.88%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:SOL</td><td class="num">99.11</td><td class="num">98.311</td><td class="num">0.81%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:BCH</td><td class="num">234.8</td><td class="num">236.67</td><td class="num">0.79%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:HYPE</td><td class="num">81.125</td><td class="num">81.5</td><td class="num">0.46%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:ADA</td><td class="num">0.19615</td><td class="num">0.1969</td><td class="num">0.38%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:BTC</td><td class="num">77,142.1</td><td class="num">76,888</td><td class="num">0.33%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:XMR</td><td class="num">332.37</td><td class="num">331.4</td><td class="num">0.29%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:ETH</td><td class="num">2,396.5</td><td class="num">2,400.9</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:SUI</td><td class="num">0.72105</td><td class="num">0.72033</td><td class="num">0.10%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:BNB</td><td class="num">686.505</td><td class="num">685.89</td><td class="num">0.09%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:LIGHTER</td><td class="num">2.5752</td><td class="num">2.5774</td><td class="num">0.09%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>hyna:GOLD</td><td class="num">4,993.2</td><td class="num">4,993.2</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>km <span class="meta">deployer 0x71f001… · updater <em>self</em> · live 0/23 · 24h — · max dev 20.30%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>km:GLDMINE</td><td class="num">88.887</td><td class="num">73.889</td><td class="num">20.30%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:SEMI</td><td class="num">610.42</td><td class="num">543.11</td><td class="num">12.39%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:BABA</td><td class="num">109.67</td><td class="num">116.54</td><td class="num">5.89%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:USENERGY</td><td class="num">55.159</td><td class="num">58.247</td><td class="num">5.30%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:RTX</td><td class="num">189.7</td><td class="num">181.52</td><td class="num">4.51%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:MU</td><td class="num">1,041.8</td><td class="num">1,080.7</td><td class="num">3.60%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:BMNR</td><td class="num">16.279</td><td class="num">15.749</td><td class="num">3.37%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:TSLA</td><td class="num">399.03</td><td class="num">386.5</td><td class="num">3.24%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:PLTR</td><td class="num">133.84</td><td class="num">130.51</td><td class="num">2.55%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:USOIL</td><td class="num">116.9</td><td class="num">114.1</td><td class="num">2.45%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:AAPL</td><td class="num">298.4</td><td class="num">292.11</td><td class="num">2.15%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:NVDA</td><td class="num">207.22</td><td class="num">211.07</td><td class="num">1.82%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:GOOGL</td><td class="num">363.96</td><td class="num">358.55</td><td class="num">1.51%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:TENCENT</td><td class="num">462.96</td><td class="num">465</td><td class="num">0.44%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:SMALL2000</td><td class="num">293.98</td><td class="num">292.75</td><td class="num">0.42%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:USBOND</td><td class="num">86.316</td><td class="num">86.038</td><td class="num">0.32%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:USTECH</td><td class="num">732.18</td><td class="num">733.79</td><td class="num">0.22%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:XIAOMI</td><td class="num">26.367</td><td class="num">26.311</td><td class="num">0.21%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:EUR</td><td class="num">1.159</td><td class="num">1.1612</td><td class="num">0.19%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:US500</td><td class="num">749.64</td><td class="num">750.97</td><td class="num">0.18%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:SILVER</td><td class="num">70.42</td><td class="num">70.451</td><td class="num">0.04%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:GOLD</td><td class="num">4,347.7</td><td class="num">4,348.8</td><td class="num">0.03%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>km:JPN225</td><td class="num">56,942</td><td class="num">56,942</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>abcd <span class="meta">deployer 0x372c7f… · updater <em>self</em> · live 0/1 · 24h — · max dev 0.00%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>abcd:USA500</td><td class="num">6,980</td><td class="num">6,980</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
+<details class="dexdetails"><summary>cash <span class="meta">deployer 0xffa819… · updater <em>self</em> · live 0/17 · 24h — · max dev 19.88%</span></summary>
+  <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody><tr class="dead"><td>cash:INTC</td><td class="num">112.988</td><td class="num">141.02</td><td class="num">19.88%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:KWEB</td><td class="num">26.47805</td><td class="num">24.422</td><td class="num">8.42%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:CAR</td><td class="num">162.6652</td><td class="num">150.83</td><td class="num">7.85%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:EWY</td><td class="num">185.2315</td><td class="num">199.56</td><td class="num">7.18%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:WTI</td><td class="num">71.6675</td><td class="num">69.373</td><td class="num">3.31%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:NVDA</td><td class="num">203.655</td><td class="num">197.49</td><td class="num">3.12%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:MSFT</td><td class="num">381.118</td><td class="num">371.48</td><td class="num">2.59%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:HOOD</td><td class="num">116.026</td><td class="num">113.27</td><td class="num">2.43%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:GOLD</td><td class="num">4,128.2</td><td class="num">4,035</td><td class="num">2.31%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:TSLA</td><td class="num">407.557</td><td class="num">400.21</td><td class="num">1.84%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:USA500</td><td class="num">7,551.3</td><td class="num">7,457.8</td><td class="num">1.25%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:AMZN</td><td class="num">244.563</td><td class="num">241.75</td><td class="num">1.16%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:META</td><td class="num">616.274</td><td class="num">622.67</td><td class="num">1.03%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:GOOGL</td><td class="num">357.246</td><td class="num">359.53</td><td class="num">0.64%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:SILVER</td><td class="num">60.0967</td><td class="num">59.831</td><td class="num">0.44%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:BTC</td><td class="num">70,000</td><td class="num">70,000</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr>
+<tr class="dead"><td>cash:ETH</td><td class="num">2,184</td><td class="num">2,184</td><td class="num">0.00%</td><td class="num">0</td><td class="num">—</td></tr></tbody></table></details>
 <div class="note">
-<p><strong>Semantics</strong> — deviation = |oracle − mark| / mark. Thresholds mirror <code>hip3-oracle-guard</code>'s <code>deviation</code> module: warn &gt; 100 bps, critical &gt; 500 bps, applied only to assets with open interest &gt; 0 (NO OI = market with no open positions; many of these are abandoned — see the <a href="https://github.com/imokokok/hip3-oracle-guard/blob/main/research/VALIDATION-REPORT.md">validation report</a>: 7/10 HIP-3 DEXs stalled, deviations up to 48%).</p>
-<p><strong>What this page cannot show</strong> — staleness (the snapshot API does not expose feed update timestamps; the <a href="https://github.com/imokokok/hip3-oracle-guard">library</a> detects it via oracle-change differential in <code>monitor.mjs</code>) and discovery-band position (the protocol's band anchor is not exposed; see the library's <code>bounds</code> module for the guard semantics). Deviation vs mark is the honest subset of the full guard set.</p>
+<p><strong>This page is observational.</strong> "OI-weighted deviation" ranks attention — where large open interest sits against a deviating feed. It is <em>not</em> a liquidation-loss estimate; no conclusion about harm can be drawn from this data alone.</p>
+<p><strong>Method</strong> — deviation = |oracle − mark| / mark (Hyperliquid public API). Estimated OI notional = open interest (base units: shares for equities, index units for indices) × mark. Grading: <strong>red</strong> = dev ≥ 20bps and notional &gt; $100.0M; <strong>watchlist</strong> = dev ≥ 15bps, or notional &gt; $250.0M with dev ≥ 10bps (red takes precedence; watchlist excludes red); <strong>trapped</strong> = 24h vol &lt; $5.0K with OI &gt; 0; <strong>dormant (DEX-level)</strong> = every market across the last 96 snapshots (~48h) with OI = 0 and vol &lt; $5.0K (min 24 snapshots; a single zero snapshot implies nothing). Markets with missing/invalid fields are excluded from all grading and listed separately. These are page-specific observation thresholds — not execution guard thresholds; see the library's <code>deviation</code> module (warn 100 / critical 500 bps) for guard semantics.</p>
+<p><strong>What this page cannot show</strong> — staleness (the snapshot API does not expose feed update timestamps; the <a href="https://github.com/imokokok/hip3-oracle-guard">library</a> detects it via oracle-change differential in <code>monitor.mjs</code>) and discovery-band position (the protocol's band anchor is not exposed; see the library's <code>bounds</code> module). Deviation vs mark is the honest subset of the full guard set. Machine-readable alarms: <a href="./alarms.jsonl">alarms.jsonl</a> · <a href="./feed.xml">RSS</a>.</p>
 <p>Generated by <a href="https://github.com/imokokok/hip3-oracle-guard">hip3-oracle-guard</a> · read-only · zero keys · MIT.</p>
 </div>
 </body></html>
