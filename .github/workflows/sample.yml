@@ -44,14 +44,18 @@ jobs:
           fi
           mkdir -p .data-branch/snapshots
           cp "$FILE" .data-branch/snapshots/
-          # 雷达 v2：墓志铭判定需要历史窗口，把新快照并入 data 工作树后再生成
-          node scripts/status-page.mjs "$FILE" .status \
-            --history .data-branch/snapshots \
-            --alarms .status/alarms.jsonl \
-            --rss .status/feed.xml
-          cp .status/index.html .data-branch/index.html
-          cp .status/alarms.jsonl .data-branch/alarms.jsonl
-          cp .status/feed.xml .data-branch/feed.xml
+          # 雷达 v2：墓志铭判定需要历史窗口，把新快照并入 data 工作树后再生成。
+          # 生成失败不阻断快照落盘——丢一个采样点的代价高于页面短暂陈旧。
+          if node scripts/status-page.mjs "$FILE" .status \
+              --history .data-branch/snapshots \
+              --alarms .status/alarms.jsonl \
+              --rss .status/feed.xml; then
+            cp .status/index.html .data-branch/index.html
+            cp .status/alarms.jsonl .data-branch/alarms.jsonl
+            cp .status/feed.xml .data-branch/feed.xml
+          else
+            echo "::warning::radar page generation failed; data branch keeps previous page"
+          fi
           cd .data-branch
           git add snapshots index.html alarms.jsonl feed.xml
           git commit -m "snapshot $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"

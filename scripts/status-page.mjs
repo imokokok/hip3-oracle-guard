@@ -24,16 +24,19 @@ import {
 } from './radar-core.mjs';
 
 const args = process.argv.slice(2);
-const positional = args.filter((a) => !a.startsWith('--'));
-const flag = (name) => {
+// 先抽出 <flag, value> 对，剩余的才是位置参数——否则 flag 的值会被误当位置参数
+const flagNames = ['--history', '--alarms', '--rss'];
+const flags = {};
+for (const name of flagNames) {
   const i = args.indexOf(name);
-  return i >= 0 ? args[i + 1] : null;
-};
+  if (i >= 0 && args[i + 1] && !flagNames.includes(args[i + 1])) flags[name] = args[i + 1];
+}
+const positional = args.filter((a, i) => !a.startsWith('--') && !flagNames.includes(args[i - 1] ?? ''));
 const snapFile = positional[0];
 const outDir = positional[1] ?? '.status';
-const historyDir = flag('--history');
-const alarmsFile = flag('--alarms');
-const rssFile = flag('--rss');
+const historyDir = flags['--history'];
+const alarmsFile = flags['--alarms'];
+const rssFile = flags['--rss'];
 
 if (!snapFile) {
   console.error('usage: node scripts/status-page.mjs <snapshot.json> [outdir] [--history <snapshotsDir>] [--alarms <file>] [--rss <file>]');
@@ -68,12 +71,13 @@ const liveAssets = dexs.reduce((s, d) => s + d.liveAssetCount, 0);
 let tombstoned = new Map();
 let historyNote = 'no history provided — tombstone classification disabled';
 if (historyDir && fs.existsSync(historyDir)) {
-  const files = fs.readdirSync(historyDir).filter((f) => /^snapshot-.*\.json$/.test(f)).sort();
+  // 只解析窗口内的快照：30 天保留 ≈1440 个文件（~240MB），逐次全量解析会随历史线性恶化
+  const files = fs.readdirSync(historyDir).filter((f) => /^snapshot-.*\.json$/.test(f)).sort().slice(-TOMBSTONE_WINDOW);
   const snaps = files.map((f) => {
     try { return JSON.parse(fs.readFileSync(path.join(historyDir, f), 'utf8')); } catch { return null; }
   }).filter(Boolean);
   tombstoned = tombstoneDexs(snaps);
-  historyNote = `${Math.min(snaps.length, TOMBSTONE_WINDOW)} snapshots in window (~${(Math.min(snaps.length, TOMBSTONE_WINDOW) / 2).toFixed(0)}h)`;
+  historyNote = `${snaps.length} snapshots in window (~${(snaps.length / 2).toFixed(0)}h)`;
 }
 const tombNames = [...tombstoned.keys()].sort();
 
@@ -146,14 +150,17 @@ const whiteBlock = whiteRows
 
 // —— 每 DEX 全量明细（折叠，供核对全量） ——
 const dexBlocks = dexs.map((d) => {
-  const rows = [...d.assets].sort((a, b) => (parseFloat(b.deviationBps ?? '0')) - (parseFloat(a.deviationBps ?? '0')));
+  const rows = d.assets
+    .map((a) => ({ a, dev: deviationBps(a.oraclePx, a.markPx) ?? 0 }))
+    .sort((x, y) => y.dev - x.dev);
   const updater = d.oracleUpdater ? esc(d.oracleUpdater.slice(0, 8) + '…') : '<em>self</em>';
-  const body = rows.map((a) => {
-    const bps = parseFloat(a.deviationBps ?? 'NaN');
+  const body = rows.map(({ a }) => {
+    // 偏离统一由 radar-core 重算（与分级同源），不读快照存储字段，避免双源漂移
+    const bps = deviationBps(a.oraclePx, a.markPx);
     const oi = parseFloat(a.openInterest ?? '0');
     const c = classify(a);
     const cls = { red: 'crit', yellow: 'warn', trap: 'warn', missing: 'dead', white: oi > 0 ? 'ok' : 'dead' }[c.grade];
-    return `<tr class="${cls}"><td>${esc(a.asset)}</td><td class="num">${fmtPx(a.oraclePx)}</td><td class="num">${fmtPx(a.markPx)}</td><td class="num">${Number.isFinite(bps) ? (bps / 100).toFixed(2) + '%' : '—'}</td><td class="num">${oi > 0 ? oi.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '0'}</td><td class="num">${fmtUsd(parseFloat(a.dayNtlVlm ?? '0'))}</td></tr>`;
+    return `<tr class="${cls}"><td>${esc(a.asset)}</td><td class="num">${fmtPx(a.oraclePx)}</td><td class="num">${fmtPx(a.markPx)}</td><td class="num">${bps !== null ? (bps / 100).toFixed(2) + '%' : '—'}</td><td class="num">${oi > 0 ? oi.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '0'}</td><td class="num">${fmtUsd(parseFloat(a.dayNtlVlm ?? '0'))}</td></tr>`;
   }).join('\n');
   return `<details class="dexdetails"><summary>${esc(d.dex)} <span class="meta">deployer ${esc((d.deployer ?? '').slice(0, 8) + '…')} · updater ${updater} · live ${d.liveAssetCount}/${d.assetCount} · 24h ${fmtUsd(d.dayVolumeUsd)} · max dev ${(d.maxDeviationBps / 100).toFixed(2)}%</span></summary>
   <table><thead><tr><th>asset</th><th>oracle</th><th>mark</th><th>dev</th><th>OI</th><th>24h vol</th></tr></thead><tbody>${body}</tbody></table></details>`;

@@ -93,7 +93,7 @@
 2. **不动**：src/ 六模块、测试、workflow 调度链路、data 分支结构。RSS/alarms.jsonl 输出顺带加（<20 行），其余一律不做。
 3. 验证：用最近 7 天快照回放生成器，人工核对红/黄/陷阱/缺失名单；**单位校准与回放核对才是主要工时**，页面模板本身只占小头。
 
-**r4 实现状态（2026-11-27）**：✅ 全部落地。`scripts/radar-core.mjs`（纯函数分级核心）+ `scripts/status-page.mjs` 重写（四层结构、alarms.jsonl、RSS feed.xml）+ `test/radar.test.ts`（17 个用例，全仓 69 测试绿）+ workflow 改为先建 data 工作树、并入新快照后带 32 快照历史生成。回放验证：32 个快照全量零失败，名单人工核对一致（红=ANT/MU、陷阱=para 两市场、墓志铭=6 个全 OI=0 的 DEX）。单位校准结论：Hyperliquid assetCtxs.openInterest 为基础单位（股票=股、指数=指数单位），qty×mark 即名义美元，方法论尾段已如实注明。
+**r4 实现状态（2026-11-27）**：✅ 全部落地（含代码审查加固：墓志铭窗口只解析最近 96 个快照而非全量历史，避免随 30 天保留期线性恶化到 ~240MB/次；页面生成失败改为不阻断快照落盘，丢采样点的代价高于页面短暂陈旧；CLI flag 解析修复 + 明细表偏离值与分级逻辑统一由 radar-core 重算，消除双源）。`scripts/radar-core.mjs`（纯函数分级核心）+ `scripts/status-page.mjs` 重写（四层结构、alarms.jsonl、RSS feed.xml）+ `test/radar.test.ts`（17 个用例，全仓 69 测试绿）+ workflow 改为先建 data 工作树、并入新快照后带 32 快照历史生成。回放验证：32 个快照全量零失败，名单人工核对一致（红=ANT/MU、陷阱=para 两市场、墓志铭=6 个全 OI=0 的 DEX）。单位校准结论：Hyperliquid assetCtxs.openInterest 为基础单位（股票=股、指数=指数单位），qty×mark 即名义美元，方法论尾段已如实注明。
 
 ## 5. 明确不做（冻结清单）
 
