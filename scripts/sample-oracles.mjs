@@ -75,6 +75,22 @@ async function main() {
     });
   }
 
+  // 健全性门：残缺快照比不采样更危险——数据残缺会让风险雷达误判（如 DEX 大面积
+  // 缺席被墓志铭逻辑看到时是"缺席跳过"，但低资产数的 DEX 会被当成真实状态）。
+  // 低于下限视为 API 异常（schema 变更前兆 / 部分故障）：不落盘、退出码 1，
+  // 让 GitHub Actions 的失败邮件替我们喊人。阈值 = 2026-11-27 健康基线的一半
+  // （基线：10 DEX / ~150 资产）。
+  const okDexs = snapshot.dexs.filter((d) => !d.error);
+  const totalAssets = okDexs.reduce((s, d) => s + d.assetCount, 0);
+  const MIN_DEXS = 5;
+  const MIN_ASSETS = 60;
+  if (okDexs.length < MIN_DEXS || totalAssets < MIN_ASSETS) {
+    console.error(
+      `# SANITY GATE: okDexs=${okDexs.length}/${snapshot.dexs.length} (min ${MIN_DEXS}), totalAssets=${totalAssets} (min ${MIN_ASSETS}) — snapshot NOT saved, treating as pipeline failure`,
+    );
+    process.exit(1);
+  }
+
   // 摘要
   console.log(`# HIP-3 oracle snapshot ${snapshot.sampledAt}`);
   for (const d of snapshot.dexs) {

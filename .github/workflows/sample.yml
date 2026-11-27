@@ -4,6 +4,9 @@ name: oracle-sampling
 # 一起落到 data 分支；GitHub Pages 以 data 分支为源自动构建
 # （legacy branch 模式，不依赖 Actions artifact，绕开其间歇性元数据故障）。
 # 注意：GitHub 会在仓库 60 天无活动后停用 scheduled workflow，期间需保持提交活跃。
+# schedule 是有意保留的兜底：主触发是外部 cron（hip3-cf-scheduler Worker →
+# workflow_dispatch，不受 GH 调度器静默跳过影响）；Worker 死掉时本 schedule
+# 提供降级采样。双触发由下方 concurrency 锁串行化，代价仅为偶发一次重复运行。
 
 on:
   schedule:

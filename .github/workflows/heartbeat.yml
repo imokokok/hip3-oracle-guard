@@ -1,0 +1,36 @@
+name: heartbeat
+
+# 静默死亡告警：采样链（CF scheduler → workflow_dispatch → sampler → data 分支）
+# 任何一环死掉，唯一外部可见的症状就是快照停止更新。本 workflow 每 6 小时检查
+# data 分支最新快照的时间戳，超过 3 小时（= 连续 6 次采样缺失）即非零码退出，
+# GitHub Actions 会向仓库所有者发送失败邮件——把静默退化变成显式告警。
+#
+# 自身的 GH schedule 是 best-effort（可能延迟/跳过），漏跑的代价只是晚发现，
+# 可接受；这是零依赖方案（不引入任何外部监控服务）下成本最低的告警路径。
+# 手动触发：gh workflow run heartbeat
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check snapshot freshness on data branch
+        run: |
+          git clone --depth 1 --branch data https://github.com/imokokok/hip3-oracle-guard .hb \
+            || { echo "FAIL: cannot clone data branch — branch missing or force-push race"; exit 1; }
+          LATEST=$(ls -1 .hb/snapshots/snapshot-*.json 2>/dev/null | sort | tail -1)
+          [ -n "$LATEST" ] || { echo "FAIL: no snapshots on data branch"; exit 1; }
+          TS=$(python3 -c "import json; print(json.load(open('$LATEST'))['sampledAt'])")
+          AGE=$(( $(date -u +%s) - $(date -u -d "$TS" +%s) ))
+          if [ "$AGE" -gt 10800 ]; then
+            echo "STALE: last snapshot $TS is $((AGE / 3600))h old (threshold 3h) — sampling pipeline appears dead"
+            exit 1
+          fi
+          echo "OK: last snapshot $TS ($((AGE / 60)) min ago)"
