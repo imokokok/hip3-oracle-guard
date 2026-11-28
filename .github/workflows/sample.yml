@@ -33,6 +33,37 @@ jobs:
       - name: Run sampler
         run: node scripts/sample-oracles.mjs --save .data-run
 
+      - name: Prepare data worktree (history for tombstone / ledger window)
+        run: |
+          git fetch origin data || true
+          mkdir -p .data-branch
+          if git rev-parse --verify origin/data >/dev/null 2>&1; then
+            git worktree add -B data .data-branch origin/data
+          else
+            git worktree add --orphan -b data .data-branch
+          fi
+          mkdir -p .data-branch/snapshots
+
+      - name: Update incident ledger (commit to main only when events change)
+        run: |
+          FILE=$(ls .data-run/snapshot-*.json | head -1)
+          # 台账分级与状态页同源（radar-core），直接从快照重算——页面生成失败不阻断台账
+          node scripts/incident-ledger.mjs "$FILE" \
+            --history .data-branch/snapshots \
+            --ledger incidents.jsonl --out incidents.jsonl.next
+          # 事件有变化才提交：台账是低频事件级写入，main 不吃 30 分钟级噪音
+          if ! diff -q incidents.jsonl incidents.jsonl.next >/dev/null 2>&1; then
+            mv incidents.jsonl.next incidents.jsonl
+            git config user.name "imokokok"
+            git config user.email "145034722+imokokok@users.noreply.github.com"
+            git add incidents.jsonl
+            git commit -m "incidents: ledger update $(date -u +%FT%TZ) [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            rm incidents.jsonl.next
+          fi
+
       - name: Commit snapshot + status page to data branch
         run: |
           git config user.name "imokokok"
@@ -52,14 +83,16 @@ jobs:
           if node scripts/status-page.mjs "$FILE" .status \
               --history .data-branch/snapshots \
               --alarms .status/alarms.jsonl \
-              --rss .status/feed.xml; then
+              --rss .status/feed.xml \
+              --incidents incidents.jsonl; then
             cp .status/index.html .data-branch/index.html
             cp .status/alarms.jsonl .data-branch/alarms.jsonl
             cp .status/feed.xml .data-branch/feed.xml
+            cp incidents.jsonl .data-branch/incidents.jsonl
           else
             echo "::warning::radar page generation failed; data branch keeps previous page"
           fi
           cd .data-branch
-          git add snapshots index.html alarms.jsonl feed.xml
+          git add snapshots index.html alarms.jsonl feed.xml incidents.jsonl
           git commit -m "snapshot $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
           git push origin HEAD:data

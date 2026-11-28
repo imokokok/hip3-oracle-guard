@@ -22,10 +22,11 @@ import {
   TRAP_VOL_USD, TOMBSTONE_WINDOW, TOMBSTONE_MIN_SNAPSHOTS,
   classify, notionalUsd, tombstoneDexs, deviationBps,
 } from './radar-core.mjs';
+import { readLedger, RESOLVE_SNAPSHOTS } from './incident-ledger.mjs';
 
 const args = process.argv.slice(2);
 // 先抽出 <flag, value> 对，剩余的才是位置参数——否则 flag 的值会被误当位置参数
-const flagNames = ['--history', '--alarms', '--rss'];
+const flagNames = ['--history', '--alarms', '--rss', '--incidents'];
 const flags = {};
 for (const name of flagNames) {
   const i = args.indexOf(name);
@@ -37,6 +38,7 @@ const outDir = positional[1] ?? '.status';
 const historyDir = flags['--history'];
 const alarmsFile = flags['--alarms'];
 const rssFile = flags['--rss'];
+const incidentsFile = flags['--incidents'];
 
 if (!snapFile) {
   console.error('usage: node scripts/status-page.mjs <snapshot.json> [outdir] [--history <snapshotsDir>] [--alarms <file>] [--rss <file>]');
@@ -121,6 +123,36 @@ const trapBlock = traps.length
   <table><thead><tr><th>market</th><th>oracle↔mark</th><th>est. OI notional</th><th>24h vol</th><th>observation</th></tr></thead><tbody>${trapRows}</tbody></table></section>`
   : '';
 
+// —— 事件台账（main 分支 incidents.jsonl 的渲染视图；分级语义在 incident-ledger.mjs）——
+// 展示排序与分级无关，仅服务注意力分配：open 在前（按峰值严重度），resolved 取最近 20 条。
+const incidents = incidentsFile ? readLedger(incidentsFile) : [];
+const RANK = { red: 3, yellow: 2, trap: 1, tombstone: 0 };
+const openIncidents = incidents.filter((i) => i?.status === 'open')
+  .sort((a, b) => (RANK[b.peakGrade] ?? 0) - (RANK[a.peakGrade] ?? 0) || String(a.openedAt).localeCompare(String(b.openedAt)));
+const resolvedIncidents = incidents.filter((i) => i?.status === 'resolved')
+  .sort((a, b) => String(b.resolvedAt ?? '').localeCompare(String(a.resolvedAt ?? ''))).slice(0, 20);
+
+function fmtTs(ts) {
+  return ts ? esc(String(ts).replace('T', ' ').slice(0, 16)) : '—';
+}
+function incidentName(i) {
+  const name = i.name ?? `${i.dex}:${i.asset}`;
+  return i.asset === '*' || i.name?.endsWith(':*') ? `${esc(i.dex)} <span class="meta">(whole DEX)</span>` : `${esc(name)}`;
+}
+function incidentRow(i) {
+  const cls = i.status === 'open' ? { red: 'crit', yellow: 'warn', trap: 'warn' }[i.peakGrade] ?? 'warn' : '';
+  const peakDev = i.peakDevBps !== null && i.peakDevBps !== undefined ? `${i.peakDevBps.toFixed(1)}bps` : '—';
+  const evidence = i.peakSnapshot ? `<a href="./snapshots/${esc(i.peakSnapshot)}">${peakDev}</a>` : peakDev;
+  const statusBadge = i.status === 'open' ? '<span class="badge crit">OPEN</span>' : '<span class="badge done">resolved</span>';
+  return `<tr class="${cls}"><td>${incidentName(i)} <span class="meta">#${i.episode ?? 1}</span></td><td>${statusBadge}</td><td class="num">${fmtTs(i.openedAt)}</td><td class="num">${fmtTs(i.lastSeenAt)}</td><td class="num">${fmtTs(i.resolvedAt)}</td><td>${esc(i.peakGrade ?? '—')}</td><td class="num">${evidence}</td><td class="num">${fmtUsd(i.peakNotionalUsd)}</td></tr>`;
+}
+const incidentRows = [...openIncidents, ...resolvedIncidents].map(incidentRow).join('\n');
+const incidentBlock = incidents.length
+  ? `<section class="zone incidentzone"><h2>Incident ledger <span class="meta">all-time record of every market that crossed a threshold — open first, then the ${resolvedIncidents.length} most recently resolved of ${incidents.filter((i) => i?.status === 'resolved').length}; survives the 30-day snapshot purge</span></h2>
+  <table><thead><tr><th>incident</th><th>status</th><th>opened</th><th>last seen</th><th>resolved</th><th>peak grade</th><th>peak oracle↔mark</th><th>peak est. OI notional</th></tr></thead><tbody>${incidentRows}</tbody></table>
+  <p class="zonefoot">Peak deviation links to the raw evidence snapshot (links expire with the 30-day snapshot retention — the ledger itself is permanent). Full machine-readable history: <a href="./incidents.jsonl">incidents.jsonl</a> · a market re-entering after resolution opens a new episode (#n); resolution requires ${RESOLVE_SNAPSHOTS} consecutive quiet samples (~90 min), so a single API hiccup cannot split an event. <code>opened</code> = first observation by the ledger (ledger started 2026-11-28; earlier activity is not retroactively attributed).</p></section>`
+  : '';
+
 const tombRows = tombNames.map((name) => {
   const t = tombstoned.get(name);
   return `<div class="tomb"><strong>${esc(name)}</strong> max dev ${(t.maxDevBps / 100).toFixed(2)}% <span class="meta">(${t.seen} consecutive snapshots)</span></div>`;
@@ -192,6 +224,8 @@ tr.warn td { background: #fdf8ec; }
 .badge { font-size: .7rem; font-weight: 700; padding: .1rem .45rem; border-radius: 999px; letter-spacing: .03em; }
 .badge.crit { background: #f8d7d5; color: #b03028; }
 .badge.warn { background: #fbeec9; color: #91660a; }
+.badge.done { background: #e7e7ec; color: #666; }
+section.incidentzone { background: #fdfbfa; }
 .empty { color: #777; font-size: .9rem; margin: .4rem 0; }
 .tombgrid { display: flex; gap: .75rem; flex-wrap: wrap; }
 .tomb { background: #fff; border: 1px solid #e3e3ec; border-radius: 6px; padding: .4rem .7rem; font-size: .85rem; }
@@ -210,6 +244,7 @@ a { color: #4a3fbf; }
   <div class="card"><div class="v" style="color:#b03028">${reds.length}</div><div class="k">red markets</div></div>
   <div class="card"><div class="v" style="color:#91660a">${yellows.length}</div><div class="k">on watchlist</div></div>
   <div class="card"><div class="v" style="color:#91660a">${traps.length}</div><div class="k">trapped</div></div>
+  <div class="card"><div class="v" style="color:#b03028">${openIncidents.length}</div><div class="k">open incidents</div></div>
   <div class="card"><div class="v" style="color:#888">${tombNames.length}/${dexs.length}</div><div class="k">dormant dexs</div></div>
 </div>
 
@@ -218,6 +253,7 @@ a { color: #4a3fbf; }
 ${riskTable}
 </section>
 ${trapBlock}
+${incidentBlock}
 ${tombBlock}
 ${missingBlock}
 ${whiteBlock}
@@ -226,7 +262,7 @@ ${dexBlocks}
 <div class="note">
 <p><strong>This page is observational.</strong> "OI-weighted deviation" ranks attention — where large open interest sits against a deviating feed. It is <em>not</em> a liquidation-loss estimate; no conclusion about harm can be drawn from this data alone.</p>
 <p><strong>Method</strong> — deviation = |oracle − mark| / mark (Hyperliquid public API). Estimated OI notional = open interest (base units: shares for equities, index units for indices) × mark. Grading: <strong>red</strong> = dev ≥ ${RED_DEV_BPS}bps and notional &gt; ${fmtUsd(RED_OI_USD)}; <strong>watchlist</strong> = dev ≥ ${YELLOW_DEV_BPS}bps, or notional &gt; ${fmtUsd(YELLOW_OI_USD)} with dev ≥ ${YELLOW_OI_DEV_BPS}bps (red takes precedence; watchlist excludes red); <strong>trapped</strong> = 24h vol &lt; ${fmtUsd(TRAP_VOL_USD)} with OI &gt; 0; <strong>dormant (DEX-level)</strong> = every market across the last ${TOMBSTONE_WINDOW} snapshots (~48h) with OI = 0 and vol &lt; ${fmtUsd(TRAP_VOL_USD)} (min ${TOMBSTONE_MIN_SNAPSHOTS} snapshots; a single zero snapshot implies nothing). Markets with missing/invalid fields are excluded from all grading and listed separately. These are page-specific observation thresholds — not execution guard thresholds; see the library's <code>deviation</code> module (warn 100 / critical 500 bps) for guard semantics.</p>
-<p><strong>What this page cannot show</strong> — staleness (the snapshot API does not expose feed update timestamps; the <a href="https://github.com/imokokok/hip3-oracle-guard">library</a> detects it via oracle-change differential in <code>monitor.mjs</code>) and discovery-band position (the protocol's band anchor is not exposed; see the library's <code>bounds</code> module). Deviation vs mark is the honest subset of the full guard set. Machine-readable alarms: <a href="./alarms.jsonl">alarms.jsonl</a> · <a href="./feed.xml">RSS</a>.</p>
+<p><strong>What this page cannot show</strong> — staleness (the snapshot API does not expose feed update timestamps; the <a href="https://github.com/imokokok/hip3-oracle-guard">library</a> detects it via oracle-change differential in <code>monitor.mjs</code>) and discovery-band position (the protocol's band anchor is not exposed; see the library's <code>bounds</code> module). Deviation vs mark is the honest subset of the full guard set. Machine-readable alarms: <a href="./alarms.jsonl">alarms.jsonl</a> · <a href="./feed.xml">RSS</a> · <a href="./incidents.jsonl">incidents.jsonl</a> (all-time event ledger).</p>
 <p>Generated by <a href="https://github.com/imokokok/hip3-oracle-guard">hip3-oracle-guard</a> · read-only · zero keys · MIT.</p>
 </div>
 </body></html>`;

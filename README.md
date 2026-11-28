@@ -12,6 +12,8 @@ HIP-3 deployer 喂价守卫——开源参考实现。防止你的 500k HYPE 质
 
 📊 **[HIP-3 喂价风险雷达实时状态页](https://imokokok.github.io/hip3-oracle-guard/)** — 交易员/质押者视角的观察雷达（v2）：红（偏离≥20bps×名义OI>$100M）/ 黄（观察名单）/ 陷阱（量≈0 但 OI>0）/ 墓志铭（48h 窗口全低活跃 DEX）四层视图，按 OI 加权偏离排序，每 30 分钟刷新，机器可读告警见 alarms.jsonl 与 RSS feed.xml。观察性指标，非清算风险估算；阈值与守卫库 guard 阈值无关。调度链路：外部 cron 触发器（Cloudflare Worker）→ workflow_dispatch（绕开 GitHub scheduled 调度的静默跳过）→ 快照落 data 分支并原生构建 Pages。
 
+📜 **事件台账（incident ledger）** — 快照只有 30 天保留期，台账把瞬态告警升级为**永久事件记录**：`incidents.jsonl` 落 main 分支（不随 data 分支孤儿重建销毁），open → resolved 状态机带防抖（连续 3 个采样点 ≈90 分钟静默才判恢复，单次 API 抖动不拆事件）、峰值证据（peak grade / 偏离 / 名义 OI + 证据快照引用）、resolved 后重开计新 episode（#n）。分级与状态页同源（radar-core），页面渲染 Incidents 区块 + 机器可读 JSONL 全量历史。
+
 ## 模块
 
 | 模块 | 职责 | 状态 |
