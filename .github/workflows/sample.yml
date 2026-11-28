@@ -71,10 +71,13 @@ jobs:
           FILE=$(ls .data-run/snapshot-*.json | head -1)
           git fetch origin data || true
           mkdir -p .data-branch
-          if git rev-parse --verify origin/data >/dev/null 2>&1; then
-            git worktree add -B data .data-branch origin/data
-          else
-            git worktree add --orphan -b data .data-branch
+          # worktree 已在台账步骤前建好；这里仅在异常缺失时重建（重复 add 同名分支会 fatal）
+          if [ ! -e .data-branch/.git ]; then
+            if git rev-parse --verify origin/data >/dev/null 2>&1; then
+              git worktree add -B data .data-branch origin/data
+            else
+              git worktree add --orphan -b data .data-branch
+            fi
           fi
           mkdir -p .data-branch/snapshots
           cp "$FILE" .data-branch/snapshots/
